@@ -1,2 +1,2 @@
 # MFMLOps
-a framework for modeling ML-based software development processes.
+A framework for modeling ML-based software development processes.
