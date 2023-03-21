@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated dsl4ai -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="edu.uoc.som.dsl4ai.presentation.Dsl4aiModelWizardID"
+            name="%_UI_Dsl4aiModelWizard_label"
+            class="edu.uoc.som.dsl4ai.presentation.Dsl4aiModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/Dsl4aiModelFile.gif">
+         <description>%_UI_Dsl4aiModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated dsl4ai -->
+      <editor
+            id="edu.uoc.som.dsl4ai.presentation.Dsl4aiEditorID"
+            name="%_UI_Dsl4aiEditor_label"
+            icon="icons/full/obj16/Dsl4aiModelFile.gif"
+            extensions="dsl4ai"
+            class="edu.uoc.som.dsl4ai.presentation.Dsl4aiEditor"
+            contributorClass="edu.uoc.som.dsl4ai.presentation.Dsl4aiActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

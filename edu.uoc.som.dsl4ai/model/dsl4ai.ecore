@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dsl4ai" nsURI="http://edu.uoc.som/dsl4ai/1.0" nsPrefix="dsl4ai">
+  <eClassifiers xsi:type="ecore:EClass" name="Activity">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOptional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requiresAllSubactivities"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="#//Artifact"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
+        eType="#//Artifact"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
+        eType="#//Resource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="techniques" upperBound="-1"
+        eType="#//Technique"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="participants" upperBound="-1"
+        eType="#//Participant" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="next" eType="#//Activity"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rationale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subactivities" upperBound="-1"
+        eType="#//Activity" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LocatedElement" abstract="true" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Resource" abstract="true" eSuperTypes="#//LocatedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Artifact" abstract="true" eSuperTypes="#//LocatedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDeliverable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Document" eSuperTypes="#//Artifact">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//Template"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Template" eSuperTypes="#//Resource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Executable" abstract="true" eSuperTypes="#//Resource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Platform" eSuperTypes="#//Executable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Script" eSuperTypes="#//Executable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Guideline" eSuperTypes="#//Resource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Role" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Technique" abstract="true" eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="script" eType="#//Script"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Participant">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="participation" eType="#//ParticipationKind"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="role" lowerBound="1" eType="#//Role"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ParticipationKind">
+    <eLiterals name="responsible"/>
+    <eLiterals name="accountable" value="1"/>
+    <eLiterals name="consulted" value="2"/>
+    <eLiterals name="informed" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BusinessUnderstandingActivity" eSuperTypes="#//Activity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RequirementsEngineeringActivity" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goals" upperBound="-1"
+        eType="#//BusinessGoal" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
+        eType="#//Requirement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataIdentificationActivity" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="identifies" upperBound="-1"
+        eType="#//DataSource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Requirement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rationale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelRequirement" eSuperTypes="#//Requirement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BusinessGoal" eSuperTypes="#//Goal">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="criteria" lowerBound="1"
+        upperBound="-1" eType="#//BusinessSuccessCriterion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelGoal" eSuperTypes="#//Goal">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alignedTo" lowerBound="1"
+        eType="#//BusinessGoal"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="criteria" lowerBound="1"
+        upperBound="-1" eType="#//AIModelSuccessCriterion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BusinessSuccessCriterion" eSuperTypes="#//SuccessCriterion"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelSuccessCriterion" eSuperTypes="#//SuccessCriterion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alignedTo" lowerBound="1"
+        eType="#//BusinessSuccessCriterion"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="criterionValue" upperBound="-1"
+        eType="#//CriterionValue" eOpposite="#//CriterionValue/aimodelsuccesscriterion"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Goal" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SuccessCriterion" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseline" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSource" eSuperTypes="#//Resource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isExternal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSelected" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compliesWith" upperBound="-1"
+        eType="#//DataSourceRequirement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSourceRequirement" eSuperTypes="#//Requirement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataRequirement" eSuperTypes="#//Requirement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AIEthicalRequirement" eSuperTypes="#//AIModelRequirement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ethic" lowerBound="1" eType="#//AIEthicsKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelDegradation" eSuperTypes="#//AIModelRequirement"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="AIEthicsKind">
+    <eLiterals name="privacy"/>
+    <eLiterals name="accountability" value="1"/>
+    <eLiterals name="safetySecurity" value="2"/>
+    <eLiterals name="transparencyExplainability" value="3" literal="transparencyExplainability"/>
+    <eLiterals name="fairness" value="4"/>
+    <eLiterals name="humanControl" value="5"/>
+    <eLiterals name="professionalResponsibility" value="6"/>
+    <eLiterals name="humanValues" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Method">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activities" lowerBound="1"
+        upperBound="-1" eType="#//Activity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="artifacts" upperBound="-1"
+        eType="#//Artifact" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
+        eType="#//Resource" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="roles" upperBound="-1"
+        eType="#//Role" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataPreparationActivity" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trainingDataset" eType="#//TrainingDataset"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validationDataset" eType="#//ValidationDataset"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="testDataset" eType="#//TestDataset"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataCollectionActivity" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collects" upperBound="-1"
+        eType="#//Data" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
+        eType="#//DataSource"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataProcessingActivity" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labels" upperBound="-1"
+        eType="#//Label" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="processes" upperBound="-1"
+        eType="#//Data"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataEngineeringTechnique" abstract="true"
+      eSuperTypes="#//Technique"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAnnotationGuideline" eSuperTypes="#//Guideline"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Label">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Data" eSuperTypes="#//Artifact">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labels" upperBound="-1"
+        eType="#//Label"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" lowerBound="1"
+        upperBound="-1" eType="#//DataAttribute" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureEngineeringTechnique" abstract="true"
+      eSuperTypes="#//Technique"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureEngineeringActivity" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extractsFrom" upperBound="-1"
+        eType="#//Data"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="creates" upperBound="-1"
+        eType="#//Feature" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1" upperBound="-1"
+        eType="#//DataAttribute"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="correlatedTo" upperBound="-1"
+        eType="#//Feature"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelingActivity" eSuperTypes="#//Activity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelTrainingActivity" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trainsWith" eType="#//TrainingDataset"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validatesWith" eType="#//ValidationDataset"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trains" upperBound="-1"
+        eType="#//AIModel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="optimalValues" upperBound="-1"
+        eType="#//OptimalValue" eOpposite="#//OptimalValue/aiModelTrainingActivity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelingTechnique" abstract="true"
+      eSuperTypes="#//Technique">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hyperparameters" upperBound="-1"
+        eType="#//HyperParameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelEvaluationActivity" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="evaluatesWith" eType="#//TestDataset"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="evaluates" upperBound="-1"
+        eType="#//AIModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="criteriaValues" upperBound="-1"
+        eType="#//CriterionValue" eOpposite="#//CriterionValue/aiModelEvaluationActivity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TrainingDataset" eSuperTypes="#//AIModelDataset">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data" lowerBound="1" upperBound="-1"
+        eType="#//Data"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValidationDataset" eSuperTypes="#//AIModelDataset">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data" lowerBound="1" upperBound="-1"
+        eType="#//Data"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TestDataset" eSuperTypes="#//AIModelDataset">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="data" lowerBound="1" upperBound="-1"
+        eType="#//Data"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rank" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="criteriaValues" upperBound="-1"
+        eType="#//CriterionValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goal" lowerBound="1" eType="#//AIModelGoal"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="satisfiedRequirements"
+        upperBound="-1" eType="#//AIModelRequirement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="optimalValues" upperBound="-1"
+        eType="#//OptimalValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="basedOn" lowerBound="1"
+        eType="#//AIModelingTechnique"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CriterionValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aimodelsuccesscriterion"
+        lowerBound="1" eType="#//AIModelSuccessCriterion" eOpposite="#//AIModelSuccessCriterion/criterionValue"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aiModelEvaluationActivity"
+        lowerBound="1" eType="#//AIModelEvaluationActivity" eOpposite="#//AIModelEvaluationActivity/criteriaValues"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HyperParameter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="optimalValues" upperBound="-1"
+        eType="#//OptimalValue" eOpposite="#//OptimalValue/hyperparameter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OptimalValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hyperparameter" lowerBound="1"
+        eType="#//HyperParameter" eOpposite="#//HyperParameter/optimalValues"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aiModelTrainingActivity"
+        lowerBound="1" eType="#//AIModelTrainingActivity" eOpposite="#//AIModelTrainingActivity/optimalValues"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelDataset" eSuperTypes="#//Artifact"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OperationsActivity" eSuperTypes="#//Activity"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelDeploymentActivity" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deploys" upperBound="-1"
+        eType="#//AIModel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelMonitoringActivity" eSuperTypes="#//Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="monitors" upperBound="-1"
+        eType="#//DeployedAIModel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeployedAIModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platform" eType="#//Platform"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" eType="#//DeploymentPatternKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategy" eType="#//DeploymentStrategyKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inference" eType="#//InferenceModeKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="api" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="observations" upperBound="-1"
+        eType="#//AIModelObservation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DeploymentStrategyKind">
+    <eLiterals name="singleDeployment"/>
+    <eLiterals name="silentDeployment" value="1"/>
+    <eLiterals name="canaryDeployment" value="2"/>
+    <eLiterals name="multiArmedBandit" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DeploymentPatternKind">
+    <eLiterals name="statically"/>
+    <eLiterals name="dynamicallyOnUserDevice" value="1"/>
+    <eLiterals name="dynamicallyOnServer" value="2"/>
+    <eLiterals name="streaming" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="InferenceModeKind">
+    <eLiterals name="batch"/>
+    <eLiterals name="realTime" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelObservation" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Issue" eSuperTypes="#//AIModelObservation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelFlaw" eSuperTypes="#//AIModelObservation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="degrades" lowerBound="1"
+        eType="#//AIModelRequirement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PerformanceMetric" eSuperTypes="#//AIModelObservation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minThreshold" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxThreshold" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ensures" lowerBound="1"
+        eType="#//AIModelSuccessCriterion"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataCleaningTechnique" eSuperTypes="#//DataEngineeringTechnique">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="techniqueKind" eType="#//DataCleaningTechniqueKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataCleaningTechniqueKind">
+    <eLiterals name="deletion"/>
+    <eLiterals name="dummySubstitution" value="1"/>
+    <eLiterals name="meanSubstitution" value="2"/>
+    <eLiterals name="frequentSubstitution" value="3"/>
+    <eLiterals name="regressionSubstitution" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataTransformationTechniqueKind">
+    <eLiterals name="minMaxNormalization"/>
+    <eLiterals name="zScoreNormalization" value="1"/>
+    <eLiterals name="decimalScaling" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataTransformationTechnique" eSuperTypes="#//DataEngineeringTechnique">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="techniqueKind" eType="#//DataTransformationTechniqueKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataDiscretizationTechniqueKind">
+    <eLiterals name="equalWidthBinning" literal="equalWidthBinning"/>
+    <eLiterals name="equalHeightBinning" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataReductionTechniqueKind">
+    <eLiterals name="recordSampling"/>
+    <eLiterals name="attributeSampling" value="1"/>
+    <eLiterals name="aggregation" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataDiscretizationTechnique" eSuperTypes="#//DataEngineeringTechnique">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="techniqueKind" eType="#//DataDiscretizationTechniqueKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataReductionTechnique" eSuperTypes="#//DataEngineeringTechnique">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="techniqueKind" eType="#//DataReductionTechniqueKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataIntegrationTechnique" eSuperTypes="#//DataEngineeringTechnique"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAugmentationTechnique" eSuperTypes="#//DataEngineeringTechnique"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="FeatureExtractionTechniqueKind">
+    <eLiterals name="clusterAnalysis"/>
+    <eLiterals name="textAnalytics" value="1"/>
+    <eLiterals name="edgeDetection" value="2"/>
+    <eLiterals name="principalComponentsAnalysis" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FeatureSelectionTechniqueKind">
+    <eLiterals name="regularization"/>
+    <eLiterals name="wrapper" value="1"/>
+    <eLiterals name="greedyAlgorithm" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureExtractionTechnique" eSuperTypes="#//FeatureEngineeringTechnique">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="techniqueKind" eType="#//FeatureExtractionTechniqueKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureSelectionTechnique" eSuperTypes="#//FeatureEngineeringTechnique">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="techniqueKind" eType="#//FeatureSelectionTechniqueKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ManagementRole" abstract="true" eSuperTypes="#//Role"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainRole" abstract="true" eSuperTypes="#//Role"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataRole" abstract="true" eSuperTypes="#//Role"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AIModelServingRole" abstract="true"
+      eSuperTypes="#//Role"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GroupManager" eSuperTypes="#//ManagementRole"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TeamLead" eSuperTypes="#//ManagementRole"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectLead" eSuperTypes="#//ManagementRole"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataConsumer" eSuperTypes="#//DomainRole"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BusinessUser" eSuperTypes="#//DomainRole"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BusinessAnalyst" eSuperTypes="#//DomainRole"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainExpert" eSuperTypes="#//BusinessUser"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataScientist" eSuperTypes="#//DataRole"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataEngineer" eSuperTypes="#//DataRole"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataSteward" eSuperTypes="#//DataEngineer"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataProvider" eSuperTypes="#//DataEngineer"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAnnotator" eSuperTypes="#//DataEngineer">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isExternal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Architect" eSuperTypes="#//AIModelServingRole"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SoftwareEngineer" eSuperTypes="#//AIModelServingRole"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelOperator" eSuperTypes="#//AIModelServingRole"/>
+</ecore:EPackage>

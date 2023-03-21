@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/edu.uoc.som.dsl4ai/src-gen" creationIcons="false"
+    editDirectory="/edu.uoc.som.dsl4ai.edit/src-gen" editorDirectory="/edu.uoc.som.dsl4ai.editor/src-gen"
+    modelPluginID="edu.uoc.som.dsl4ai" modelName="Dsl4ai" editPluginClass="edu.uoc.som.dsl4ai.provider.Dsl4aiEditPlugin"
+    editorPluginClass="edu.uoc.som.dsl4ai.presentation.Dsl4aiEditorPlugin" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" testSuiteClass="edu.uoc.som.dsl4ai.tests.Dsl4aiAllTests"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="11.0" copyrightFields="false"
+    editPluginID="edu.uoc.som.dsl4ai.edit" editorPluginID="edu.uoc.som.dsl4ai.editor"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>dsl4ai.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Dsl4ai" basePackage="edu.uoc.som" disposableProviderFactory="true"
+      ecorePackage="dsl4ai.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4ai.ecore#//ParticipationKind">
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//ParticipationKind/responsible"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//ParticipationKind/accountable"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//ParticipationKind/consulted"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//ParticipationKind/informed"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4ai.ecore#//AIEthicsKind">
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//AIEthicsKind/privacy"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//AIEthicsKind/accountability"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//AIEthicsKind/safetySecurity"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//AIEthicsKind/transparencyExplainability"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//AIEthicsKind/fairness"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//AIEthicsKind/humanControl"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//AIEthicsKind/professionalResponsibility"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//AIEthicsKind/humanValues"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4ai.ecore#//DeploymentStrategyKind">
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DeploymentStrategyKind/singleDeployment"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DeploymentStrategyKind/silentDeployment"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DeploymentStrategyKind/canaryDeployment"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DeploymentStrategyKind/multiArmedBandit"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4ai.ecore#//DeploymentPatternKind">
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DeploymentPatternKind/statically"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DeploymentPatternKind/dynamicallyOnUserDevice"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DeploymentPatternKind/dynamicallyOnServer"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DeploymentPatternKind/streaming"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4ai.ecore#//InferenceModeKind">
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//InferenceModeKind/batch"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//InferenceModeKind/realTime"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4ai.ecore#//DataCleaningTechniqueKind">
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DataCleaningTechniqueKind/deletion"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DataCleaningTechniqueKind/dummySubstitution"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DataCleaningTechniqueKind/meanSubstitution"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DataCleaningTechniqueKind/frequentSubstitution"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DataCleaningTechniqueKind/regressionSubstitution"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4ai.ecore#//DataTransformationTechniqueKind">
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DataTransformationTechniqueKind/minMaxNormalization"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DataTransformationTechniqueKind/zScoreNormalization"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DataTransformationTechniqueKind/decimalScaling"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4ai.ecore#//DataDiscretizationTechniqueKind">
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DataDiscretizationTechniqueKind/equalWidthBinning"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DataDiscretizationTechniqueKind/equalHeightBinning"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4ai.ecore#//DataReductionTechniqueKind">
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DataReductionTechniqueKind/recordSampling"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DataReductionTechniqueKind/attributeSampling"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//DataReductionTechniqueKind/aggregation"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4ai.ecore#//FeatureExtractionTechniqueKind">
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//FeatureExtractionTechniqueKind/clusterAnalysis"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//FeatureExtractionTechniqueKind/textAnalytics"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//FeatureExtractionTechniqueKind/edgeDetection"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//FeatureExtractionTechniqueKind/principalComponentsAnalysis"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4ai.ecore#//FeatureSelectionTechniqueKind">
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//FeatureSelectionTechniqueKind/regularization"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//FeatureSelectionTechniqueKind/wrapper"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4ai.ecore#//FeatureSelectionTechniqueKind/greedyAlgorithm"/>
+    </genEnums>
+    <genClasses ecoreClass="dsl4ai.ecore#//Activity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Activity/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Activity/isOptional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Activity/requiresAllSubactivities"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Activity/inputs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Activity/outputs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Activity/resources"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Activity/techniques"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Activity/participants"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Activity/next"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Activity/rationale"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Activity/subactivities"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//LocatedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//LocatedElement/path"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//Resource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Resource/description"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//Artifact">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Artifact/isDeliverable"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//Document">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Document/template"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//Template"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//Executable"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//Platform"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//Script">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Script/code"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//Guideline"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//Role">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Role/name"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//Technique">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Technique/script"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//Participant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Participant/participation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Participant/role"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//BusinessUnderstandingActivity"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//RequirementsEngineeringActivity">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//RequirementsEngineeringActivity/goals"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//RequirementsEngineeringActivity/requirements"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataIdentificationActivity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//DataIdentificationActivity/identifies"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//Requirement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Requirement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Requirement/rationale"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelRequirement"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//BusinessGoal">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//BusinessGoal/criteria"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelGoal">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelGoal/alignedTo"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelGoal/criteria"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//BusinessSuccessCriterion"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelSuccessCriterion">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelSuccessCriterion/alignedTo"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelSuccessCriterion/criterionValue"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//Goal">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Goal/description"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//SuccessCriterion">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//SuccessCriterion/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//SuccessCriterion/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//SuccessCriterion/baseline"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//SuccessCriterion/target"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataSource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//DataSource/isExternal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//DataSource/isSelected"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//DataSource/compliesWith"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataSourceRequirement"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataRequirement"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIEthicalRequirement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//AIEthicalRequirement/ethic"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelDegradation"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//Method">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Method/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Method/activities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Method/artifacts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Method/resources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Method/roles"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataPreparationActivity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//DataPreparationActivity/trainingDataset"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//DataPreparationActivity/validationDataset"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//DataPreparationActivity/testDataset"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataCollectionActivity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//DataCollectionActivity/collects"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//DataCollectionActivity/sources"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataProcessingActivity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//DataProcessingActivity/labels"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//DataProcessingActivity/processes"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataEngineeringTechnique"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataAnnotationGuideline"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//Label">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Label/name"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//Data">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Data/labels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Data/attributes"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//FeatureEngineeringTechnique"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//FeatureEngineeringActivity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//FeatureEngineeringActivity/extractsFrom"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//FeatureEngineeringActivity/creates"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//Feature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Feature/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//Feature/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Feature/from"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//Feature/correlatedTo"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//DataAttribute/name"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelingActivity"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelTrainingActivity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelTrainingActivity/trainsWith"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelTrainingActivity/validatesWith"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelTrainingActivity/trains"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelTrainingActivity/optimalValues"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelingTechnique">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelingTechnique/hyperparameters"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelEvaluationActivity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelEvaluationActivity/evaluatesWith"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelEvaluationActivity/evaluates"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelEvaluationActivity/criteriaValues"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//TrainingDataset">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//TrainingDataset/data"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//ValidationDataset">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//ValidationDataset/data"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//TestDataset">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//TestDataset/data"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//AIModel/rank"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModel/criteriaValues"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModel/goal"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModel/satisfiedRequirements"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModel/optimalValues"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModel/basedOn"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//CriterionValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//CriterionValue/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//CriterionValue/aimodelsuccesscriterion"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//CriterionValue/aiModelEvaluationActivity"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//HyperParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//HyperParameter/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//HyperParameter/optimalValues"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//OptimalValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//OptimalValue/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//OptimalValue/hyperparameter"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//OptimalValue/aiModelTrainingActivity"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelDataset"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//OperationsActivity"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelDeploymentActivity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelDeploymentActivity/deploys"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelMonitoringActivity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelMonitoringActivity/monitors"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DeployedAIModel">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//DeployedAIModel/platform"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//DeployedAIModel/pattern"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//DeployedAIModel/strategy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//DeployedAIModel/inference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//DeployedAIModel/api"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//DeployedAIModel/observations"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelObservation"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//Issue"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelFlaw">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//AIModelFlaw/degrades"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//PerformanceMetric">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//PerformanceMetric/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//PerformanceMetric/minThreshold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//PerformanceMetric/maxThreshold"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dsl4ai.ecore#//PerformanceMetric/ensures"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataCleaningTechnique">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//DataCleaningTechnique/techniqueKind"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataTransformationTechnique">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//DataTransformationTechnique/techniqueKind"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataDiscretizationTechnique">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//DataDiscretizationTechnique/techniqueKind"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataReductionTechnique">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//DataReductionTechnique/techniqueKind"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataIntegrationTechnique"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataAugmentationTechnique"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//FeatureExtractionTechnique">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//FeatureExtractionTechnique/techniqueKind"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//FeatureSelectionTechnique">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//FeatureSelectionTechnique/techniqueKind"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//ManagementRole"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//DomainRole"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataRole"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//AIModelServingRole"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//GroupManager"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//TeamLead"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//ProjectLead"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataConsumer"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//BusinessUser"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//BusinessAnalyst"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//DomainExpert"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataScientist"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataEngineer"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataSteward"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataProvider"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//DataAnnotator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4ai.ecore#//DataAnnotator/isExternal"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4ai.ecore#//Architect"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//SoftwareEngineer"/>
+    <genClasses ecoreClass="dsl4ai.ecore#//ModelOperator"/>
+  </genPackages>
+</genmodel:GenModel>

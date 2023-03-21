@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: edu.uoc.som.dsl4ai.edit;singleton:=true
+Automatic-Module-Name: edu.uoc.som.dsl4ai.edit
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Activator: edu.uoc.som.dsl4ai.provider.Dsl4aiEditPlugin$Implementation
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: edu.uoc.som.dsl4ai.provider
+Require-Bundle: org.eclipse.core.runtime,
+ edu.uoc.som.dsl4ai;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport
+Bundle-ActivationPolicy: lazy
