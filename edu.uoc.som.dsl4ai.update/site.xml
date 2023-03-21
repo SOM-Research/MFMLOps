@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/edu.uoc.som.dsl4ai.feature_1.0.0.202303211210.jar" id="edu.uoc.som.dsl4ai.feature" version="1.0.0.202303211210">
+      <category name="Method"/>
+   </feature>
+   <category-def name="Method" label="Method"/>
+</site>

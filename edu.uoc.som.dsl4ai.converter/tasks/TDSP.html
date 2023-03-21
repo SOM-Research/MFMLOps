@@ -1,0 +1,2395 @@
+<html id="processTDSP">
+<head>
+<style>
+body {
+	font-family: calibri, verdana;
+	font-size: 12pt;
+	background-color: #eee;
+}
+
+h1 {
+	font-size: 24pt;
+	margin: 8px 8px 16px 16px;
+}
+
+h2 {
+	background: #dde;
+	font-size: 16pt;
+	padding: 4px 8px 4px 8px;
+	margin: 8px 8px 16px 0px;
+}
+
+h3 {
+	font-size: 16pt;
+	margin: 16px 8px 16px 0px;
+}
+
+h4 {
+	background: antiquewhite; /*#edd;*/
+	font-size: 14pt;
+	padding: 4px 8px 4px 8px;
+	margin: 24px 8px 16px 0px;
+}
+
+.process, .activity {
+	margin: 40px 8px 40px 8px;
+	width: 60%;
+}
+
+.process .elementsContainer,
+.activity .elementsContainer {
+	border: solid 1px #aaa;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 4px 4px 2px #bbb;
+}
+
+.section {
+	padding: 16px;
+}
+
+.role, .namedElement, .participant {
+	margin-bottom: 8px;
+}
+
+.namedElement_nameContainer .namedElement_name {
+	font-weight: bold;
+}
+
+.namedElement_nameContainer .namedElement_path {
+	}
+
+.documentation {
+	margin: 16px 16px 24px 16px;
+}
+
+a {
+	text-decoration: none;
+	color: mediumblue;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+a:hover{
+	/*background: powderblue;*/
+	text-decoration: underline;
+	outline: 1px solid midnightblue;
+	color: midnightblue;
+}
+</style>
+</head>
+
+<body>
+
+	<div id="TDSP" class="process">
+		<div><h1>Process: TDSP</h1></div>
+		<div class="elementsContainer">
+				<div class="section"><div><h2>Roles</h2></div><div>
+						<div id="role_DataScientist" name="Data Scientist" class="role">Data Scientist</div>
+						<div id="role_GroupManager" name="Group Manager" class="role">Group Manager</div>
+						<div id="role_ProjectLead" name="Project Lead" class="role">Project Lead</div>
+						<div id="role_TeamLead" name="Team Lead" class="role">Team Lead</div>
+				</div></div>
+				<div class="section"><div><h2>Resources</h2></div><div>
+					<div class="resourcesType">
+						<div class="resourceType"><h4>Data Cleaning Techniques</h4></div>
+						<div>
+									<div id="namedElement_Deletion" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Deletion</span>
+										</div>
+											<div class="namedElement_description">Remove records with missing values.</div>
+									</div>
+								
+									<div id="namedElement_DummySubstitution" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Dummy substitution</span>
+										</div>
+											<div class="namedElement_description">Replace missing values with a dummy value: e.g, unknown for categorical or 0 for numerical values.</div>
+									</div>
+								
+									<div id="namedElement_FrequentSubstitution" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Frequent substitution</span>
+										</div>
+											<div class="namedElement_description">If the missing data is categorical, replace the missing values with the most frequent item</div>
+									</div>
+								
+									<div id="namedElement_MeanSubstitution" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Mean substitution</span>
+										</div>
+											<div class="namedElement_description">If the missing data is numerical, replace the missing values with the mean.</div>
+									</div>
+								
+									<div id="namedElement_RegressionSubstitution" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Regression substitution</span>
+										</div>
+											<div class="namedElement_description">Use a regression method to replace missing values with regressed values.</div>
+									</div>
+								
+						</div>
+					</div>
+					<div class="resourcesType">
+						<div class="resourceType"><h4>Data Discretization Techniques</h4></div>
+						<div>
+									<div id="namedElement_EqualHeightBinning" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Equal height binning</span>
+										</div>
+											<div class="namedElement_description">Divide the range of all possible values of an attribute into N groups, each containing the same number of instances, then assign the values that fall in a bin with the bin number.</div>
+									</div>
+								
+									<div id="namedElement_EqualWidthBinning" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Equal width binning</span>
+										</div>
+											<div class="namedElement_description">Divide the range of all possible values of an attribute into N groups of the same size, and assign the values that fall in a bin with the bin number.</div>
+									</div>
+								
+						</div>
+					</div>
+					<div class="resourcesType">
+						<div class="resourceType"><h4>Data Reduction Techniques</h4></div>
+						<div>
+									<div id="namedElement_Aggregation" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Aggregation</span>
+										</div>
+											<div class="namedElement_description">Divide the data into groups and store the numbers for each group. For example, the daily revenue numbers of a restaurant chain over the past 20 years can be aggregated to monthly revenue to reduce the size of the data.</div>
+									</div>
+								
+									<div id="namedElement_AttributeSampling" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Attribute sampling</span>
+										</div>
+											<div class="namedElement_description">Select only a subset of the most important attributes from the data.</div>
+									</div>
+								
+									<div id="namedElement_RecordSampling" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Record sampling</span>
+										</div>
+											<div class="namedElement_description">Sample the data records and only choose the representative subset from the data.</div>
+									</div>
+								
+						</div>
+					</div>
+					<div class="resourcesType">
+						<div class="resourceType"><h4>Data Transformation Techniques</h4></div>
+						<div>
+									<div id="namedElement_DecimalScaling" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Decimal scaling</span>
+										</div>
+											<div class="namedElement_description">Scale the data by moving the decimal point of the attribute value.</div>
+									</div>
+								
+									<div id="namedElement_Min-maxNormalization" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Min-max normalization</span>
+										</div>
+											<div class="namedElement_description">Linearly transform the data to a range, say between 0 and 1, where the min value is scaled to 0 and max value to 1.</div>
+									</div>
+								
+									<div id="namedElement_Z-scoreNormalization" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Z-score normalization</span>
+										</div>
+											<div class="namedElement_description">Scale data based on mean and standard deviation: divide the difference between the data and the mean by the standard deviation.</div>
+									</div>
+								
+						</div>
+					</div>
+					<div class="resourcesType">
+						<div class="resourceType"><h4>Guidelines</h4></div>
+						<div>
+									<div id="namedElement_CreateFeaturesForDataInSQLServerUsingSQLAndPython" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Create features for data in SQL Server using SQL and Python</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/create-features-sql-server" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">This document shows how to generate features for data stored in a SQL Server VM on Azure that help algorithms learn more efficiently from the data. You can use SQL or a programming language like Python to accomplish this task. Both approaches are demonstrated here.</div>
+									</div>
+								
+									<div id="namedElement_CreateFeaturesForDataInAHadoopClusterUsingHiveQueries" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Create features for data in a Hadoop cluster using Hive queries</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/create-features-hive" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">This document shows how to create features for data stored in an Azure HDInsight Hadoop cluster using Hive queries. These Hive queries use embedded Hive User-Defined Functions (UDFs), the scripts for which are provided.</div>
+									</div>
+								
+									<div id="namedElement_DeployMLModelsToProductionToPlayAnActiveRoleInMakingBusinessDecisions" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Deploy ML models to production to play an active role in making business decisions</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/deploy-models-in-production" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">Production deployment enables a model to play an active role in a business. Predictions from a deployed model can be used for business decisions.</div>
+									</div>
+								
+									<div id="namedElement_DeployAndScoreAMachineLearningModelByUsingAnOnlineEndpoint" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Deploy and score a machine learning model by using an online endpoint</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-online-endpoints?tabs=azure-cli" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">Learn how to use an online endpoint to deploy your model, so you don't have to create and manage the underlying infrastructure. You'll begin by deploying a model on your local machine to debug any errors, and then you'll deploy and test it in Azure.</div>
+									</div>
+								
+									<div id="namedElement_ExploreDataInAzureBlobStorageWithThePandasPythonPackage" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Explore data in Azure Blob storage with the pandas Python package</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/explore-data-blob" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">This article covers how to explore data that is stored in Azure blob container using the pandas Python package.</div>
+									</div>
+								
+									<div id="namedElement_ExploreDataInHiveTablesWithHiveQueries" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Explore data in Hive tables with Hive queries</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/explore-data-hive-tables" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">This article provides sample Hive scripts that are used to explore data in Hive tables in an HDInsight Hadoop cluster.</div>
+									</div>
+								
+									<div id="namedElement_ExploreDataInASQLServerVirtualMachineOnAzure" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Explore data in a SQL Server virtual machine on Azure</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/explore-data-sql-server" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">This article covers how to explore data that is stored in a SQL Server VM on Azure. Use SQL or Python to examine the data.</div>
+									</div>
+								
+									<div id="namedElement_FeatureEngineeringInMachineLearning" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Feature engineering in machine learning</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/create-features" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">In this article, you learn about feature engineering and its role in enhancing data in machine learning. Learn from illustrative examples drawn from Azure Machine Learning Studio (classic) experiments.</div>
+									</div>
+								
+									<div id="namedElement_FeatureSelectionInTheTeamDataScienceProcess" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Feature selection in the Team Data Science Process</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/select-features" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">This article explains the purposes of feature selection and provides examples of its role in the data enhancement process of machine learning. These examples are drawn from Azure Machine Learning Studio.</div>
+									</div>
+								
+									<div id="namedElement_HowToCleanTextData" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">How to clean text data</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/prepare-data#how-to-clean-text-data" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description"></div>
+									</div>
+								
+									<div id="namedElement_LoadDataIntoStorageEnvironmentsForAnalytics" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Load data into storage environments for analytics</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/ingest-data" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">The Team Data Science Process requires that data be ingested or loaded into the most appropriate way in each stage. Data destinations can include Azure Blob Storage, SQL Azure databases, SQL Server on Azure VM, HDInsight (Hadoop), Azure Synapse Analytics, and Azure Machine Learning.</div>
+									</div>
+								
+									<div id="namedElement_ModelPerformanceAndFairness" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Model performance and fairness</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/machine-learning/concept-fairness-ml" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">This article describes methods that you can use to understand your model performance and fairness in Azure Machine Learning.</div>
+									</div>
+								
+									<div id="namedElement_RunPredictionsUsingPythonEmbeddedInAStoredProcedure" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Run predictions using Python embedded in a stored procedure</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/sql/machine-learning/tutorials/python-taxi-classification-deploy-model?view=sql-server-ver16" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description"></div>
+									</div>
+								
+									<div id="namedElement_SampleDataInAzureBlobStorage" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Sample data in Azure Blob storage</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/sample-data-blob" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">This article covers sampling data stored in Azure Blob storage by downloading it programmatically and then sampling it using procedures written in Python.</div>
+									</div>
+								
+									<div id="namedElement_SampleDataInAzureHDInsightHiveTables" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Sample data in Azure HDInsight Hive tables</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/sample-data-hive" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">This article describes how to down-sample data stored in Azure HDInsight Hive tables using Hive queries to reduce it to a size more manageable for analysis.</div>
+									</div>
+								
+									<div id="namedElement_SampleDataInSQLServerOnAzure" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Sample data in SQL Server on Azure</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/sample-data-sql-server" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">This article shows how to sample data stored in SQL Server on Azure using either SQL or the Python programming language. It also shows how to move sampled data into Azure Machine Learning by saving it to a file, uploading it to an Azure blob, and then reading it into Azure Machine Learning Studio.</div>
+									</div>
+								
+									<div id="namedElement_TrainModelsWithAzureMachineLearning" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Train models with Azure Machine Learning</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/machine-learning/concept-train-machine-learning-model" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">Azure Machine Learning provides several ways to train your models, from code-first solutions using the SDK to low-code solutions such as automated machine learning and the visual designer.</div>
+									</div>
+								
+									<div id="namedElement_UseAzureMachineLearningWithTheFairlearnOpen-sourcePackageToAssessTheFairnessOfMLModels" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Use Azure Machine Learning with the Fairlearn open-source package to assess the fairness of ML models</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-machine-learning-fairness-aml" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">In this how-to guide, you will learn to use the Fairlearn open-source Python package with Azure Machine Learning</div>
+									</div>
+								
+									<div id="namedElement_UseThePythonInterpretabilityPackageToExplainMLModelsPredictions" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Use the Python interpretability package to explain ML models & predictions</span>
+												<span class="namedElement_path"><a href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-machine-learning-interpretability-aml" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">In this how-to guide, you learn to use the interpretability package of the Azure Machine Learning Python SDK.</div>
+									</div>
+								
+						</div>
+					</div>
+					<div class="resourcesType">
+						<div class="resourceType"><h4>Platforms</h4></div>
+						<div>
+									<div id="namedElement_AzureBlobStorage" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Azure Blob Storage</span>
+										</div>
+											<div class="namedElement_description"></div>
+									</div>
+								
+									<div id="namedElement_AzureMachineLearningDesigner" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Azure Machine Learning Designer</span>
+										</div>
+											<div class="namedElement_description">Azure Machine Learning designer is a drag-and-drop interface used to train and deploy models in Azure Machine Learning.</div>
+									</div>
+								
+									<div id="namedElement_AzureMachineLearningStudio" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Azure Machine Learning Studio</span>
+										</div>
+											<div class="namedElement_description"></div>
+									</div>
+								
+									<div id="namedElement_AzureOnlineEndpoint" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Azure Online Endpoint</span>
+										</div>
+											<div class="namedElement_description"></div>
+									</div>
+								
+									<div id="namedElement_HDInsightHadoopCluster" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">HDInsight Hadoop Cluster</span>
+										</div>
+											<div class="namedElement_description"></div>
+									</div>
+								
+									<div id="namedElement_SQLServer" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">SQL Server</span>
+										</div>
+											<div class="namedElement_description"></div>
+									</div>
+								
+									<div id="namedElement_StatusDashboard" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Status dashboard</span>
+										</div>
+											<div class="namedElement_description"></div>
+									</div>
+								
+						</div>
+					</div>
+					<div class="resourcesType">
+						<div class="resourceType"><h4>Scripts</h4></div>
+						<div>
+									<div id="namedElement_AzureMachineLearningPythonSDK" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Azure Machine Learning Python SDK</span>
+										</div>
+											<div class="namedElement_description"></div>
+									</div>
+								
+									<div id="namedElement_Fairlearn" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Fairlearn</span>
+												<span class="namedElement_path"><a href="https://fairlearn.github.io/" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">Fairlearn is an open-source, community-driven project to help data scientists improve fairness of AI systems.</div>
+									</div>
+								
+						</div>
+					</div>
+					<div class="resourcesType">
+						<div class="resourceType"><h4>Templates</h4></div>
+						<div>
+									<div id="namedElement_CharterDocumentTemplate" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Charter document template</span>
+												<span class="namedElement_path"><a href="https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Charter.md" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">A standard template is provided in the TDSP project structure definition. The charter document is a living document. You update the template throughout the project as you make new discoveries and as business requirements change. The key is to iterate upon this document, adding more detail, as you progress through the discovery process. Keep the customer and other stakeholders involved in making the changes and clearly communicate the reasons for the changes to them.</div>
+									</div>
+								
+									<div id="namedElement_DataDictionaryTemplate" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Data dictionary template</span>
+												<span class="namedElement_path"><a href="https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">This document provides descriptions of the data that's provided by the client. These descriptions include information about the schema (the data types and information on the validation rules, if any) and the entity-relation diagrams, if available.</div>
+									</div>
+								
+									<div id="namedElement_DataQualityReportTemplate" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Data quality report template</span>
+												<span class="namedElement_path"><a href="https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description"></div>
+									</div>
+								
+									<div id="namedElement_DataSourcesTemplate" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Data sources template</span>
+												<span class="namedElement_path"><a href="https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md#raw-data-sources" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description">The Raw data sources section of the Data definitions report that's found in the TDSP project Data report folder contains the data sources. This section specifies the original and destination locations for the raw data. In later stages, you fill in additional details like the scripts to move the data to your analytic environment.</div>
+									</div>
+								
+									<div id="namedElement_ExitReportTemplate" class="namedElement">
+										<div class="namedElement_nameContainer">
+											<span class="namedElement_name">Exit report template</span>
+												<span class="namedElement_path"><a href="https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md" target="_blank">online location</a></span>
+										</div>
+											<div class="namedElement_description"></div>
+									</div>
+								
+						</div>
+					</div>
+				</div></div>
+				<div class="section"><div><h2>Artifacts</h2></div><div>
+						<div id="namedElement_CharterDocument" class="namedElement">
+							<div class="namedElement_nameContainer">
+								<span class="namedElement_name">Charter document</span>
+							</div>
+									<div class="namedElement_template">template: <a href="#namedElement_CharterDocumentTemplate">Charter document template</a></div>
+						</div>
+					
+					
+						<div id="namedElement_CheckpointDecision" class="namedElement">
+							<div class="namedElement_nameContainer">
+								<span class="namedElement_name">Checkpoint decision</span>
+							</div>
+						</div>
+					
+					
+						<div id="namedElement_DataDictionary" class="namedElement">
+							<div class="namedElement_nameContainer">
+								<span class="namedElement_name">Data dictionary</span>
+							</div>
+									<div class="namedElement_template">template: <a href="#namedElement_DataDictionaryTemplate">Data dictionary template</a></div>
+						</div>
+					
+					
+						<div id="namedElement_DataSources" class="namedElement">
+							<div class="namedElement_nameContainer">
+								<span class="namedElement_name">Data sources</span>
+							</div>
+									<div class="namedElement_template">template: <a href="#namedElement_DataSourcesTemplate">Data sources template</a></div>
+						</div>
+					
+					
+						<div id="namedElement_DataQualityReport" class="namedElement">
+							<div class="namedElement_nameContainer">
+								<span class="namedElement_name">Data quality report</span>
+							</div>
+									<div class="namedElement_template">template: <a href="#namedElement_DataQualityReportTemplate">Data quality report template</a></div>
+						</div>
+					
+					
+						<div id="namedElement_ExitReport" class="namedElement">
+							<div class="namedElement_nameContainer">
+								<span class="namedElement_name">Exit report</span>
+							</div>
+									<div class="namedElement_template">template: <a href="#namedElement_ExitReportTemplate">Exit report template</a></div>
+						</div>
+					
+					
+						<div id="namedElement_ModelingReport" class="namedElement">
+							<div class="namedElement_nameContainer">
+								<span class="namedElement_name">Modeling report</span>
+							</div>
+						</div>
+					
+					
+						<div id="namedElement_SolutionArchitecture" class="namedElement">
+							<div class="namedElement_nameContainer">
+								<span class="namedElement_name">Solution architecture</span>
+									<span class="namedElement_path"><a href="https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project" target="_blank">online location</a></span>
+							</div>
+						</div>
+					
+					
+				</div></div>
+				<div class="section"><div><h2>Subactivities</h2></div><div>
+						<div class="subactivity_reference">
+							<a href="#BusinessUnderstanding">Business understanding</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#DataAcquisitionAndUnderstanding">Data acquisition and understanding</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#Modeling">Modeling</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#Operations">Operations</a>
+						</div>
+					
+				</div></div>
+				<div class="section"><div><h2>All Subactivities</h2></div><div>
+						<div class="subactivity_reference">
+							<a href="#AssessFairness">Assess fairness</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#BuildTheModels">Build the models</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#BusinessUnderstanding">Business understanding</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#CheckpointDecision">Checkpoint decision</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#CustomerAcceptance">Customer acceptance</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#DataAcquisitionAndUnderstanding">Data acquisition and understanding</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#DataCleaning">Data cleaning</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#DataDiscretization">Data discretization</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#DataReduction">Data reduction</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#DataTransformation">Data transformation</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#DefineObjectives">Define objectives</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#Deployment">Deployment</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#DetermineTheBestSolution">Determine the best solution</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#EngineerFeatures">Engineer features</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#EvaluateTheTrainingAndTestDatasets">Evaluate the training and test datasets</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#ExploreAndVisualizeData">Explore and visualize data</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#ExploreData">Explore data</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#FeatureEngineering">Feature engineering</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#IdentifyDataSources">Identify data sources</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#IngestData">Ingest data</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#InterpretTheModel">Interpret the model</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#ModelEvaluation">Model evaluation</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#ModelTraining">Model training</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#Modeling">Modeling</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#Operations">Operations</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#PrepareData">Prepare data</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#ProcessData">Process data</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#SampleData">Sample data</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#SelectFeatures">Select features</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#SetUpTheDataPipeline">Set up the data pipeline</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#SplitTheInputData">Split the input data</a>
+						</div>
+					
+						<div class="subactivity_reference">
+							<a href="#TextCleaning">Text cleaning</a>
+						</div>
+					
+				</div></div>
+		</div>
+	</div>
+	
+				<div id="BusinessUnderstanding" class="activity">
+					<div><h1>Activity: Business understanding</h1></div>
+					<div class="elementsContainer">
+						
+								<div class="documentation">
+										<a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/lifecycle-business-understanding" target="_blank">online documentation</a>
+								</div>
+							
+						
+							
+						
+								<div class="section"><div><h2>Inputs</h2></div><div>
+								</div></div>
+								<div class="section"><div><h2>Outputs</h2></div><div>
+										<div class="dataObjectReference">
+											<a href="#namedElement_CharterDocument">Charter document</a>
+										</div>
+									
+										<div class="dataObjectReference">
+											<a href="#namedElement_DataDictionary">Data dictionary</a>
+										</div>
+									
+										<div class="dataObjectReference">
+											<a href="#namedElement_DataSources">Data sources</a>
+										</div>
+									
+								</div></div>
+						
+								<!-- BusinessUnderstandingActivity -->
+						
+								<div class="section">
+									<div><h2>Related activities</h2></div>
+									<div><h4>Parent activity</h4></div>
+									<div class="activity_reference">
+											None
+									</div>
+									<div><h4>Previous activity</h4></div>
+									<div class="activity_reference">
+											None
+									</div>
+									<div><h4>Next activity</h4></div>
+									<div class="activity_reference">
+											<a href="#DataAcquisitionAndUnderstanding">Data acquisition and understanding</a>
+									</div>
+								</div>
+						
+								<div class="section"><div><h2>Subactivities</h2></div><div>
+										<div class="subactivity_reference">
+											<a href="#DefineObjectives">Define objectives</a>
+										</div>
+									
+										<div class="subactivity_reference">
+											<a href="#IdentifyDataSources">Identify data sources</a>
+										</div>
+									
+								</div></div>
+					</div>
+				</div>
+								<div id="DefineObjectives" class="activity">
+									<div><h1>Activity: Define objectives</h1></div>
+									<div class="elementsContainer">
+										
+												<div class="documentation">
+														<a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/lifecycle-business-understanding" target="_blank">online documentation</a>
+												</div>
+											
+										
+											
+										
+												<div class="section"><div><h2>Inputs</h2></div><div>
+												</div></div>
+												<div class="section"><div><h2>Outputs</h2></div><div>
+												</div></div>
+										
+													<div class="section"><div><h2>Managed entities</h2></div><div>
+															<div class="dataObjectReference">
+																Goals
+															</div>
+														
+															<div class="dataObjectReference">
+																Requirements
+															</div>
+														
+													</div></div>
+										
+												<div class="section">
+													<div><h2>Related activities</h2></div>
+													<div><h4>Parent activity</h4></div>
+													<div class="activity_reference">
+															<a href="#BusinessUnderstanding">Business understanding</a>
+													</div>
+													<div><h4>Previous activity</h4></div>
+													<div class="activity_reference">
+															None
+													</div>
+													<div><h4>Next activity</h4></div>
+													<div class="activity_reference">
+															<a href="#IdentifyDataSources">Identify data sources</a>
+													</div>
+												</div>
+										
+									</div>
+								</div>
+							
+								<div id="IdentifyDataSources" class="activity">
+									<div><h1>Activity: Identify data sources</h1></div>
+									<div class="elementsContainer">
+										
+											
+										
+											
+										
+												<div class="section"><div><h2>Inputs</h2></div><div>
+												</div></div>
+												<div class="section"><div><h2>Outputs</h2></div><div>
+												</div></div>
+										
+													<div class="section"><div><h2>Managed entities</h2></div><div>
+															<div class="dataObjectReference">
+																Data Sources
+															</div>
+														
+													</div></div>
+										
+												<div class="section">
+													<div><h2>Related activities</h2></div>
+													<div><h4>Parent activity</h4></div>
+													<div class="activity_reference">
+															<a href="#BusinessUnderstanding">Business understanding</a>
+													</div>
+													<div><h4>Previous activity</h4></div>
+													<div class="activity_reference">
+															<a href="#DefineObjectives">Define objectives</a>
+													</div>
+													<div><h4>Next activity</h4></div>
+													<div class="activity_reference">
+															None
+													</div>
+												</div>
+										
+									</div>
+								</div>
+							
+					
+			
+				<div id="DataAcquisitionAndUnderstanding" class="activity">
+					<div><h1>Activity: Data acquisition and understanding</h1></div>
+					<div class="elementsContainer">
+						
+								<div class="documentation">
+										<a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/lifecycle-data" target="_blank">online documentation</a>
+								</div>
+							
+						
+							
+						
+								<div class="section"><div><h2>Inputs</h2></div><div>
+								</div></div>
+								<div class="section"><div><h2>Outputs</h2></div><div>
+										<div class="dataObjectReference">
+											<a href="#namedElement_DataQualityReport">Data quality report</a>
+										</div>
+									
+										<div class="dataObjectReference">
+											<a href="#namedElement_SolutionArchitecture">Solution architecture</a>
+										</div>
+									
+										<div class="dataObjectReference">
+											<a href="#namedElement_CheckpointDecision">Checkpoint decision</a>
+										</div>
+									
+								</div></div>
+						
+									<div class="section"><div><h2>Managed entities</h2></div><div>
+											<div class="dataObjectReference">
+												Test Dataset
+											</div>
+										
+											<div class="dataObjectReference">
+												Training Dataset
+											</div>
+										
+											<div class="dataObjectReference">
+												Validation Dataset
+											</div>
+										
+									</div></div>
+						
+								<div class="section">
+									<div><h2>Related activities</h2></div>
+									<div><h4>Parent activity</h4></div>
+									<div class="activity_reference">
+											None
+									</div>
+									<div><h4>Previous activity</h4></div>
+									<div class="activity_reference">
+											<a href="#BusinessUnderstanding">Business understanding</a>
+									</div>
+									<div><h4>Next activity</h4></div>
+									<div class="activity_reference">
+											<a href="#Modeling">Modeling</a>
+									</div>
+								</div>
+						
+								<div class="section"><div><h2>Subactivities</h2></div><div>
+										<div class="subactivity_reference">
+											<a href="#IngestData">Ingest data</a>
+										</div>
+									
+										<div class="subactivity_reference">
+											<a href="#ExploreAndVisualizeData">Explore and visualize data</a>
+										</div>
+									
+										<div class="subactivity_reference">
+											<a href="#SetUpTheDataPipeline">Set up the data pipeline</a>
+										</div>
+									
+										<div class="subactivity_reference">
+											<a href="#FeatureEngineering">Feature engineering</a>
+										</div>
+									
+								</div></div>
+					</div>
+				</div>
+								<div id="IngestData" class="activity">
+									<div><h1>Activity: Ingest data</h1></div>
+									<div class="elementsContainer">
+										
+											
+										
+											
+										
+												<div class="section"><div><h2>Inputs</h2></div><div>
+														<div class="dataObjectReference">
+															<a href="#namedElement_LoadDataIntoStorageEnvironmentsForAnalytics">Load data into storage environments for analytics</a>
+														</div>
+													
+												</div></div>
+												<div class="section"><div><h2>Outputs</h2></div><div>
+												</div></div>
+										
+													<div class="section"><div><h2>Managed entities</h2></div><div>
+															<div class="dataObjectReference">
+																Data Sources
+															</div>
+														
+															<div class="dataObjectReference">
+																Data
+															</div>
+														
+													</div></div>
+											
+										
+												<div class="section">
+													<div><h2>Related activities</h2></div>
+													<div><h4>Parent activity</h4></div>
+													<div class="activity_reference">
+															<a href="#DataAcquisitionAndUnderstanding">Data acquisition and understanding</a>
+													</div>
+													<div><h4>Previous activity</h4></div>
+													<div class="activity_reference">
+															None
+													</div>
+													<div><h4>Next activity</h4></div>
+													<div class="activity_reference">
+															<a href="#ExploreAndVisualizeData">Explore and visualize data</a>
+													</div>
+												</div>
+										
+									</div>
+								</div>
+							
+								<div id="ExploreAndVisualizeData" class="activity">
+									<div><h1>Activity: Explore and visualize data</h1></div>
+									<div class="elementsContainer">
+										
+												<div class="documentation">
+														<a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/prepare-data" target="_blank">online documentation</a>
+												</div>
+											
+										
+											
+										
+												<div class="section"><div><h2>Inputs</h2></div><div>
+												</div></div>
+												<div class="section"><div><h2>Outputs</h2></div><div>
+												</div></div>
+										
+													<div class="section"><div><h2>Managed entities</h2></div><div>
+															<div class="dataObjectReference">
+																Data
+															</div>
+														
+															<div class="dataObjectReference">
+																Labels
+															</div>
+														
+													</div></div>
+										
+												<div class="section">
+													<div><h2>Related activities</h2></div>
+													<div><h4>Parent activity</h4></div>
+													<div class="activity_reference">
+															<a href="#DataAcquisitionAndUnderstanding">Data acquisition and understanding</a>
+													</div>
+													<div><h4>Previous activity</h4></div>
+													<div class="activity_reference">
+															<a href="#IngestData">Ingest data</a>
+													</div>
+													<div><h4>Next activity</h4></div>
+													<div class="activity_reference">
+															<a href="#SetUpTheDataPipeline">Set up the data pipeline</a>
+													</div>
+												</div>
+										
+												<div class="section"><div><h2>Subactivities</h2></div><div>
+														<div class="subactivity_reference">
+															<a href="#PrepareData">Prepare data</a>
+														</div>
+													
+														<div class="subactivity_reference">
+															<a href="#ExploreData">Explore data</a>
+														</div>
+													
+														<div class="subactivity_reference">
+															<a href="#SampleData">Sample data</a>
+														</div>
+													
+														<div class="subactivity_reference">
+															<a href="#ProcessData">Process data</a>
+														</div>
+													
+												</div></div>
+									</div>
+								</div>
+												<div id="PrepareData" class="activity">
+													<div><h1>Activity: Prepare data</h1></div>
+													<div class="elementsContainer">
+														
+															
+														
+															
+														
+																<div class="section"><div><h2>Inputs</h2></div><div>
+																</div></div>
+																<div class="section"><div><h2>Outputs</h2></div><div>
+																</div></div>
+														
+																	<div class="section"><div><h2>Managed entities</h2></div><div>
+																			<div class="dataObjectReference">
+																				Data
+																			</div>
+																		
+																			<div class="dataObjectReference">
+																				Labels
+																			</div>
+																		
+																	</div></div>
+														
+																<div class="section">
+																	<div><h2>Related activities</h2></div>
+																	<div><h4>Parent activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ExploreAndVisualizeData">Explore and visualize data</a>
+																	</div>
+																	<div><h4>Previous activity</h4></div>
+																	<div class="activity_reference">
+																			None
+																	</div>
+																	<div><h4>Next activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ExploreData">Explore data</a>
+																	</div>
+																</div>
+														
+																<div class="section"><div><h2>Subactivities</h2></div><div>
+																		<div class="subactivity_reference">
+																			<a href="#DataCleaning">Data cleaning</a>
+																		</div>
+																	
+																		<div class="subactivity_reference">
+																			<a href="#DataTransformation">Data transformation</a>
+																		</div>
+																	
+																		<div class="subactivity_reference">
+																			<a href="#DataReduction">Data reduction</a>
+																		</div>
+																	
+																		<div class="subactivity_reference">
+																			<a href="#DataDiscretization">Data discretization</a>
+																		</div>
+																	
+																		<div class="subactivity_reference">
+																			<a href="#TextCleaning">Text cleaning</a>
+																		</div>
+																	
+																</div></div>
+													</div>
+												</div>
+																<div id="DataCleaning" class="activity">
+																	<div><h1>Activity: Data cleaning</h1></div>
+																	<div class="elementsContainer">
+																		
+																				<div class="documentation">
+																						<a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/prepare-data" target="_blank">online documentation</a>
+																				</div>
+																			
+																		
+																			
+																		
+																				<div class="section"><div><h2>Inputs</h2></div><div>
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_Deletion">Deletion</a>
+																						</div>
+																					
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_DummySubstitution">Dummy substitution</a>
+																						</div>
+																					
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_FrequentSubstitution">Frequent substitution</a>
+																						</div>
+																					
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_MeanSubstitution">Mean substitution</a>
+																						</div>
+																					
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_RegressionSubstitution">Regression substitution</a>
+																						</div>
+																					
+																				</div></div>
+																				<div class="section"><div><h2>Outputs</h2></div><div>
+																				</div></div>
+																		
+																					<div class="section"><div><h2>Managed entities</h2></div><div>
+																							<div class="dataObjectReference">
+																								Data
+																							</div>
+																						
+																							<div class="dataObjectReference">
+																								Labels
+																							</div>
+																						
+																					</div></div>
+																		
+																				<div class="section">
+																					<div><h2>Related activities</h2></div>
+																					<div><h4>Parent activity</h4></div>
+																					<div class="activity_reference">
+																							<a href="#PrepareData">Prepare data</a>
+																					</div>
+																					<div><h4>Previous activity</h4></div>
+																					<div class="activity_reference">
+																							None
+																					</div>
+																					<div><h4>Next activity</h4></div>
+																					<div class="activity_reference">
+																							<a href="#DataTransformation">Data transformation</a>
+																					</div>
+																				</div>
+																		
+																	</div>
+																</div>
+															
+																<div id="DataTransformation" class="activity">
+																	<div><h1>Activity: Data transformation</h1></div>
+																	<div class="elementsContainer">
+																		
+																				<div class="documentation">
+																						<a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/prepare-data" target="_blank">online documentation</a>
+																				</div>
+																			
+																		
+																			
+																		
+																				<div class="section"><div><h2>Inputs</h2></div><div>
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_DecimalScaling">Decimal scaling</a>
+																						</div>
+																					
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_Min-maxNormalization">Min-max normalization</a>
+																						</div>
+																					
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_Z-scoreNormalization">Z-score normalization</a>
+																						</div>
+																					
+																				</div></div>
+																				<div class="section"><div><h2>Outputs</h2></div><div>
+																				</div></div>
+																		
+																					<div class="section"><div><h2>Managed entities</h2></div><div>
+																							<div class="dataObjectReference">
+																								Data
+																							</div>
+																						
+																							<div class="dataObjectReference">
+																								Labels
+																							</div>
+																						
+																					</div></div>
+																		
+																				<div class="section">
+																					<div><h2>Related activities</h2></div>
+																					<div><h4>Parent activity</h4></div>
+																					<div class="activity_reference">
+																							<a href="#PrepareData">Prepare data</a>
+																					</div>
+																					<div><h4>Previous activity</h4></div>
+																					<div class="activity_reference">
+																							<a href="#DataCleaning">Data cleaning</a>
+																					</div>
+																					<div><h4>Next activity</h4></div>
+																					<div class="activity_reference">
+																							<a href="#DataReduction">Data reduction</a>
+																					</div>
+																				</div>
+																		
+																	</div>
+																</div>
+															
+																<div id="DataReduction" class="activity">
+																	<div><h1>Activity: Data reduction</h1></div>
+																	<div class="elementsContainer">
+																		
+																				<div class="documentation">
+																						<a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/prepare-data" target="_blank">online documentation</a>
+																				</div>
+																			
+																		
+																			
+																		
+																				<div class="section"><div><h2>Inputs</h2></div><div>
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_Aggregation">Aggregation</a>
+																						</div>
+																					
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_AttributeSampling">Attribute sampling</a>
+																						</div>
+																					
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_RecordSampling">Record sampling</a>
+																						</div>
+																					
+																				</div></div>
+																				<div class="section"><div><h2>Outputs</h2></div><div>
+																				</div></div>
+																		
+																					<div class="section"><div><h2>Managed entities</h2></div><div>
+																							<div class="dataObjectReference">
+																								Data
+																							</div>
+																						
+																							<div class="dataObjectReference">
+																								Labels
+																							</div>
+																						
+																					</div></div>
+																		
+																				<div class="section">
+																					<div><h2>Related activities</h2></div>
+																					<div><h4>Parent activity</h4></div>
+																					<div class="activity_reference">
+																							<a href="#PrepareData">Prepare data</a>
+																					</div>
+																					<div><h4>Previous activity</h4></div>
+																					<div class="activity_reference">
+																							<a href="#DataTransformation">Data transformation</a>
+																					</div>
+																					<div><h4>Next activity</h4></div>
+																					<div class="activity_reference">
+																							<a href="#DataDiscretization">Data discretization</a>
+																					</div>
+																				</div>
+																		
+																	</div>
+																</div>
+															
+																<div id="DataDiscretization" class="activity">
+																	<div><h1>Activity: Data discretization</h1></div>
+																	<div class="elementsContainer">
+																		
+																				<div class="documentation">
+																						<a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/prepare-data" target="_blank">online documentation</a>
+																				</div>
+																			
+																		
+																			
+																		
+																				<div class="section"><div><h2>Inputs</h2></div><div>
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_EqualHeightBinning">Equal height binning</a>
+																						</div>
+																					
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_EqualWidthBinning">Equal width binning</a>
+																						</div>
+																					
+																				</div></div>
+																				<div class="section"><div><h2>Outputs</h2></div><div>
+																				</div></div>
+																		
+																					<div class="section"><div><h2>Managed entities</h2></div><div>
+																							<div class="dataObjectReference">
+																								Data
+																							</div>
+																						
+																							<div class="dataObjectReference">
+																								Labels
+																							</div>
+																						
+																					</div></div>
+																		
+																				<div class="section">
+																					<div><h2>Related activities</h2></div>
+																					<div><h4>Parent activity</h4></div>
+																					<div class="activity_reference">
+																							<a href="#PrepareData">Prepare data</a>
+																					</div>
+																					<div><h4>Previous activity</h4></div>
+																					<div class="activity_reference">
+																							<a href="#DataReduction">Data reduction</a>
+																					</div>
+																					<div><h4>Next activity</h4></div>
+																					<div class="activity_reference">
+																							<a href="#TextCleaning">Text cleaning</a>
+																					</div>
+																				</div>
+																		
+																	</div>
+																</div>
+															
+																<div id="TextCleaning" class="activity">
+																	<div><h1>Activity: Text cleaning</h1></div>
+																	<div class="elementsContainer">
+																		
+																				<div class="documentation">
+																						<a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/prepare-data" target="_blank">online documentation</a>
+																				</div>
+																			
+																		
+																			
+																		
+																				<div class="section"><div><h2>Inputs</h2></div><div>
+																						<div class="dataObjectReference">
+																							<a href="#namedElement_HowToCleanTextData">How to clean text data</a>
+																						</div>
+																					
+																				</div></div>
+																				<div class="section"><div><h2>Outputs</h2></div><div>
+																				</div></div>
+																		
+																					<div class="section"><div><h2>Managed entities</h2></div><div>
+																							<div class="dataObjectReference">
+																								Data
+																							</div>
+																						
+																							<div class="dataObjectReference">
+																								Labels
+																							</div>
+																						
+																					</div></div>
+																		
+																				<div class="section">
+																					<div><h2>Related activities</h2></div>
+																					<div><h4>Parent activity</h4></div>
+																					<div class="activity_reference">
+																							<a href="#PrepareData">Prepare data</a>
+																					</div>
+																					<div><h4>Previous activity</h4></div>
+																					<div class="activity_reference">
+																							<a href="#DataDiscretization">Data discretization</a>
+																					</div>
+																					<div><h4>Next activity</h4></div>
+																					<div class="activity_reference">
+																							None
+																					</div>
+																				</div>
+																		
+																	</div>
+																</div>
+															
+													
+											
+												<div id="ExploreData" class="activity">
+													<div><h1>Activity: Explore data</h1></div>
+													<div class="elementsContainer">
+														
+																<div class="documentation">
+																		<a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/explore-data" target="_blank">online documentation</a>
+																</div>
+															
+														
+															
+														
+																<div class="section"><div><h2>Inputs</h2></div><div>
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_ExploreDataInASQLServerVirtualMachineOnAzure">Explore data in a SQL Server virtual machine on Azure</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_ExploreDataInAzureBlobStorageWithThePandasPythonPackage">Explore data in Azure Blob storage with the pandas Python package</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_ExploreDataInHiveTablesWithHiveQueries">Explore data in Hive tables with Hive queries</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_AzureBlobStorage">Azure Blob Storage</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_HDInsightHadoopCluster">HDInsight Hadoop Cluster</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_SQLServer">SQL Server</a>
+																		</div>
+																	
+																</div></div>
+																<div class="section"><div><h2>Outputs</h2></div><div>
+																</div></div>
+														
+																	<div class="section"><div><h2>Managed entities</h2></div><div>
+																			<div class="dataObjectReference">
+																				Data
+																			</div>
+																		
+																			<div class="dataObjectReference">
+																				Labels
+																			</div>
+																		
+																	</div></div>
+														
+																<div class="section">
+																	<div><h2>Related activities</h2></div>
+																	<div><h4>Parent activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ExploreAndVisualizeData">Explore and visualize data</a>
+																	</div>
+																	<div><h4>Previous activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#PrepareData">Prepare data</a>
+																	</div>
+																	<div><h4>Next activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#SampleData">Sample data</a>
+																	</div>
+																</div>
+														
+													</div>
+												</div>
+											
+												<div id="SampleData" class="activity">
+													<div><h1>Activity: Sample data</h1></div>
+													<div class="elementsContainer">
+														
+																<div class="documentation">
+																		<a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/sample-data" target="_blank">online documentation</a>
+																</div>
+															
+														
+															
+														
+																<div class="section"><div><h2>Inputs</h2></div><div>
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_AzureBlobStorage">Azure Blob Storage</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_HDInsightHadoopCluster">HDInsight Hadoop Cluster</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_SQLServer">SQL Server</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_SampleDataInAzureBlobStorage">Sample data in Azure Blob storage</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_SampleDataInAzureHDInsightHiveTables">Sample data in Azure HDInsight Hive tables</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_SampleDataInSQLServerOnAzure">Sample data in SQL Server on Azure</a>
+																		</div>
+																	
+																</div></div>
+																<div class="section"><div><h2>Outputs</h2></div><div>
+																</div></div>
+														
+																	<div class="section"><div><h2>Managed entities</h2></div><div>
+																			<div class="dataObjectReference">
+																				Data
+																			</div>
+																		
+																			<div class="dataObjectReference">
+																				Labels
+																			</div>
+																		
+																	</div></div>
+														
+																<div class="section">
+																	<div><h2>Related activities</h2></div>
+																	<div><h4>Parent activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ExploreAndVisualizeData">Explore and visualize data</a>
+																	</div>
+																	<div><h4>Previous activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ExploreData">Explore data</a>
+																	</div>
+																	<div><h4>Next activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ProcessData">Process data</a>
+																	</div>
+																</div>
+														
+													</div>
+												</div>
+											
+												<div id="ProcessData" class="activity">
+													<div><h1>Activity: Process data</h1></div>
+													<div class="elementsContainer">
+														
+															
+														
+															
+														
+																<div class="section"><div><h2>Inputs</h2></div><div>
+																</div></div>
+																<div class="section"><div><h2>Outputs</h2></div><div>
+																</div></div>
+														
+																	<div class="section"><div><h2>Managed entities</h2></div><div>
+																			<div class="dataObjectReference">
+																				Data
+																			</div>
+																		
+																			<div class="dataObjectReference">
+																				Labels
+																			</div>
+																		
+																	</div></div>
+														
+																<div class="section">
+																	<div><h2>Related activities</h2></div>
+																	<div><h4>Parent activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ExploreAndVisualizeData">Explore and visualize data</a>
+																	</div>
+																	<div><h4>Previous activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#SampleData">Sample data</a>
+																	</div>
+																	<div><h4>Next activity</h4></div>
+																	<div class="activity_reference">
+																			None
+																	</div>
+																</div>
+														
+													</div>
+												</div>
+											
+									
+							
+								<div id="SetUpTheDataPipeline" class="activity">
+									<div><h1>Activity: Set up the data pipeline</h1></div>
+									<div class="elementsContainer">
+										
+											
+										
+											
+										
+												<div class="section"><div><h2>Inputs</h2></div><div>
+												</div></div>
+												<div class="section"><div><h2>Outputs</h2></div><div>
+												</div></div>
+										
+												<!-- GENERIC -->
+											
+										
+												<div class="section">
+													<div><h2>Related activities</h2></div>
+													<div><h4>Parent activity</h4></div>
+													<div class="activity_reference">
+															<a href="#DataAcquisitionAndUnderstanding">Data acquisition and understanding</a>
+													</div>
+													<div><h4>Previous activity</h4></div>
+													<div class="activity_reference">
+															<a href="#ExploreAndVisualizeData">Explore and visualize data</a>
+													</div>
+													<div><h4>Next activity</h4></div>
+													<div class="activity_reference">
+															<a href="#FeatureEngineering">Feature engineering</a>
+													</div>
+												</div>
+										
+									</div>
+								</div>
+							
+								<div id="FeatureEngineering" class="activity">
+									<div><h1>Activity: Feature engineering</h1></div>
+									<div class="elementsContainer">
+										
+											
+										
+											
+										
+												<div class="section"><div><h2>Inputs</h2></div><div>
+												</div></div>
+												<div class="section"><div><h2>Outputs</h2></div><div>
+												</div></div>
+										
+													<div class="section"><div><h2>Managed entities</h2></div><div>
+															<div class="dataObjectReference">
+																Data
+															</div>
+														
+															<div class="dataObjectReference">
+																Features
+															</div>
+														
+													</div></div>
+										
+												<div class="section">
+													<div><h2>Related activities</h2></div>
+													<div><h4>Parent activity</h4></div>
+													<div class="activity_reference">
+															<a href="#DataAcquisitionAndUnderstanding">Data acquisition and understanding</a>
+													</div>
+													<div><h4>Previous activity</h4></div>
+													<div class="activity_reference">
+															<a href="#SetUpTheDataPipeline">Set up the data pipeline</a>
+													</div>
+													<div><h4>Next activity</h4></div>
+													<div class="activity_reference">
+															None
+													</div>
+												</div>
+										
+												<div class="section"><div><h2>Subactivities</h2></div><div>
+														<div class="subactivity_reference">
+															<a href="#EngineerFeatures">Engineer features</a>
+														</div>
+													
+														<div class="subactivity_reference">
+															<a href="#SelectFeatures">Select features</a>
+														</div>
+													
+												</div></div>
+									</div>
+								</div>
+												<div id="EngineerFeatures" class="activity">
+													<div><h1>Activity: Engineer features</h1></div>
+													<div class="elementsContainer">
+														
+																<div class="documentation">
+																		The process of creating new features from raw data to increase the predictive power of the learning algorithm. Engineered features should capture additional information that is not easily apparent in the original feature set.
+																</div>
+															
+														
+															
+														
+																<div class="section"><div><h2>Inputs</h2></div><div>
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_FeatureEngineeringInMachineLearning">Feature engineering in machine learning</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_CreateFeaturesForDataInAHadoopClusterUsingHiveQueries">Create features for data in a Hadoop cluster using Hive queries</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_CreateFeaturesForDataInSQLServerUsingSQLAndPython">Create features for data in SQL Server using SQL and Python</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_HDInsightHadoopCluster">HDInsight Hadoop Cluster</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_SQLServer">SQL Server</a>
+																		</div>
+																	
+																</div></div>
+																<div class="section"><div><h2>Outputs</h2></div><div>
+																</div></div>
+														
+																<!-- GENERIC -->
+															
+														
+																<div class="section">
+																	<div><h2>Related activities</h2></div>
+																	<div><h4>Parent activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#FeatureEngineering">Feature engineering</a>
+																	</div>
+																	<div><h4>Previous activity</h4></div>
+																	<div class="activity_reference">
+																			None
+																	</div>
+																	<div><h4>Next activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#SelectFeatures">Select features</a>
+																	</div>
+																</div>
+														
+													</div>
+												</div>
+											
+												<div id="SelectFeatures" class="activity">
+													<div><h1>Activity: Select features</h1></div>
+													<div class="elementsContainer">
+														
+																<div class="documentation">
+																		The process of selecting the key subset of features to reduce the dimensionality of the training problem.
+																</div>
+															
+														
+															
+														
+																<div class="section"><div><h2>Inputs</h2></div><div>
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_FeatureSelectionInTheTeamDataScienceProcess">Feature selection in the Team Data Science Process</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_AzureMachineLearningDesigner">Azure Machine Learning Designer</a>
+																		</div>
+																	
+																</div></div>
+																<div class="section"><div><h2>Outputs</h2></div><div>
+																</div></div>
+														
+																<!-- GENERIC -->
+															
+														
+																<div class="section">
+																	<div><h2>Related activities</h2></div>
+																	<div><h4>Parent activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#FeatureEngineering">Feature engineering</a>
+																	</div>
+																	<div><h4>Previous activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#EngineerFeatures">Engineer features</a>
+																	</div>
+																	<div><h4>Next activity</h4></div>
+																	<div class="activity_reference">
+																			None
+																	</div>
+																</div>
+														
+													</div>
+												</div>
+											
+									
+							
+					
+			
+				<div id="Modeling" class="activity">
+					<div><h1>Activity: Modeling</h1></div>
+					<div class="elementsContainer">
+						
+								<div class="documentation">
+										<a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/lifecycle-modeling" target="_blank">online documentation</a>
+								</div>
+							
+						
+							
+						
+								<div class="section"><div><h2>Inputs</h2></div><div>
+								</div></div>
+								<div class="section"><div><h2>Outputs</h2></div><div>
+								</div></div>
+						
+							
+						
+								<div class="section">
+									<div><h2>Related activities</h2></div>
+									<div><h4>Parent activity</h4></div>
+									<div class="activity_reference">
+											None
+									</div>
+									<div><h4>Previous activity</h4></div>
+									<div class="activity_reference">
+											<a href="#DataAcquisitionAndUnderstanding">Data acquisition and understanding</a>
+									</div>
+									<div><h4>Next activity</h4></div>
+									<div class="activity_reference">
+											<a href="#Operations">Operations</a>
+									</div>
+								</div>
+						
+								<div class="section"><div><h2>Subactivities</h2></div><div>
+										<div class="subactivity_reference">
+											<a href="#ModelTraining">Model training</a>
+										</div>
+									
+										<div class="subactivity_reference">
+											<a href="#ModelEvaluation">Model evaluation</a>
+										</div>
+									
+								</div></div>
+					</div>
+				</div>
+								<div id="ModelTraining" class="activity">
+									<div><h1>Activity: Model training</h1></div>
+									<div class="elementsContainer">
+										
+												<div class="documentation">
+														Depending on the type of question that you're trying to answer, there are many modeling algorithms available. For guidance on choosing a prebuilt algorithm with designer, see Machine Learning Algorithm Cheat Sheet for Azure Machine Learning designer; other algorithms are available through open-source packages in R or Python. Although this article focuses on Azure Machine Learning, the guidance it provides is useful for any machine-learning projects.
+												</div>
+											
+										
+											
+										
+												<div class="section"><div><h2>Inputs</h2></div><div>
+														<div class="dataObjectReference">
+															<a href="#namedElement_TrainModelsWithAzureMachineLearning">Train models with Azure Machine Learning</a>
+														</div>
+													
+												</div></div>
+												<div class="section"><div><h2>Outputs</h2></div><div>
+												</div></div>
+										
+													<div class="section"><div><h2>Managed entities</h2></div><div>
+															<div class="dataObjectReference">
+																Training Dataset
+															</div>
+														
+															<div class="dataObjectReference">
+																Optimal Values
+															</div>
+														
+															<div class="dataObjectReference">
+																Validation Dataset
+															</div>
+														
+															<div class="dataObjectReference">
+																AI Model
+															</div>
+														
+													</div></div>
+										
+												<div class="section">
+													<div><h2>Related activities</h2></div>
+													<div><h4>Parent activity</h4></div>
+													<div class="activity_reference">
+															<a href="#Modeling">Modeling</a>
+													</div>
+													<div><h4>Previous activity</h4></div>
+													<div class="activity_reference">
+															None
+													</div>
+													<div><h4>Next activity</h4></div>
+													<div class="activity_reference">
+															<a href="#ModelEvaluation">Model evaluation</a>
+													</div>
+												</div>
+										
+												<div class="section"><div><h2>Subactivities</h2></div><div>
+														<div class="subactivity_reference">
+															<a href="#SplitTheInputData">Split the input data</a>
+														</div>
+													
+														<div class="subactivity_reference">
+															<a href="#BuildTheModels">Build the models</a>
+														</div>
+													
+														<div class="subactivity_reference">
+															<a href="#EvaluateTheTrainingAndTestDatasets">Evaluate the training and test datasets</a>
+														</div>
+													
+														<div class="subactivity_reference">
+															<a href="#DetermineTheBestSolution">Determine the best solution</a>
+														</div>
+													
+												</div></div>
+									</div>
+								</div>
+												<div id="SplitTheInputData" class="activity">
+													<div><h1>Activity: Split the input data</h1></div>
+													<div class="elementsContainer">
+														
+															
+														
+															
+														
+																<div class="section"><div><h2>Inputs</h2></div><div>
+																</div></div>
+																<div class="section"><div><h2>Outputs</h2></div><div>
+																</div></div>
+														
+																<!-- GENERIC -->
+															
+														
+																<div class="section">
+																	<div><h2>Related activities</h2></div>
+																	<div><h4>Parent activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ModelTraining">Model training</a>
+																	</div>
+																	<div><h4>Previous activity</h4></div>
+																	<div class="activity_reference">
+																			None
+																	</div>
+																	<div><h4>Next activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#BuildTheModels">Build the models</a>
+																	</div>
+																</div>
+														
+													</div>
+												</div>
+											
+												<div id="BuildTheModels" class="activity">
+													<div><h1>Activity: Build the models</h1></div>
+													<div class="elementsContainer">
+														
+															
+														
+															
+														
+																<div class="section"><div><h2>Inputs</h2></div><div>
+																</div></div>
+																<div class="section"><div><h2>Outputs</h2></div><div>
+																</div></div>
+														
+																<!-- GENERIC -->
+															
+														
+																<div class="section">
+																	<div><h2>Related activities</h2></div>
+																	<div><h4>Parent activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ModelTraining">Model training</a>
+																	</div>
+																	<div><h4>Previous activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#SplitTheInputData">Split the input data</a>
+																	</div>
+																	<div><h4>Next activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#EvaluateTheTrainingAndTestDatasets">Evaluate the training and test datasets</a>
+																	</div>
+																</div>
+														
+													</div>
+												</div>
+											
+												<div id="EvaluateTheTrainingAndTestDatasets" class="activity">
+													<div><h1>Activity: Evaluate the training and test datasets</h1></div>
+													<div class="elementsContainer">
+														
+															
+														
+															
+														
+																<div class="section"><div><h2>Inputs</h2></div><div>
+																</div></div>
+																<div class="section"><div><h2>Outputs</h2></div><div>
+																</div></div>
+														
+																<!-- GENERIC -->
+															
+														
+																<div class="section">
+																	<div><h2>Related activities</h2></div>
+																	<div><h4>Parent activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ModelTraining">Model training</a>
+																	</div>
+																	<div><h4>Previous activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#BuildTheModels">Build the models</a>
+																	</div>
+																	<div><h4>Next activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#DetermineTheBestSolution">Determine the best solution</a>
+																	</div>
+																</div>
+														
+													</div>
+												</div>
+											
+												<div id="DetermineTheBestSolution" class="activity">
+													<div><h1>Activity: Determine the best solution</h1></div>
+													<div class="elementsContainer">
+														
+															
+														
+															
+														
+																<div class="section"><div><h2>Inputs</h2></div><div>
+																</div></div>
+																<div class="section"><div><h2>Outputs</h2></div><div>
+																</div></div>
+														
+																<!-- GENERIC -->
+															
+														
+																<div class="section">
+																	<div><h2>Related activities</h2></div>
+																	<div><h4>Parent activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ModelTraining">Model training</a>
+																	</div>
+																	<div><h4>Previous activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#EvaluateTheTrainingAndTestDatasets">Evaluate the training and test datasets</a>
+																	</div>
+																	<div><h4>Next activity</h4></div>
+																	<div class="activity_reference">
+																			None
+																	</div>
+																</div>
+														
+													</div>
+												</div>
+											
+									
+							
+								<div id="ModelEvaluation" class="activity">
+									<div><h1>Activity: Model evaluation</h1></div>
+									<div class="elementsContainer">
+										
+											
+										
+											
+										
+												<div class="section"><div><h2>Inputs</h2></div><div>
+												</div></div>
+												<div class="section"><div><h2>Outputs</h2></div><div>
+												</div></div>
+										
+													<div class="section"><div><h2>Managed entities</h2></div><div>
+															<div class="dataObjectReference">
+																Test Dataset
+															</div>
+														
+															<div class="dataObjectReference">
+																Criteria Values
+															</div>
+														
+															<div class="dataObjectReference">
+																AI Model
+															</div>
+														
+													</div></div>
+										
+												<div class="section">
+													<div><h2>Related activities</h2></div>
+													<div><h4>Parent activity</h4></div>
+													<div class="activity_reference">
+															<a href="#Modeling">Modeling</a>
+													</div>
+													<div><h4>Previous activity</h4></div>
+													<div class="activity_reference">
+															<a href="#ModelTraining">Model training</a>
+													</div>
+													<div><h4>Next activity</h4></div>
+													<div class="activity_reference">
+															None
+													</div>
+												</div>
+										
+												<div class="section"><div><h2>Subactivities</h2></div><div>
+														<div class="subactivity_reference">
+															<a href="#CheckpointDecision">Checkpoint decision</a>
+														</div>
+													
+														<div class="subactivity_reference">
+															<a href="#InterpretTheModel">Interpret the model</a>
+														</div>
+													
+														<div class="subactivity_reference">
+															<a href="#AssessFairness">Assess fairness</a>
+														</div>
+													
+												</div></div>
+									</div>
+								</div>
+												<div id="CheckpointDecision" class="activity">
+													<div><h1>Activity: Checkpoint decision</h1></div>
+													<div class="elementsContainer">
+														
+																<div class="documentation">
+																		Evaluate whether the model performs sufficiently for production.
+																</div>
+															
+														
+															
+														
+																<div class="section"><div><h2>Inputs</h2></div><div>
+																</div></div>
+																<div class="section"><div><h2>Outputs</h2></div><div>
+																</div></div>
+														
+																<!-- GENERIC -->
+															
+														
+																<div class="section">
+																	<div><h2>Related activities</h2></div>
+																	<div><h4>Parent activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ModelEvaluation">Model evaluation</a>
+																	</div>
+																	<div><h4>Previous activity</h4></div>
+																	<div class="activity_reference">
+																			None
+																	</div>
+																	<div><h4>Next activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#InterpretTheModel">Interpret the model</a>
+																	</div>
+																</div>
+														
+													</div>
+												</div>
+											
+												<div id="InterpretTheModel" class="activity">
+													<div><h1>Activity: Interpret the model</h1></div>
+													<div class="elementsContainer">
+														
+															
+														
+															
+														
+																<div class="section"><div><h2>Inputs</h2></div><div>
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_UseThePythonInterpretabilityPackageToExplainMLModelsPredictions">Use the Python interpretability package to explain ML models & predictions</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_AzureMachineLearningStudio">Azure Machine Learning Studio</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_AzureMachineLearningPythonSDK">Azure Machine Learning Python SDK</a>
+																		</div>
+																	
+																</div></div>
+																<div class="section"><div><h2>Outputs</h2></div><div>
+																</div></div>
+														
+																<!-- GENERIC -->
+															
+														
+																<div class="section">
+																	<div><h2>Related activities</h2></div>
+																	<div><h4>Parent activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ModelEvaluation">Model evaluation</a>
+																	</div>
+																	<div><h4>Previous activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#CheckpointDecision">Checkpoint decision</a>
+																	</div>
+																	<div><h4>Next activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#AssessFairness">Assess fairness</a>
+																	</div>
+																</div>
+														
+													</div>
+												</div>
+											
+												<div id="AssessFairness" class="activity">
+													<div><h1>Activity: Assess fairness</h1></div>
+													<div class="elementsContainer">
+														
+															
+														
+															
+														
+																<div class="section"><div><h2>Inputs</h2></div><div>
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_UseAzureMachineLearningWithTheFairlearnOpen-sourcePackageToAssessTheFairnessOfMLModels">Use Azure Machine Learning with the Fairlearn open-source package to assess the fairness of ML models</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_Fairlearn">Fairlearn</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_ModelPerformanceAndFairness">Model performance and fairness</a>
+																		</div>
+																	
+																		<div class="dataObjectReference">
+																			<a href="#namedElement_AzureMachineLearningStudio">Azure Machine Learning Studio</a>
+																		</div>
+																	
+																</div></div>
+																<div class="section"><div><h2>Outputs</h2></div><div>
+																</div></div>
+														
+																<!-- GENERIC -->
+															
+														
+																<div class="section">
+																	<div><h2>Related activities</h2></div>
+																	<div><h4>Parent activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#ModelEvaluation">Model evaluation</a>
+																	</div>
+																	<div><h4>Previous activity</h4></div>
+																	<div class="activity_reference">
+																			<a href="#InterpretTheModel">Interpret the model</a>
+																	</div>
+																	<div><h4>Next activity</h4></div>
+																	<div class="activity_reference">
+																			None
+																	</div>
+																</div>
+														
+													</div>
+												</div>
+											
+									
+							
+					
+			
+				<div id="Operations" class="activity">
+					<div><h1>Activity: Operations</h1></div>
+					<div class="elementsContainer">
+						
+							
+						
+							
+						
+								<div class="section"><div><h2>Inputs</h2></div><div>
+								</div></div>
+								<div class="section"><div><h2>Outputs</h2></div><div>
+								</div></div>
+						
+							
+						
+								<div class="section">
+									<div><h2>Related activities</h2></div>
+									<div><h4>Parent activity</h4></div>
+									<div class="activity_reference">
+											None
+									</div>
+									<div><h4>Previous activity</h4></div>
+									<div class="activity_reference">
+											<a href="#Modeling">Modeling</a>
+									</div>
+									<div><h4>Next activity</h4></div>
+									<div class="activity_reference">
+											None
+									</div>
+								</div>
+						
+								<div class="section"><div><h2>Subactivities</h2></div><div>
+										<div class="subactivity_reference">
+											<a href="#Deployment">Deployment</a>
+										</div>
+									
+										<div class="subactivity_reference">
+											<a href="#CustomerAcceptance">Customer acceptance</a>
+										</div>
+									
+								</div></div>
+					</div>
+				</div>
+								<div id="Deployment" class="activity">
+									<div><h1>Activity: Deployment</h1></div>
+									<div class="elementsContainer">
+										
+												<div class="documentation">
+														Deploy the model and pipeline to a production or production-like environment for application consumption.
+												</div>
+											
+										
+											
+										
+												<div class="section"><div><h2>Inputs</h2></div><div>
+														<div class="dataObjectReference">
+															<a href="#namedElement_StatusDashboard">Status dashboard</a>
+														</div>
+													
+														<div class="dataObjectReference">
+															<a href="#namedElement_DeployAndScoreAMachineLearningModelByUsingAnOnlineEndpoint">Deploy and score a machine learning model by using an online endpoint</a>
+														</div>
+													
+														<div class="dataObjectReference">
+															<a href="#namedElement_DeployMLModelsToProductionToPlayAnActiveRoleInMakingBusinessDecisions">Deploy ML models to production to play an active role in making business decisions</a>
+														</div>
+													
+														<div class="dataObjectReference">
+															<a href="#namedElement_RunPredictionsUsingPythonEmbeddedInAStoredProcedure">Run predictions using Python embedded in a stored procedure</a>
+														</div>
+													
+														<div class="dataObjectReference">
+															<a href="#namedElement_AzureOnlineEndpoint">Azure Online Endpoint</a>
+														</div>
+													
+														<div class="dataObjectReference">
+															<a href="#namedElement_SQLServer">SQL Server</a>
+														</div>
+													
+												</div></div>
+												<div class="section"><div><h2>Outputs</h2></div><div>
+														<div class="dataObjectReference">
+															<a href="#namedElement_ModelingReport">Modeling report</a>
+														</div>
+													
+														<div class="dataObjectReference">
+															<a href="#namedElement_SolutionArchitecture">Solution architecture</a>
+														</div>
+													
+												</div></div>
+										
+													<div class="section"><div><h2>Managed entities</h2></div><div>
+															<div class="dataObjectReference">
+																AI Model
+															</div>
+														
+													</div></div>
+										
+												<div class="section">
+													<div><h2>Related activities</h2></div>
+													<div><h4>Parent activity</h4></div>
+													<div class="activity_reference">
+															<a href="#Operations">Operations</a>
+													</div>
+													<div><h4>Previous activity</h4></div>
+													<div class="activity_reference">
+															None
+													</div>
+													<div><h4>Next activity</h4></div>
+													<div class="activity_reference">
+															<a href="#CustomerAcceptance">Customer acceptance</a>
+													</div>
+												</div>
+										
+									</div>
+								</div>
+							
+								<div id="CustomerAcceptance" class="activity">
+									<div><h1>Activity: Customer acceptance</h1></div>
+									<div class="elementsContainer">
+										
+												<div class="documentation">
+														<a href="https://learn.microsoft.com/en-us/azure/architecture/data-science-process/lifecycle-acceptance" target="_blank">online documentation</a>
+												</div>
+											
+										
+											
+										
+												<div class="section"><div><h2>Inputs</h2></div><div>
+												</div></div>
+												<div class="section"><div><h2>Outputs</h2></div><div>
+														<div class="dataObjectReference">
+															<a href="#namedElement_ExitReport">Exit report</a>
+														</div>
+													
+												</div></div>
+										
+													<div class="section"><div><h2>Managed entities</h2></div><div>
+															<div class="dataObjectReference">
+																AI Model
+															</div>
+														
+													</div></div>
+										
+												<div class="section">
+													<div><h2>Related activities</h2></div>
+													<div><h4>Parent activity</h4></div>
+													<div class="activity_reference">
+															<a href="#Operations">Operations</a>
+													</div>
+													<div><h4>Previous activity</h4></div>
+													<div class="activity_reference">
+															<a href="#Deployment">Deployment</a>
+													</div>
+													<div><h4>Next activity</h4></div>
+													<div class="activity_reference">
+															None
+													</div>
+												</div>
+										
+									</div>
+								</div>
+							
+					
+			
+	
+
+</body>
+</html>

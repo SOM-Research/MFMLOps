@@ -1,0 +1,517 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generateBPMN.
+ */]
+[module generateBPMN('http://edu.uoc.som/dsl4ai/1.0')]
+
+
+[comment [import uoc::edu::som::dsl4ai::TDSP /]
+
+[**
+ * The documentation of the template generateBPMN.
+ * @param method
+ */]
+[template public generateBPMN(method : Method)]
+[comment @main/]
+[file (parseName(method.name) + '.bpmn', false, 'UTF-8')]
+[let processId : String = generateIdFromName(method.name)]
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
+	xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+	xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+	xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+	xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd"
+	typeLanguage="http://www.w3.org/2001/XMLSchema"
+	expressionLanguage="http://www.w3.org/TR/XPath"
+	targetNamespace="http://edu.uoc.som/dsl4ai/1.0"
+	id="['process' + processId/]">
+
+
+	<!-- resources are dsl4ai::Roles -->
+	[for (resource : Role | method.roles)]
+		[resource.generateRole()/]
+	[/for]
+
+	<!-- main dsl4ai::Method process -->
+	<bpmn2:process id="[processId/]" name="[processId/]" isExecutable="true">
+		<bpmn2:startEvent id="[generateStartEventId(processId)/]" />
+		<bpmn2:endEvent id="[generateEndEventId(processId)/]" />
+
+		<!-- data objects are dsl4ai::Resources -->
+		[for (resource : Resource | method.resources)]
+			[resource.generateResource()/]
+		[/for]
+
+		<!-- data objects are dsl4ai::Artifacts -->
+		[for (artifact : Artifact | method.artifacts)]
+			[artifact.generateArtifact()/]
+		[/for]
+
+		<!-- data objects are other dsl4ai entities managed by activities -->
+		[generateManagedEntities()/]
+		
+		<!-- activities are dsl4ai::Activities -->
+		[for (activity : Activity | method.activities)]
+			[activity.generateActivity()/]
+		[/for]
+
+		<!-- sequence flows -->
+		[for (activity : Activity | method.activities)]
+			[activity.generateSequenceFlow(processId)/]
+		[/for]
+
+	</bpmn2:process>
+</bpmn2:definitions>
+[/let] 
+[/file]
+[/template]
+
+[template public generateManagedEntities()]
+	<!-- for RequirementsEngineeringActivity -->
+	<!-- goals -->
+	<!-- requirements -->
+	[generateDataObject('Goals')/]
+	[generateDataObject('Requirements')/]
+
+	<!-- for DataPreparationActivity -->
+	<!-- training dataset -->
+	<!-- validation dataset -->
+	<!-- test dataset -->
+	[generateDataObject('Training Dataset')/]
+	[generateDataObject('Validation Dataset')/]
+	[generateDataObject('Test Dataset')/]
+
+	<!-- for DataIdentificationActivity -->
+	<!-- data sources -->
+
+	<!-- for DataCollectionActivity -->
+	<!-- collects data -->
+	<!-- data sources selected -->
+	[generateDataObject('Data')/]
+
+	<!-- for DataProcessingActivity -->
+	<!-- processes data -->
+	<!-- labels -->
+	[generateDataObject('Labels')/]
+
+	<!-- for FeatureEngineeringActivity -->
+	<!-- extracts from data -->
+	<!-- features -->
+	[generateDataObject('Features')/]
+
+	<!-- for AIModelingActivity -->
+
+	<!-- for AIModelTrainingActivity -->
+	<!-- trains with training dataset -->
+	<!-- evaluates with validation dataset -->
+	<!-- trains ai model -->
+	<!-- optimal values -->
+	[generateDataObject('AI Model')/]
+	[generateDataObject('Optimal Values')/]
+
+	<!-- for AIModelEvaluationActivity -->
+	<!-- evaluates with test dataset -->
+	<!-- evaluates ai model -->
+	<!-- criteria values -->
+	[generateDataObject('Criteria Values')/]
+
+	<!-- for OperationsActivity -->
+
+	<!-- for AIModelDeploymentActivity -->
+	<!-- deploys ai model -->
+
+	<!-- for AIModelMonitoringActivity -->
+	<!-- monitors ai model deployed -->
+[/template]
+
+[**
+ * Template for generating a BPMN User Activity from a DSL4AI Activity.
+ * It also creates its associations to Participants (+Roles) as BPMN Potential Owners
+ * and to Resources+Artifacts as BPMN Data Input Associations.
+*/]
+[template public generateActivity(activity: Activity)]
+[let activityId : String = generateActivityId(activity.name)]
+[if (activity.subactivities->isEmpty())]
+[comment ** generate user task code for simple activity **/]
+	<bpmn2:userTask id="[activityId/]" name="[parseName(activity.name)/]">
+
+		[comment ** generate documentation, participants, properties specific to activity subclass, data inputs/outputs /]
+		[generateActivityElements()/]
+
+	</bpmn2:userTask>
+[else]
+[comment ** generate sub process code for compound activity **/]
+	[activity.generateSubProcess()/]
+[/if]
+[/let]
+[/template]
+
+[**
+ * Template for generating a BPMN SubProcess from a DSL4AI Activity.
+*/]
+[template public generateSubProcess(activity: Activity)]
+[let processId : String = generateIdFromName(activity.name)]
+	<bpmn2:subProcess id="[processId/]" name="[activity.name/]" isForCompensation="false">
+
+		[comment ** generate documentation, participants, properties specific to activity subclass, data inputs/outputs /]
+		[generateActivityElements()/]
+
+		<bpmn2:startEvent id="[generateStartEventId(processId)/]" />
+		<bpmn2:endEvent id="[generateEndEventId(processId)/]" />
+
+		[comment ** recursive: generate code for subactivities **/]
+		[for (subActivity : Activity | activity.subactivities)]
+			[subActivity.generateActivity()/]
+		[/for]
+
+		[comment ** generate code for sequence flows between subactivities **/]
+		[for (subActivity : Activity | activity.subactivities)]
+			[subActivity.generateSequenceFlow(processId)/]
+		[/for]
+
+	</bpmn2:subProcess>
+[/let]
+[/template]
+
+[template public generateActivityElements(activity: Activity)]
+
+	[comment ** activity rationale **/]
+	[generateActivityDocumentation()/]
+
+	[comment ** participants **/]
+	[generateActivityParticipants()/]
+
+	[comment ** input properties specific to activity subclass **/]
+	[generateSpecificActivityTypeProperties(true)/]
+
+	[comment ** data inputs: input artifacts, techniques and other resources **/]
+	[for (element : NamedElement | activity.inputs.oclAsType(NamedElement)->union(activity.techniques.oclAsType(NamedElement))->union(activity.resources.oclAsType(NamedElement)))]
+		[generateDataInputAssociation(activity, element.name, false)/]
+	[/for]
+
+	[comment ** input properties specific to activity subclass **/]
+	[generateSpecificActivityTypeProperties(false)/]
+
+	[comment ** data outputs: output artifacts **/]
+	[for (artifact : Artifact | activity.outputs)]
+		[generateDataOutputAssociation(activity, artifact.name, false)/]
+	[/for]
+
+[/template]
+
+[**
+ * Template for generating a BPMN Resource node of a DSL4AI Role.
+*/]
+[template public generateRole(role: Role)]
+	<bpmn2:resource id="[generateResourceId(role.name)/]" name="[role.name/]"/>
+[/template]
+
+[**
+ * Template for generating a BPMN Documentation node of a User Task or Process from its DSL4AI Activity.
+*/]
+[template public generateActivityDocumentation(activity: Activity)]
+[if (activity.rationale->notEmpty())]
+	<bpmn2:documentation>
+		[parseName(activity.rationale)/]
+	</bpmn2:documentation>
+[/if]
+[/template]
+
+[**
+ * Template for generating BPMN Potential Owner nodes of a User Task for each DSL4AI Activity Participant (+ associated Role).
+*/]
+[template public generateActivityParticipants(activity: Activity)]
+[if (activity.participants->notEmpty())]
+	<bpmn2:potentialOwner>
+		[for (role : Role | activity.participants.role)]
+			<bpmn2:resourceRef>[generateResourceId(role.name)/]</bpmn2:resourceRef>
+		[/for]
+	</bpmn2:potentialOwner>
+[/if]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: Activity, isInput: Boolean) ?(true)]
+	<!-- GENERIC -->
+	[comment ** All linked elements are mapped as DataInput / DataOutput objects and their structure defined in the DSL is "hidden" /]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: BusinessUnderstandingActivity, isInput: Boolean) ?(true)]
+	<!-- BusinessUnderstandingActivity -->
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: RequirementsEngineeringActivity, isInput: Boolean) ?(true)]
+	<!-- RequirementsEngineeringActivity -->
+	[if (not isInput)]
+		<!-- goals -->
+		[generateDataOutputAssociation('Goals', true)/]
+		<!-- requirements -->
+		[generateDataOutputAssociation('Requirements', true)/]
+	[/if]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: DataIdentificationActivity, isInput: Boolean) ?(true)]
+	<!-- DataIdentificationActivity -->
+	[if (not isInput)]
+		<!-- data sources -->
+		[generateDataOutputAssociation('Data Sources', true)/]
+	[/if]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: DataPreparationActivity, isInput: Boolean) ?(true)]
+	<!-- DataPreparationActivity -->
+	[if (not isInput)]
+		<!-- training dataset -->
+		[generateDataOutputAssociation('Training Dataset', false)/]
+		<!-- validation dataset -->
+		[generateDataOutputAssociation('Validation Dataset', false)/]
+		<!-- test dataset -->
+		[generateDataOutputAssociation('Test Dataset', false)/]
+	[/if]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: DataCollectionActivity, isInput: Boolean) ?(true)]
+	<!-- DataCollectionActivity -->
+	[if (not isInput)]
+		<!-- collects: data -->
+		[generateDataOutputAssociation('Data', true)/]
+		<!-- data sources -> selected -->
+		[generateDataOutputAssociation('Data Sources', true)/]
+	[/if]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: DataProcessingActivity, isInput: Boolean) ?(true)]
+	<!-- DataProcessingActivity -->
+	[if (isInput)]
+		<!-- processes: data -->
+		[generateDataInputAssociation('Data', true)/]
+	[else]
+		<!-- labels -->
+		[generateDataOutputAssociation('Labels', true)/]
+	[/if]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: FeatureEngineeringActivity, isInput: Boolean) ?(true)]
+	<!-- FeatureEngineeringActivity -->
+	[if (isInput)]
+		<!-- extracts from: data -->
+		[generateDataInputAssociation('Data', true)/]
+	[else]
+		<!-- features -->
+		[generateDataOutputAssociation('Features', true)/]
+	[/if]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: AIModelingActivity, isInput: Boolean) ?(true)]
+	<!-- AIModelingActivity -->
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: AIModelTrainingActivity, isInput: Boolean) ?(true)]
+	<!-- AIModelTrainingActivity -->
+	[if (isInput)]
+		<!-- trains with: training dataset -->
+		[generateDataInputAssociation('Training Dataset', false)/]
+		<!-- evaluates with: validation dataset -->
+		[generateDataInputAssociation('Validation Dataset', false)/]
+	[else]
+		<!-- trains: ai model -->
+		[generateDataOutputAssociation('AI Model', false)/]
+		<!-- optimal values -->
+		[generateDataOutputAssociation('Optimal Values', true)/]
+	[/if]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: AIModelEvaluationActivity, isInput: Boolean) ?(true)]
+	<!-- AIModelEvaluationActivity -->
+	[if (isInput)]
+		<!-- evaluates with: test dataset -->
+		[generateDataInputAssociation('Test Dataset', false)/]
+		<!-- evaluates: ai model -->
+		[generateDataInputAssociation('AI Model', false)/]
+	[else]
+		<!-- criteria values -->
+		[generateDataOutputAssociation('Criteria Values', true)/]
+	[/if]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: OperationsActivity, isInput: Boolean) ?(true)]
+	<!-- OperationsActivity -->
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: AIModelDeploymentActivity, isInput: Boolean) ?(true)]
+	<!-- AIModelDeploymentActivity -->
+	[if (isInput)]
+		<!-- deploys: ai model -->
+		[generateDataInputAssociation('AI Model', false)/]
+	[/if]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: AIModelMonitoringActivity, isInput: Boolean) ?(true)]
+	<!-- AIModelMonitoringActivity -->
+	[if (isInput)]
+		<!-- monitors: ai model -> deployed -->
+		[generateDataInputAssociation('AI Model', false)/]
+	[/if]
+[/template]
+
+[template public generateDataInputAssociation(activity: Activity, objectName: String, isCollection: Boolean)]
+[let activityId : String = generateIdFromName(activity.name)]
+[let objectId : String = generateDataObjectId(objectName)]
+	<bpmn2:dataInputAssociation id="['dataInputAssociation_' + activityId + '_' + objectId/]">
+		<bpmn2:sourceRef>[objectId/]</bpmn2:sourceRef>
+		<bpmn2:targetRef>[activityId/]</bpmn2:targetRef>
+	</bpmn2:dataInputAssociation>
+[/let]
+[/let]
+[/template]
+
+[template public generateDataOutputAssociation(activity: Activity, objectName: String, isCollection: Boolean)]
+[let activityId : String = generateIdFromName(activity.name)]
+[let objectId : String = generateDataObjectId(objectName)]
+	<bpmn2:dataOutputAssociation id="['dataOutputAssociation_' + activityId + '_' + objectId/]">
+		[comment <bpmn2:sourceRef>[activityId/]
+		[comment </bpmn2:sourceRef>/]
+    	<bpmn2:targetRef>[objectId/]</bpmn2:targetRef>
+    </bpmn2:dataOutputAssociation>
+[/let]
+[/let]
+[/template]
+
+[**
+ * Template for generating a BPMN Sequence Flow from a DSL4AI Activity.
+*/]
+[template public generateSequenceFlow(activity: Activity, parentProcess: String)]
+[let sourceActivityId : String = generateActivityId(activity.name)]
+	[if (activity.eInverse()->isEmpty())]
+		<bpmn2:sequenceFlow id="[generateSequenceFlowId(generateStartEventId(parentProcess), sourceActivityId)/]" sourceRef="[generateStartEventId(parentProcess)/]" targetRef="[sourceActivityId/]" />
+	[/if]
+	[if (activity.next->isEmpty())]
+		<bpmn2:sequenceFlow id="[generateSequenceFlowId(sourceActivityId, generateEndEventId(parentProcess))/]" sourceRef="[sourceActivityId/]" targetRef="[generateEndEventId(parentProcess)/]" />
+	[else]
+	[let targetActivityId : String = generateActivityId(activity.next.name)]
+		<bpmn2:sequenceFlow id="[generateSequenceFlowId(sourceActivityId, targetActivityId)/]" sourceRef="[sourceActivityId/]" targetRef="[targetActivityId/]" />
+	[/let]
+	[/if]
+[/let]
+[/template]
+
+[**
+ * Template for generating BPMN code from a DSL4AI Resource.
+*/]
+[template public generateResource(resource: Resource)]
+[generateDataObject(resource.name)/]
+[/template]
+
+[**
+ * Template for generating BPMN code from a DSL4AI Artifact
+ * and, if the artifact is a Document, an association to its Template.
+*/]
+[template public generateArtifact(artifact: Artifact)]
+[generateDataObject(artifact.name)/]
+[if (artifact.oclAsType(Document).template->notEmpty())]
+	[comment <bpmn2:association associationDirection="One" id="" sourceRef="[generateDataObjectRefId(artifact.name)/]
+	[comment " targetRef="[generateDataObjectRefId(artifact.oclAsType(Document).template.name)/]
+	[comment"/>/]
+[/if]
+[/template]
+
+[**
+ * Template for generating a BPMN Data Object (+ Reference) from a DSL4AI NamedElement (i.e. Resource or Artifact).
+*/]
+[template public generateDataObject(name: String)]
+[let elementId : String = generateDataObjectId(name)]
+	<bpmn2:dataObject id="[elementId/]" name="[parseName(name)/]"/>
+	[comment <bpmn2:dataObjectReference id="[generateDataObjectRefId(name)/]
+	[comment" name="[parseName(name) + ' Reference'/]
+	[comment" dataObjectRef="[elementId/]
+	[comment "/>/]
+[/let]
+[/template]
+
+[**
+ * Auxiliary operation: generate an ID for a BPMN SequenceFlow element.
+ * @param flow: Integer to append to the ID.
+*/]
+[query public generateSequenceFlowId(source: String, target: String) : String =
+	'sequenceFlow_' + source + '_' + target
+/]
+
+[**
+ * Auxiliary operation: generate an ID for a BPMN User Task from a DSL4AI Activity name.
+ * @param name: Name of the DSL4AI Activity.
+*/]
+[query public generateActivityId(name: String) : String = 
+	generateIdFromName(name)
+/]
+
+
+[**
+ * Const.
+*/]
+[query public startEventPrefix() : String = 
+	'processStart_'
+/]
+
+[**
+ * Const.
+*/]
+[query public endEventPrefix() : String = 
+	'processEnd_'
+/]
+
+[**
+ * Auxiliary operation: generate an ID for a BPMN Start Event from a DSL4AI Method or Activity name.
+ * @param parentProcessId: Id of the DSL4AI Method or Activity.
+*/]
+[query public generateStartEventId(parentProcessId: String) : String = 
+	startEventPrefix() + parentProcessId
+/]
+
+[**
+ * Auxiliary operation: generate an ID for a BPMN End Event from a DSL4AI Method or Activity name.
+ * @param parentProcessId: Id of the DSL4AI Method or Activity.
+*/]
+[query public generateEndEventId(parentProcessId: String) : String = 
+	endEventPrefix() + parentProcessId
+/]
+
+[**
+ * Auxiliary operation: generate an ID for a BPMN Data Object from a DSL4AI Resource name.
+ * @param name: Name of the DSL4AI Resource.
+*/]
+[query public generateResourceId(name: String) : String = 
+	'resource_' + generateIdFromName(name)
+/]
+
+[**
+ * Auxiliary operation: generate an ID for a BPMN Data Object from a DSL4AI Resource name.
+ * @param name: Name of the DSL4AI Resource.
+*/]
+[query public generateDataObjectId(name: String) : String = 
+	'dataObject_' + generateIdFromName(name)
+/]
+
+[**
+ * Auxiliary operation: generate an ID for a BPMN Data Object Reference from a DSL4AI Resource name.
+ * @param name: Name of the DSL4AI Resource.
+*/]
+[query public generateDataObjectRefId(name: String) : String = 
+	'dataObjectReference_' + generateIdFromName(name)
+/]
+
+[**
+ * Auxiliary operation: generate an ID suffix given a DSL4AI object name.
+ * @param name: Name of the DSL4AI object.
+*/]
+[query public generateIdFromName(name: String) : String = 
+	'' + name.replaceAll('&','').tokenize(' ').toUpperFirst().toString().trim()
+/]
+
+[**
+ * Auxiliary operation: removes all invalid characters from a DSL4AI object name.
+ * @param name: Name of the DSL4AI object.
+*/]
+[query public parseName(name: String) : String = 
+	'' + name.replaceAll('&','').trim()
+/]

@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="dsl4ai" version="12.0.0.2017041100">
+  <ownedViewpoints name="dsl4ai">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Method Diagram" domainClass="dsl4ai::Method">
+      <metamodel href="http://edu.uoc.som/dsl4ai/1.0#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="Method Activity" semanticCandidatesExpression="aql:self.activities" domainClass="dsl4ai::Activity">
+          <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Method Role" semanticCandidatesExpression="aql:self.roles" domainClass="dsl4ai::Role">
+          <style xsi:type="style:DotDescription" labelSize="10" showIcon="false" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Method Artifact" semanticCandidatesExpression="aql:self.artifacts" domainClass="dsl4ai::Artifact">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Method Resource" semanticCandidatesExpression="aql:self.eAllContents(dsl4ai::Artifact).eCrossReferences()" domainClass="dsl4ai::Resource">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Edge Activity Next" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']" targetFinderExpression="feature:next">
+          <style targetArrow="InputFillClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <centerLabelStyleDescription labelSize="10">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Edge Document Template" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Artifact']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@additionalLayers[name='Subactivity%20Resources']/@nodeMappings[name='Method%20Resource']" targetFinderExpression="feature:template">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Edge Activity Inputs" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Artifact']" targetFinderExpression="feature:inputs">
+          <style lineStyle="dot" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Edge Activity Outputs" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Artifact']" targetFinderExpression="feature:outputs">
+          <style sourceArrow="OutputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Edge Activity Techniques" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@additionalLayers[name='Subactivity%20Resources']/@nodeMappings[name='Method%20Resource']" targetFinderExpression="feature:techniques">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Edge Activity Resources" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@additionalLayers[name='Subactivity%20Resources']/@nodeMappings[name='Method%20Resource']" targetFinderExpression="feature:resources">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Edge Subactivity Artifacts" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Artifact']" targetFinderExpression="aql:self.eAllContents(dsl4ai::Activity).eCrossReferences()">
+          <style lineStyle="dot" sourceArrow="OutputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="Activities">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Generic Activity" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::Activity" referenceName="activities">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'activity'+container.activities->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Business Understanding Activity" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::BusinessUnderstandingActivity" referenceName="activities">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'activity'+container.activities->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Data Preparation Activity" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::DataPreparationActivity" referenceName="activities">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'activity'+container.activities->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="AI Modeling Activity" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::AIModelingActivity" referenceName="activities">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'activity'+container.activities->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Operations Activity" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::OperationsActivity" referenceName="activities">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'activity'+container.activities->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Next Activity" precondition="aql:preTarget.differs(preSource)" edgeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@edgeMappings[name='Edge%20Activity%20Next']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="next" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Activity Input" edgeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@edgeMappings[name='Edge%20Activity%20Inputs']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="inputs" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Activity Output" edgeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@edgeMappings[name='Edge%20Activity%20Outputs']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="outputs" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Techniques" precondition="aql:preTarget.oclIsTypeOf(dsl4ai::Technique)" edgeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@edgeMappings[name='Edge%20Activity%20Techniques']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="techniques" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <subSections name="Activities">
+            <ownedTools xsi:type="tool:NodeCreationDescription" name="Generic Activity" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::Activity" referenceName="activities">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'activity'+container.activities->size()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool:NodeCreationDescription" name="Business Understanding Activity" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::BusinessUnderstandingActivity" referenceName="activities">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'activity'+container.activities->size()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool:NodeCreationDescription" name="Data Preparation Activity" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::DataPreparationActivity" referenceName="activities">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'activity'+container.activities->size()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool:NodeCreationDescription" name="AI Modeling Activity" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::AIModelingActivity" referenceName="activities">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'activity'+container.activities->size()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool:NodeCreationDescription" name="Operations Activity" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::OperationsActivity" referenceName="activities">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'activity'+container.activities->size()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool:EdgeCreationDescription" name="Next Activity" precondition="aql:preTarget.differs(preSource)" edgeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@edgeMappings[name='Edge%20Activity%20Next']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="next" valueExpression="var:target"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool:EdgeCreationDescription" name="Activity Input" edgeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@edgeMappings[name='Edge%20Activity%20Inputs']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="inputs" valueExpression="var:target"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool:EdgeCreationDescription" name="Activity Output" edgeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@edgeMappings[name='Edge%20Activity%20Outputs']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outputs" valueExpression="var:target"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool:EdgeCreationDescription" name="Techniques" precondition="aql:preTarget.oclIsTypeOf(dsl4ai::Technique)" edgeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@edgeMappings[name='Edge%20Activity%20Techniques']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="techniques" valueExpression="var:target"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+          </subSections>
+        </toolSections>
+        <toolSections name="Roles">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Group Manager">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::GroupManager" referenceName="roles">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Group Manager'+container.roles->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Team Lead" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::TeamLead" referenceName="roles">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Team Lead'+container.roles->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Project Lead" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::ProjectLead" referenceName="roles">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Project Lead'+container.roles->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="Business User">
+            <tools xsi:type="tool:NodeCreationDescription" name="Business User" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::BusinessUser" referenceName="roles">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Business User'+container.roles->size()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" name="Domain Expert" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::DomainExpert" referenceName="roles">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Domain Expert'+container.roles->size()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Business Analyst" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::BusinessAnalyst" referenceName="roles">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Business Analyst'+container.roles->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Data Consumer" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::DataConsumer" referenceName="roles">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Data Consumer'+container.roles->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Data Scientist" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::DataConsumer" referenceName="roles">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Data Consumer'+container.roles->size()"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::DataScientist" referenceName="roles">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Data Scientist'+container.roles->size()"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="Data Engineer">
+            <tools xsi:type="tool:NodeCreationDescription" name="Data Engineer" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::DataEngineer" referenceName="roles">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Data Engineer'+container.roles->size()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" name="Data Provider" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::DataProvider" referenceName="roles">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Data Provider'+container.roles->size()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" name="Data Steward" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::DataSteward" referenceName="roles">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Data Steward'+container.roles->size()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" name="Data Annotator" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::DataAnnotator" referenceName="roles">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Data Annotator'+container.roles->size()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Architect" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::Architect" referenceName="roles">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Architect'+container.roles->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Software Engineer" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::SoftwareEngineer" referenceName="roles">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'SoftwareEngineer'+container.roles->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Model Operator" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Role']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::ModelOperator" referenceName="roles">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'Model Operator'+container.roles->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Artifacts and Resources">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Document" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Artifact']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::Document" referenceName="artifacts">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'document'+container.artifacts->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Document Template" edgeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@edgeMappings[name='Edge%20Document%20Template']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="template" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Template" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@additionalLayers[name='Subactivity%20Resources']/@nodeMappings[name='Method%20Resource']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::Template" referenceName="resources">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'template'+container.resources->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Script" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@additionalLayers[name='Subactivity%20Resources']/@nodeMappings[name='Method%20Resource']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::Script" referenceName="resources">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'script'+container.resources->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="Guideline">
+            <tools xsi:type="tool:NodeCreationDescription" name="Guideline" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@additionalLayers[name='Subactivity%20Resources']/@nodeMappings[name='Method%20Resource']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::Guideline" referenceName="resources">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'guideline'+container.resources->size()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" name="Data Annotation Guideline" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@additionalLayers[name='Subactivity%20Resources']/@nodeMappings[name='Method%20Resource']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::DataAnnotationGuideline" referenceName="resources">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'guideline'+container.resources->size()"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Platform" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@additionalLayers[name='Subactivity%20Resources']/@nodeMappings[name='Method%20Resource']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::Platform" referenceName="resources">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'platform'+container.resources->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Data Source" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@additionalLayers[name='Subactivity%20Resources']/@nodeMappings[name='Method%20Resource']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::DataSource" referenceName="resources">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'dataSource'+container.resources->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="Subactivity Resources">
+        <nodeMappings name="Method Resource" semanticCandidatesExpression="aql:self.resources" domainClass="dsl4ai::Resource">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Edge Subactivity Resources" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@defaultLayer/@nodeMappings[name='Method%20Activity']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Method%20Diagram']/@additionalLayers[name='Subactivity%20Resources']/@nodeMappings[name='Method%20Resource']" targetFinderExpression="aql:self.eAllContents().eCrossReferences()">
+          <style lineStyle="dot" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Activity Diagram" domainClass="dsl4ai::Activity">
+      <metamodel href="http://edu.uoc.som/dsl4ai/1.0#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="Activity Subactivity Node" semanticCandidatesExpression="feature:eContents" domainClass="dsl4ai::Activity">
+          <style xsi:type="style:SquareDescription" labelSize="10" showIcon="false" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Activity Role Node" semanticCandidatesExpression="aql:self.eContents().eCrossReferences()" domainClass="dsl4ai::Role">
+          <style xsi:type="style:DotDescription" labelSize="10" showIcon="false" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Activity Technique Node" semanticCandidatesExpression="aql:self.eContents().eCrossReferences()" domainClass="dsl4ai::Technique">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Activity Resource" semanticCandidatesExpression="aql:self.eCrossReferences()+self.eContents()->filter(dsl4ai::Activity).resources+self.eContents()->filter(dsl4ai::Activity).inputs.template+self.eContents()->filter(dsl4ai::Activity).outputs.template" domainClass="dsl4ai::Resource">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Activity Artifact" semanticCandidatesExpression="aql:self.eContents()->filter(dsl4ai::Activity).inputs+self.eContents()->filter(dsl4ai::Activity).outputs" domainClass="dsl4ai::Artifact">
+          <style xsi:type="style:SquareDescription" labelSize="10" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Edge Activity Next" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Subactivity%20Node']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Subactivity%20Node']" targetFinderExpression="feature:next">
+          <style targetArrow="InputFillClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Edge Activity Inputs" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Subactivity%20Node']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Artifact']" targetFinderExpression="feature:inputs">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Edge Activity Outputs" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Subactivity%20Node']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Artifact']" targetFinderExpression="feature:outputs">
+          <style sourceArrow="OutputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Edge Activity Techniques" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Subactivity%20Node']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Technique%20Node']" targetFinderExpression="feature:techniques">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Edge Activity Resources" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Subactivity%20Node']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Resource']" targetFinderExpression="feature:resources">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Edge Document Template" sourceMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Artifact']" targetMapping="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Resource']" targetFinderExpression="aql:self.oclAsType(dsl4ai::Document).template">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <centerLabelStyleDescription labelSize="10" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="Activities">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Generic Activity" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Subactivity%20Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::Activity" referenceName="subactivities">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'activity'+container.subactivities->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Requirements Engineering Activity" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Subactivity%20Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::RequirementsEngineeringActivity" referenceName="subactivities">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'activity'+container.subactivities->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Data Identification Activity" nodeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@nodeMappings[name='Activity%20Subactivity%20Node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="dsl4ai::DataIdentificationActivity" referenceName="subactivities">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'activity'+container.subactivities->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Next Activity" precondition="aql:preTarget.differs(preSource)" edgeMappings="//@ownedViewpoints[name='dsl4ai']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='Edge%20Activity%20Next']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="next" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Method Resources Diagram" domainClass="dsl4ai::Method" enablePopupBars="true">
+      <metamodel href="http://edu.uoc.som/dsl4ai/1.0#/"/>
+      <defaultLayer name="Default">
+        <containerMappings name="Method Activity Container" semanticCandidatesExpression="aql:self.activities" domainClass="dsl4ai::Activity" childrenPresentation="VerticalStack">
+          <subContainerMappings name="Method Guidelines Container" semanticCandidatesExpression="var:self" domainClass="dsl4ai::Activity" childrenPresentation="List">
+            <subNodeMappings name="Method Activity Guidelines" semanticCandidatesExpression="aql:self.eAllContents().eCrossReferences()" domainClass="dsl4ai::Guideline">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Guidelines" labelAlignment="LEFT">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="Method Techniques Container" semanticCandidatesExpression="var:self" domainClass="dsl4ai::Activity" childrenPresentation="List">
+            <subNodeMappings name="Method Activity Techniques" semanticCandidatesExpression="aql:self.eAllContents().eCrossReferences()" domainClass="dsl4ai::Technique">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Techniques" labelAlignment="LEFT">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="Method Scripts Container" semanticCandidatesExpression="var:self" domainClass="dsl4ai::Activity" childrenPresentation="List">
+            <subNodeMappings name="Method Activity Scripts" semanticCandidatesExpression="aql:self.eAllContents().eCrossReferences()" domainClass="dsl4ai::Script">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Scripts" labelAlignment="LEFT">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="Method Platforms Container" semanticCandidatesExpression="var:self" domainClass="dsl4ai::Activity" childrenPresentation="List">
+            <subNodeMappings name="Method Activity Scripts" semanticCandidatesExpression="aql:self.eAllContents().eCrossReferences()" domainClass="dsl4ai::Platform">
+              <style xsi:type="style:SquareDescription" labelSize="10" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="Platforms" labelAlignment="LEFT">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" showIcon="false">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="edu.uoc.som.dsl4ai.design.Services"/>
+  </ownedViewpoints>
+</description:Group>

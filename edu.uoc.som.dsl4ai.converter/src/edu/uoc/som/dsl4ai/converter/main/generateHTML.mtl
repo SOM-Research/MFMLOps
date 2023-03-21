@@ -1,0 +1,553 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generateHTML.
+ */]
+[module generateHTML('http://edu.uoc.som/dsl4ai/1.0')]
+
+
+[**
+ * The documentation of the template generateHTML.
+ * @param aMethod
+ */]
+[template public generateHTML(method : Method)]
+[comment @main/]
+[file (parseName(method.name) + '.html', false, 'UTF-8')]
+[let processId : String = generateIdFromName(method.name)]
+<html id="['process' + processId/]">
+<head>
+<style>
+body {
+	font-family: calibri, verdana;
+	font-size: 12pt;
+	background-color: #eee;
+}
+
+h1 {
+	font-size: 24pt;
+	margin: 8px 8px 16px 16px;
+}
+
+h2 {
+	background: #dde;
+	font-size: 16pt;
+	padding: 4px 8px 4px 8px;
+	margin: 8px 8px 16px 0px;
+}
+
+h3 {
+	font-size: 16pt;
+	margin: 16px 8px 16px 0px;
+}
+
+h4 {
+	background: antiquewhite; /*#edd;*/
+	font-size: 14pt;
+	padding: 4px 8px 4px 8px;
+	margin: 24px 8px 16px 0px;
+}
+
+.process, .activity {
+	margin: 40px 8px 40px 8px;
+	width: 60%;
+}
+
+.process .elementsContainer,
+.activity .elementsContainer {
+	border: solid 1px #aaa;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 4px 4px 2px #bbb;
+}
+
+.section {
+	padding: 16px;
+}
+
+.role, .namedElement, .participant {
+	margin-bottom: 8px;
+}
+
+.namedElement_nameContainer .namedElement_name {
+	font-weight: bold;
+}
+
+.namedElement_nameContainer .namedElement_path {
+	}
+
+.documentation {
+	margin: 16px 16px 24px 16px;
+}
+
+a {
+	text-decoration: none;
+	color: mediumblue;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+a:hover{
+	/*background: powderblue;*/
+	text-decoration: underline;
+	outline: 1px solid midnightblue;
+	color: midnightblue;
+}
+</style>
+</head>
+
+<body>
+
+	<div id="[processId/]" class="process">
+		<div><h1>Process: [method.name/]</h1></div>
+		<div class="elementsContainer">
+			[generateRoles()/]
+			[generateResources()/]
+			[generateArtifacts()/]
+			[comment [generateManagedEntities()/]
+			[generateSubactivitiesReferences(method.activities)/]
+			[generateAllSubactivitiesReferences()/]
+		</div>
+	</div>
+	
+	[generateSubactivities(method.activities)/]
+
+</body>
+</html>
+[/let] 
+[/file]
+[/template]
+
+[template public generateRoles(method: Method)]
+	[generateSectionHeader('Roles')/]
+	[for (resource : Role | method.roles)]
+		[resource.generateRole()/]
+	[/for]
+	[generateSectionFooter()/]
+[/template]
+
+[template public generateResources(method: Method)]
+	[generateSectionHeader('Resources')/]
+	[for (resourceType : String | method.resources.eClass().name->asSet()->sortedBy(s | s))]
+		[let resourceTitle : String = resourceType.replaceAll('(?<=[^A-Z])([A-Z])', ' $1').concat('s')]
+		<div class="resourcesType">
+			<div class="resourceType"><h4>[resourceTitle/]</h4></div>
+			<div>
+				[for (resource : Resource | method.resources->select(r | r.eClass().name = resourceType)->sortedBy(name))]
+					[resource.generateResource()/]
+				[/for]
+			</div>
+		</div>
+		[/let]
+	[/for]
+	[generateSectionFooter()/]
+[/template]
+
+[template public generateArtifacts(method: Method)]
+	[generateSectionHeader('Artifacts')/]
+	[for (artifact : Artifact | method.artifacts)]
+		[artifact.generateArtifact()/]
+	[/for]
+	[generateSectionFooter()/]
+[/template]
+
+[template public generateSubactivitiesReferences(activities: OrderedSet(Activity))]
+	[generateSectionHeader('Subactivities')/]
+	[for (activity : Activity | activities)]
+		[activity.generateSubActivityReference()/]
+	[/for]
+	[generateSectionFooter()/]
+[/template]
+
+[template public generateAllSubactivitiesReferences(method: Method)]
+	[generateSectionHeader('All Subactivities')/]
+	[for (activity : Activity | method.eAllContents()->filter(Activity)->sortedBy(name))]
+		[activity.generateSubActivityReference()/]
+	[/for]
+	[generateSectionFooter()/]
+[/template]
+
+[template public generateManagedEntities()]
+<div class="section">
+	<div><h2>Other elements</h2></div>
+	<div>
+		<!-- for RequirementsEngineeringActivity -->
+		<!-- goals -->
+		<!-- requirements -->
+		[generateLocatedElement('Goals')/]
+		[generateLocatedElement('Requirements')/]
+
+		<!-- for DataPreparationActivity -->
+		<!-- training dataset -->
+		<!-- validation dataset -->
+		<!-- test dataset -->
+		[generateLocatedElement('Training Dataset')/]
+		[generateLocatedElement('Validation Dataset')/]
+		[generateLocatedElement('Test Dataset')/]
+
+		<!-- for DataIdentificationActivity -->
+		<!-- data sources -->
+
+		<!-- for DataCollectionActivity -->
+		<!-- collects data -->
+		<!-- data sources selected -->
+		[generateLocatedElement('Data')/]
+
+		<!-- for DataProcessingActivity -->
+		<!-- processes data -->
+		<!-- labels -->
+		[generateLocatedElement('Labels')/]
+
+		<!-- for FeatureEngineeringActivity -->
+		<!-- extracts from data -->
+		<!-- features -->
+		[generateLocatedElement('Features')/]
+
+		<!-- for AIModelingActivity -->
+
+		<!-- for AIModelTrainingActivity -->
+		<!-- trains with training dataset -->
+		<!-- evaluates with validation dataset -->
+		<!-- trains ai model -->
+		<!-- optimal values -->
+		[generateLocatedElement('AI Model')/]
+		[generateLocatedElement('Optimal Values')/]
+
+		<!-- for AIModelEvaluationActivity -->
+		<!-- evaluates with test dataset -->
+		<!-- evaluates ai model -->
+		<!-- criteria values -->
+		[generateLocatedElement('Criteria Values')/]
+
+		<!-- for OperationsActivity -->
+
+		<!-- for AIModelDeploymentActivity -->
+		<!-- deploys ai model -->
+
+		<!-- for AIModelMonitoringActivity -->
+		<!-- monitors ai model deployed -->
+	</div>
+</div>
+[/template]
+
+[template public generateSubactivities(activities: OrderedSet(Activity))]
+	[for (activity : Activity | activities)]
+		[activity.generateActivity()/]
+	[/for]
+[/template]
+
+[**
+ * Template for generating an HTML User Activity from a DSL4AI Activity.
+ * It also creates its associations to Participants (+Roles) as BPMN Potential Owners
+ * and to Resources+Artifacts as BPMN Data Input Associations.
+*/]
+[template public generateSubActivityReference(activity: Activity)]
+[let activityId : String = generateActivityId(activity.name)]
+	<div class="subactivity_reference">
+		<a href="#[activityId/]">[activity.name/]</a>
+	</div>
+[/let]
+[/template]
+
+
+[**
+ * Template for generating an HTML User Activity from a DSL4AI Activity.
+ * It also creates its associations to Participants (+Roles) as BPMN Potential Owners
+ * and to Resources+Artifacts as BPMN Data Input Associations.
+*/]
+[template public generateActivity(activity: Activity)]
+[let activityId : String = generateActivityId(activity.name)]
+[let isProcess : Boolean = activity.subactivities->notEmpty()]
+	<div id="[activityId/]" class="activity">
+		<div><h1>Activity: [activity.name/]</h1></div>
+		<div class="elementsContainer">
+			[comment ** generate documentation, participants, properties specific to activity subclass, data inputs/outputs /]
+			[generateActivityElements()/]
+			[if (isProcess)]
+				[comment ** recursive: generate code for subactivities **/]
+				[generateSubactivitiesReferences(activity.subactivities)/]
+			[/if]
+		</div>
+	</div>
+	[if (isProcess)]
+		[generateSubactivities(activity.subactivities)/]
+	[/if]
+[/let]
+[/let]
+[/template]
+
+
+[template public generateActivityElements(activity: Activity)]
+
+	[comment ** activity rationale **/]
+	[generateActivityDocumentation()/]
+
+	[comment ** participants **/]
+	[generateActivityParticipants()/]
+
+	[comment ** data inputs: input artifacts, techniques and other resources **/]
+	[generateDataInputs()/]
+	[generateDataOutputs()/]
+
+	[comment ** properties specific to activity subclass **/]
+	[generateSpecificActivityTypeProperties()/]
+
+	[generateSequenceFlow()/]
+
+[/template]
+
+[template public generateDataInputs(activity: Activity)]
+	[generateSectionHeader('Inputs')/]
+	[for (element : NamedElement | activity.inputs.oclAsType(NamedElement)->union(activity.techniques.oclAsType(NamedElement))->union(activity.resources.oclAsType(NamedElement)))]
+		[generateDataAssociation(element.name, true)/]
+	[/for]
+	[generateSectionFooter()/]
+[/template]
+
+[template public generateDataOutputs(activity: Activity)]
+	[generateSectionHeader('Outputs')/]
+	[for (artifact : Artifact | activity.outputs)]
+		[generateDataAssociation(artifact.name, true)/]
+	[/for]
+	[generateSectionFooter()/]
+[/template]
+
+[**
+ * Template for generating an HTML Resource node of a DSL4AI Role.
+*/]
+[template public generateRole(role: Role)]
+	<div id="[generateRoleId(role.name)/]" name="[role.name/]" class="role">[role.name/]</div>
+[/template]
+
+[**
+ * Template for generating an HTML Documentation node of a User Task or Process from its DSL4AI Activity.
+*/]
+[template public generateActivityDocumentation(activity: Activity)]
+[if (activity.rationale->notEmpty())]
+	<div class="documentation">
+		[if (activity.rationale.startsWith('http'))]
+			<a href="[activity.rationale/]" target="_blank">online documentation</a>
+		[else]
+			[parseName(activity.rationale)/]
+		[/if]
+	</div>
+[/if]
+[/template]
+
+[**
+ * Template for generating BPMN Potential Owner nodes of a User Task for each DSL4AI Activity Participant (+ associated Role).
+*/]
+[template public generateActivityParticipants(activity: Activity)]
+[if (activity.participants->notEmpty())]
+	[generateSectionHeader('Participants')/]
+	[for (participant : Participant | activity.participants)]
+		<div class="participant">[participant.role.name/] (participation: [participant.participation/])</div>
+	[/for]
+	[generateSectionFooter()/]
+[/if]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: Activity) ?(true)]
+	<!-- GENERIC -->
+	[comment ** All linked elements are mapped as DataInput / DataOutput objects and their structure defined in the DSL is "hidden" /]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: BusinessUnderstandingActivity) ?(true)]
+	<!-- BusinessUnderstandingActivity -->
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: RequirementsEngineeringActivity) ?(true)]
+	[generateManagedEntitiesReferences(Set{'Goals', 'Requirements'})/]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: DataIdentificationActivity) ?(true)]
+	[generateManagedEntitiesReferences(Set{'Data Sources'})/]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: DataPreparationActivity) ?(true)]
+	[generateManagedEntitiesReferences(Set{'Training Dataset','Validation Dataset','Test Dataset'})/]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: DataCollectionActivity) ?(true)]
+	[generateManagedEntitiesReferences(Set{'Data','Data Sources'})/]
+
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: DataProcessingActivity) ?(true)]
+	[generateManagedEntitiesReferences(Set{'Data','Labels'})/]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: FeatureEngineeringActivity) ?(true)]
+	[generateManagedEntitiesReferences(Set{'Data','Features'})/]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: AIModelingActivity) ?(true)]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: AIModelTrainingActivity) ?(true)]
+	[generateManagedEntitiesReferences(Set{'Training Dataset','Validation Dataset','AI Model','Optimal Values'})/]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: AIModelEvaluationActivity) ?(true)]
+	[generateManagedEntitiesReferences(Set{'Test Dataset','AI Model','Criteria Values'})/]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: OperationsActivity) ?(true)]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: AIModelDeploymentActivity) ?(true)]
+	[generateManagedEntitiesReferences(Set{'AI Model'})/]
+[/template]
+
+[template public generateSpecificActivityTypeProperties(activity: AIModelMonitoringActivity) ?(true)]
+	[generateManagedEntitiesReferences(Set{'AI Model'})/]
+[/template]
+
+[template public generateManagedEntitiesReferences(outputs: Set(String))]
+	[generateSectionHeader('Managed entities')/]
+	[for (output : String | outputs)]
+		[generateDataAssociation(output, false)/]
+	[/for]
+	[generateSectionFooter()/]
+[/template]
+
+[template public generateDataAssociation(objectName: String, isReference: Boolean)]
+[let objectId : String = generateNamedElementId(objectName)]
+	<div class="dataObjectReference">
+		[if (isReference)]<a href="#[objectId/]">[/if][objectName/][if (isReference)]</a>[/if]
+	</div>
+[/let]
+[/template]
+
+
+[**
+ * Template for generating an HTML Sequence Flow from a DSL4AI Activity.
+*/]
+[template public generateSequenceFlow(activity: Activity)]
+	<div class="section">
+		<div><h2>Related activities</h2></div>
+		<div><h4>Parent activity</h4></div>
+		<div class="activity_reference">
+			[if (activity.ancestors()->filter(Activity)->isEmpty())]
+				None
+			[else]
+				<a href="#[generateActivityId(activity.ancestors()->filter(Activity)->first().name)/]">[activity.ancestors()->filter(Activity)->first().name/]</a>
+			[/if]
+		</div>
+		<div><h4>Previous activity</h4></div>
+		<div class="activity_reference">
+			[if (activity.eInverse()->filter(Activity)->isEmpty())]
+				None
+			[else]
+				<a href="#[generateActivityId(activity.eInverse()->filter(Activity)->first().name)/]">[activity.eInverse()->filter(Activity)->first().name/]</a>
+			[/if]
+		</div>
+		<div><h4>Next activity</h4></div>
+		<div class="activity_reference">
+			[if (activity.next->isEmpty())]
+				None
+			[else]
+				<a href="#[generateActivityId(activity.next.name)/]">[activity.next.name/]</a>
+			[/if]
+		</div>
+	</div>
+[/template]
+
+[**
+ * Template for generating BPMN code from a DSL4AI Resource.
+*/]
+[template public generateResource(resource: Resource)]
+[generateLocatedElement(resource)/]
+[/template]
+
+[**
+ * Template for generating BPMN code from a DSL4AI Artifact
+ * and, if the artifact is a Document, an association to its Template.
+*/]
+[template public generateArtifact(artifact: Artifact)]
+[generateLocatedElement(artifact)/]
+[if (artifact.oclAsType(Document).template->notEmpty())]
+	[comment <bpmn2:association associationDirection="One" id="" sourceRef="[generateDataObjectRefId(artifact.name)/]
+	[comment " targetRef="[generateDataObjectRefId(artifact.oclAsType(Document).template.name)/]
+	[comment"/>/]
+[/if]
+[/template]
+
+[**
+ * Template for generating an HTML Data Object (+ Reference) from a DSL4AI NamedElement (i.e. Resource or Artifact).
+*/]
+[template public generateLocatedElement(element: LocatedElement)]
+[let elementId : String = generateNamedElementId(element.name)]
+	<div id="[elementId/]" class="namedElement">
+		<div class="namedElement_nameContainer">
+			<span class="namedElement_name">[element.name/]</span>
+			[if (element.path->notEmpty())]
+				<span class="namedElement_path"><a href="[element.path/]" target="_blank">online location</a></span>
+			[/if]
+		</div>
+		[if (element.oclIsTypeOf(Document))]
+			[if (element.oclAsType(Document).template->notEmpty())]
+				<div class="namedElement_template">template: <a href="#[generateNamedElementId(element.oclAsType(Document).template.name)/]">[element.oclAsType(Document).template.name/]</a></div>
+			[/if]
+		[/if]
+		[if (element.oclIsKindOf(Resource))]
+			<div class="namedElement_description">[element.oclAsType(Resource).description/]</div>
+		[/if]
+	</div>
+[/let]
+[/template]
+
+[**
+ * Template for generating an HTML Named Element from a DSL4AI NamedElement (i.e. Resource or Artifact).
+*/]
+[template public generateLocatedElement(name: String)]
+[let elementId : String = generateNamedElementId(name)]
+	<div id="[elementId/]" name="[parseName(name)/]" class="namedElement">[name/]</div>
+[/let]
+[/template]
+
+[**
+ * Auxiliary operation: generate an ID for an HTML activity div block from a DSL4AI Activity name.
+ * @param name: Name of the DSL4AI Activity.
+*/]
+[query public generateActivityId(name: String) : String = 
+	generateIdFromName(name)
+/]
+
+[**
+ * Auxiliary operation: generate an ID for an HTML Named Element from a DSL4AI NamedElement name.
+ * @param name: Name of the DSL4AI Resource.
+*/]
+[query public generateNamedElementId(name: String) : String = 
+	'namedElement_' + generateIdFromName(name)
+/]
+
+[**
+ * Auxiliary operation: generate an ID for an HTML Role from a DSL4AI Role name.
+ * @param name: Name of the DSL4AI Resource.
+*/]
+[query public generateRoleId(name: String) : String = 
+	'role_' + generateIdFromName(name)
+/]
+
+[**
+ * Auxiliary operation: generate an ID suffix given a DSL4AI object name.
+ * @param name: Name of the DSL4AI object.
+*/]
+[query public generateIdFromName(name: String) : String = 
+	'' + name.replaceAll('&','').tokenize(' ').toUpperFirst().toString().trim()
+/]
+
+[**
+ * Auxiliary operation: removes all invalid characters from a DSL4AI object name.
+ * @param name: Name of the DSL4AI object.
+*/]
+[query public parseName(name: String) : String = 
+	'' + name.replaceAll('&','').trim()
+/]
+
+[query public generateSectionHeader(title: String) : String =
+	'<div class="section"><div><h2>' + title + '</h2></div><div>'
+/]
+
+[query public generateSectionFooter() : String =
+	'</div></div>'
+/]

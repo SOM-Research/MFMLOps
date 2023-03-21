@@ -1,0 +1,1491 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn2:definitions
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL"
+	xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+	xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+	xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+	xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd"
+	typeLanguage="http://www.w3.org/2001/XMLSchema"
+	expressionLanguage="http://www.w3.org/TR/XPath"
+	targetNamespace="http://edu.uoc.som/dsl4ai/1.0"
+	id="processTDSP">
+
+
+	<!-- resources are dsl4ai::Roles -->
+			<bpmn2:resource id="resource_DataScientist" name="Data Scientist"/>
+			<bpmn2:resource id="resource_GroupManager" name="Group Manager"/>
+			<bpmn2:resource id="resource_ProjectLead" name="Project Lead"/>
+			<bpmn2:resource id="resource_TeamLead" name="Team Lead"/>
+
+	<!-- main dsl4ai::Method process -->
+	<bpmn2:process id="TDSP" name="TDSP" isExecutable="true">
+		<bpmn2:startEvent id="processStart_TDSP" />
+		<bpmn2:endEvent id="processEnd_TDSP" />
+
+		<!-- data objects are dsl4ai::Resources -->
+				<bpmn2:dataObject id="dataObject_CharterDocumentTemplate" name="Charter document template"/>
+			
+				<bpmn2:dataObject id="dataObject_DataSourcesTemplate" name="Data sources template"/>
+			
+				<bpmn2:dataObject id="dataObject_DataDictionaryTemplate" name="Data dictionary template"/>
+			
+				<bpmn2:dataObject id="dataObject_DataQualityReportTemplate" name="Data quality report template"/>
+			
+				<bpmn2:dataObject id="dataObject_ExitReportTemplate" name="Exit report template"/>
+			
+				<bpmn2:dataObject id="dataObject_CreateFeaturesForDataInAHadoopClusterUsingHiveQueries" name="Create features for data in a Hadoop cluster using Hive queries"/>
+			
+				<bpmn2:dataObject id="dataObject_CreateFeaturesForDataInSQLServerUsingSQLAndPython" name="Create features for data in SQL Server using SQL and Python"/>
+			
+				<bpmn2:dataObject id="dataObject_DeployAndScoreAMachineLearningModelByUsingAnOnlineEndpoint" name="Deploy and score a machine learning model by using an online endpoint"/>
+			
+				<bpmn2:dataObject id="dataObject_DeployMLModelsToProductionToPlayAnActiveRoleInMakingBusinessDecisions" name="Deploy ML models to production to play an active role in making business decisions"/>
+			
+				<bpmn2:dataObject id="dataObject_ExploreDataInAzureBlobStorageWithThePandasPythonPackage" name="Explore data in Azure Blob storage with the pandas Python package"/>
+			
+				<bpmn2:dataObject id="dataObject_ExploreDataInASQLServerVirtualMachineOnAzure" name="Explore data in a SQL Server virtual machine on Azure"/>
+			
+				<bpmn2:dataObject id="dataObject_ExploreDataInHiveTablesWithHiveQueries" name="Explore data in Hive tables with Hive queries"/>
+			
+				<bpmn2:dataObject id="dataObject_FeatureEngineeringInMachineLearning" name="Feature engineering in machine learning"/>
+			
+				<bpmn2:dataObject id="dataObject_FeatureSelectionInTheTeamDataScienceProcess" name="Feature selection in the Team Data Science Process"/>
+			
+				<bpmn2:dataObject id="dataObject_HowToCleanTextData" name="How to clean text data"/>
+			
+				<bpmn2:dataObject id="dataObject_LoadDataIntoStorageEnvironmentsForAnalytics" name="Load data into storage environments for analytics"/>
+			
+				<bpmn2:dataObject id="dataObject_ModelPerformanceAndFairness" name="Model performance and fairness"/>
+			
+				<bpmn2:dataObject id="dataObject_RunPredictionsUsingPythonEmbeddedInAStoredProcedure" name="Run predictions using Python embedded in a stored procedure"/>
+			
+				<bpmn2:dataObject id="dataObject_SampleDataInAzureBlobStorage" name="Sample data in Azure Blob storage"/>
+			
+				<bpmn2:dataObject id="dataObject_SampleDataInSQLServerOnAzure" name="Sample data in SQL Server on Azure"/>
+			
+				<bpmn2:dataObject id="dataObject_SampleDataInAzureHDInsightHiveTables" name="Sample data in Azure HDInsight Hive tables"/>
+			
+				<bpmn2:dataObject id="dataObject_TrainModelsWithAzureMachineLearning" name="Train models with Azure Machine Learning"/>
+			
+				<bpmn2:dataObject id="dataObject_UseThePythonInterpretabilityPackageToExplainMLModelsPredictions" name="Use the Python interpretability package to explain ML models  predictions"/>
+			
+				<bpmn2:dataObject id="dataObject_UseAzureMachineLearningWithTheFairlearnOpen-sourcePackageToAssessTheFairnessOfMLModels" name="Use Azure Machine Learning with the Fairlearn open-source package to assess the fairness of ML models"/>
+			
+				<bpmn2:dataObject id="dataObject_EqualHeightBinning" name="Equal height binning"/>
+			
+				<bpmn2:dataObject id="dataObject_EqualWidthBinning" name="Equal width binning"/>
+			
+				<bpmn2:dataObject id="dataObject_Deletion" name="Deletion"/>
+			
+				<bpmn2:dataObject id="dataObject_DummySubstitution" name="Dummy substitution"/>
+			
+				<bpmn2:dataObject id="dataObject_FrequentSubstitution" name="Frequent substitution"/>
+			
+				<bpmn2:dataObject id="dataObject_MeanSubstitution" name="Mean substitution"/>
+			
+				<bpmn2:dataObject id="dataObject_RegressionSubstitution" name="Regression substitution"/>
+			
+				<bpmn2:dataObject id="dataObject_Aggregation" name="Aggregation"/>
+			
+				<bpmn2:dataObject id="dataObject_AttributeSampling" name="Attribute sampling"/>
+			
+				<bpmn2:dataObject id="dataObject_RecordSampling" name="Record sampling"/>
+			
+				<bpmn2:dataObject id="dataObject_DecimalScaling" name="Decimal scaling"/>
+			
+				<bpmn2:dataObject id="dataObject_Min-maxNormalization" name="Min-max normalization"/>
+			
+				<bpmn2:dataObject id="dataObject_Z-scoreNormalization" name="Z-score normalization"/>
+			
+				<bpmn2:dataObject id="dataObject_AzureMachineLearningPythonSDK" name="Azure Machine Learning Python SDK"/>
+			
+				<bpmn2:dataObject id="dataObject_Fairlearn" name="Fairlearn"/>
+			
+				<bpmn2:dataObject id="dataObject_AzureBlobStorage" name="Azure Blob Storage"/>
+			
+				<bpmn2:dataObject id="dataObject_AzureMachineLearningDesigner" name="Azure Machine Learning Designer"/>
+			
+				<bpmn2:dataObject id="dataObject_AzureMachineLearningStudio" name="Azure Machine Learning Studio"/>
+			
+				<bpmn2:dataObject id="dataObject_AzureOnlineEndpoint" name="Azure Online Endpoint"/>
+			
+				<bpmn2:dataObject id="dataObject_HDInsightHadoopCluster" name="HDInsight Hadoop Cluster"/>
+			
+				<bpmn2:dataObject id="dataObject_SQLServer" name="SQL Server"/>
+			
+				<bpmn2:dataObject id="dataObject_StatusDashboard" name="Status dashboard"/>
+			
+
+		<!-- data objects are dsl4ai::Artifacts -->
+				<bpmn2:dataObject id="dataObject_CharterDocument" name="Charter document"/>
+			
+			
+				<bpmn2:dataObject id="dataObject_CheckpointDecision" name="Checkpoint decision"/>
+			
+			
+				<bpmn2:dataObject id="dataObject_DataDictionary" name="Data dictionary"/>
+			
+			
+				<bpmn2:dataObject id="dataObject_DataSources" name="Data sources"/>
+			
+			
+				<bpmn2:dataObject id="dataObject_DataQualityReport" name="Data quality report"/>
+			
+			
+				<bpmn2:dataObject id="dataObject_ExitReport" name="Exit report"/>
+			
+			
+				<bpmn2:dataObject id="dataObject_ModelingReport" name="Modeling report"/>
+			
+			
+				<bpmn2:dataObject id="dataObject_SolutionArchitecture" name="Solution architecture"/>
+			
+			
+
+		<!-- data objects are other dsl4ai entities managed by activities -->
+			<!-- for RequirementsEngineeringActivity -->
+			<!-- goals -->
+			<!-- requirements -->
+				<bpmn2:dataObject id="dataObject_Goals" name="Goals"/>
+			
+				<bpmn2:dataObject id="dataObject_Requirements" name="Requirements"/>
+			
+		
+			<!-- for DataPreparationActivity -->
+			<!-- training dataset -->
+			<!-- validation dataset -->
+			<!-- test dataset -->
+				<bpmn2:dataObject id="dataObject_TrainingDataset" name="Training Dataset"/>
+			
+				<bpmn2:dataObject id="dataObject_ValidationDataset" name="Validation Dataset"/>
+			
+				<bpmn2:dataObject id="dataObject_TestDataset" name="Test Dataset"/>
+			
+		
+			<!-- for DataIdentificationActivity -->
+			<!-- data sources -->
+		
+			<!-- for DataCollectionActivity -->
+			<!-- collects data -->
+			<!-- data sources selected -->
+				<bpmn2:dataObject id="dataObject_Data" name="Data"/>
+			
+		
+			<!-- for DataProcessingActivity -->
+			<!-- processes data -->
+			<!-- labels -->
+				<bpmn2:dataObject id="dataObject_Labels" name="Labels"/>
+			
+		
+			<!-- for FeatureEngineeringActivity -->
+			<!-- extracts from data -->
+			<!-- features -->
+				<bpmn2:dataObject id="dataObject_Features" name="Features"/>
+			
+		
+			<!-- for AIModelingActivity -->
+		
+			<!-- for AIModelTrainingActivity -->
+			<!-- trains with training dataset -->
+			<!-- evaluates with validation dataset -->
+			<!-- trains ai model -->
+			<!-- optimal values -->
+				<bpmn2:dataObject id="dataObject_AIModel" name="AI Model"/>
+			
+				<bpmn2:dataObject id="dataObject_OptimalValues" name="Optimal Values"/>
+			
+		
+			<!-- for AIModelEvaluationActivity -->
+			<!-- evaluates with test dataset -->
+			<!-- evaluates ai model -->
+			<!-- criteria values -->
+				<bpmn2:dataObject id="dataObject_CriteriaValues" name="Criteria Values"/>
+			
+		
+			<!-- for OperationsActivity -->
+		
+			<!-- for AIModelDeploymentActivity -->
+			<!-- deploys ai model -->
+		
+			<!-- for AIModelMonitoringActivity -->
+			<!-- monitors ai model deployed -->
+		
+		<!-- activities are dsl4ai::Activities -->
+					<bpmn2:subProcess id="BusinessUnderstanding" name="Business understanding" isForCompensation="false">
+				
+						
+								<bpmn2:documentation>
+									https://learn.microsoft.com/en-us/azure/architecture/data-science-process/lifecycle-business-understanding
+								</bpmn2:documentation>
+							
+						
+							
+						
+								<!-- BusinessUnderstandingActivity -->
+						
+						
+								<!-- BusinessUnderstandingActivity -->
+						
+									<bpmn2:dataOutputAssociation id="dataOutputAssociation_BusinessUnderstanding_dataObject_CharterDocument">
+								    	<bpmn2:targetRef>dataObject_CharterDocument</bpmn2:targetRef>
+								    </bpmn2:dataOutputAssociation>
+								
+									<bpmn2:dataOutputAssociation id="dataOutputAssociation_BusinessUnderstanding_dataObject_DataDictionary">
+								    	<bpmn2:targetRef>dataObject_DataDictionary</bpmn2:targetRef>
+								    </bpmn2:dataOutputAssociation>
+								
+									<bpmn2:dataOutputAssociation id="dataOutputAssociation_BusinessUnderstanding_dataObject_DataSources">
+								    	<bpmn2:targetRef>dataObject_DataSources</bpmn2:targetRef>
+								    </bpmn2:dataOutputAssociation>
+								
+						
+						
+				
+						<bpmn2:startEvent id="processStart_BusinessUnderstanding" />
+						<bpmn2:endEvent id="processEnd_BusinessUnderstanding" />
+				
+								<bpmn2:userTask id="DefineObjectives" name="Define objectives">
+							
+									
+											<bpmn2:documentation>
+												https://learn.microsoft.com/en-us/azure/architecture/data-science-process/lifecycle-business-understanding
+											</bpmn2:documentation>
+										
+									
+										
+									
+											<!-- RequirementsEngineeringActivity -->
+										
+									
+									
+											<!-- RequirementsEngineeringActivity -->
+												<!-- goals -->
+													<bpmn2:dataOutputAssociation id="dataOutputAssociation_DefineObjectives_dataObject_Goals">
+												    	<bpmn2:targetRef>dataObject_Goals</bpmn2:targetRef>
+												    </bpmn2:dataOutputAssociation>
+												
+												<!-- requirements -->
+													<bpmn2:dataOutputAssociation id="dataOutputAssociation_DefineObjectives_dataObject_Requirements">
+												    	<bpmn2:targetRef>dataObject_Requirements</bpmn2:targetRef>
+												    </bpmn2:dataOutputAssociation>
+												
+										
+									
+									
+									
+							
+								</bpmn2:userTask>
+							
+								<bpmn2:userTask id="IdentifyDataSources" name="Identify data sources">
+							
+									
+										
+									
+										
+									
+											<!-- DataIdentificationActivity -->
+										
+									
+									
+											<!-- DataIdentificationActivity -->
+												<!-- data sources -->
+													<bpmn2:dataOutputAssociation id="dataOutputAssociation_IdentifyDataSources_dataObject_DataSources">
+												    	<bpmn2:targetRef>dataObject_DataSources</bpmn2:targetRef>
+												    </bpmn2:dataOutputAssociation>
+												
+										
+									
+									
+									
+							
+								</bpmn2:userTask>
+							
+				
+									<bpmn2:sequenceFlow id="sequenceFlow_processStart_BusinessUnderstanding_DefineObjectives" sourceRef="processStart_BusinessUnderstanding" targetRef="DefineObjectives" />
+									<bpmn2:sequenceFlow id="sequenceFlow_DefineObjectives_IdentifyDataSources" sourceRef="DefineObjectives" targetRef="IdentifyDataSources" />
+							
+									<bpmn2:sequenceFlow id="sequenceFlow_IdentifyDataSources_processEnd_BusinessUnderstanding" sourceRef="IdentifyDataSources" targetRef="processEnd_BusinessUnderstanding" />
+							
+				
+					</bpmn2:subProcess>
+				
+			
+					<bpmn2:subProcess id="DataAcquisitionAndUnderstanding" name="Data acquisition and understanding" isForCompensation="false">
+				
+						
+								<bpmn2:documentation>
+									https://learn.microsoft.com/en-us/azure/architecture/data-science-process/lifecycle-data
+								</bpmn2:documentation>
+							
+						
+							
+						
+								<!-- DataPreparationActivity -->
+							
+						
+						
+								<!-- DataPreparationActivity -->
+									<!-- training dataset -->
+										<bpmn2:dataOutputAssociation id="dataOutputAssociation_DataAcquisitionAndUnderstanding_dataObject_TrainingDataset">
+									    	<bpmn2:targetRef>dataObject_TrainingDataset</bpmn2:targetRef>
+									    </bpmn2:dataOutputAssociation>
+									
+									<!-- validation dataset -->
+										<bpmn2:dataOutputAssociation id="dataOutputAssociation_DataAcquisitionAndUnderstanding_dataObject_ValidationDataset">
+									    	<bpmn2:targetRef>dataObject_ValidationDataset</bpmn2:targetRef>
+									    </bpmn2:dataOutputAssociation>
+									
+									<!-- test dataset -->
+										<bpmn2:dataOutputAssociation id="dataOutputAssociation_DataAcquisitionAndUnderstanding_dataObject_TestDataset">
+									    	<bpmn2:targetRef>dataObject_TestDataset</bpmn2:targetRef>
+									    </bpmn2:dataOutputAssociation>
+									
+							
+						
+									<bpmn2:dataOutputAssociation id="dataOutputAssociation_DataAcquisitionAndUnderstanding_dataObject_DataQualityReport">
+								    	<bpmn2:targetRef>dataObject_DataQualityReport</bpmn2:targetRef>
+								    </bpmn2:dataOutputAssociation>
+								
+									<bpmn2:dataOutputAssociation id="dataOutputAssociation_DataAcquisitionAndUnderstanding_dataObject_SolutionArchitecture">
+								    	<bpmn2:targetRef>dataObject_SolutionArchitecture</bpmn2:targetRef>
+								    </bpmn2:dataOutputAssociation>
+								
+									<bpmn2:dataOutputAssociation id="dataOutputAssociation_DataAcquisitionAndUnderstanding_dataObject_CheckpointDecision">
+								    	<bpmn2:targetRef>dataObject_CheckpointDecision</bpmn2:targetRef>
+								    </bpmn2:dataOutputAssociation>
+								
+						
+						
+				
+						<bpmn2:startEvent id="processStart_DataAcquisitionAndUnderstanding" />
+						<bpmn2:endEvent id="processEnd_DataAcquisitionAndUnderstanding" />
+				
+								<bpmn2:userTask id="IngestData" name="Ingest data">
+							
+									
+										
+									
+										
+									
+											<!-- DataCollectionActivity -->
+										
+									
+												<bpmn2:dataInputAssociation id="dataInputAssociation_IngestData_dataObject_LoadDataIntoStorageEnvironmentsForAnalytics">
+													<bpmn2:sourceRef>dataObject_LoadDataIntoStorageEnvironmentsForAnalytics</bpmn2:sourceRef>
+													<bpmn2:targetRef>IngestData</bpmn2:targetRef>
+												</bpmn2:dataInputAssociation>
+											
+									
+											<!-- DataCollectionActivity -->
+												<!-- collects: data -->
+													<bpmn2:dataOutputAssociation id="dataOutputAssociation_IngestData_dataObject_Data">
+												    	<bpmn2:targetRef>dataObject_Data</bpmn2:targetRef>
+												    </bpmn2:dataOutputAssociation>
+												
+												<!-- data sources -> selected -->
+													<bpmn2:dataOutputAssociation id="dataOutputAssociation_IngestData_dataObject_DataSources">
+												    	<bpmn2:targetRef>dataObject_DataSources</bpmn2:targetRef>
+												    </bpmn2:dataOutputAssociation>
+												
+										
+									
+									
+									
+							
+								</bpmn2:userTask>
+							
+									<bpmn2:subProcess id="ExploreAndVisualizeData" name="Explore and visualize data" isForCompensation="false">
+								
+										
+												<bpmn2:documentation>
+													https://learn.microsoft.com/en-us/azure/architecture/data-science-process/prepare-data
+												</bpmn2:documentation>
+											
+										
+											
+										
+												<!-- DataProcessingActivity -->
+													<!-- processes: data -->
+														<bpmn2:dataInputAssociation id="dataInputAssociation_ExploreAndVisualizeData_dataObject_Data">
+															<bpmn2:sourceRef>dataObject_Data</bpmn2:sourceRef>
+															<bpmn2:targetRef>ExploreAndVisualizeData</bpmn2:targetRef>
+														</bpmn2:dataInputAssociation>
+													
+											
+										
+										
+												<!-- DataProcessingActivity -->
+													<!-- labels -->
+														<bpmn2:dataOutputAssociation id="dataOutputAssociation_ExploreAndVisualizeData_dataObject_Labels">
+													    	<bpmn2:targetRef>dataObject_Labels</bpmn2:targetRef>
+													    </bpmn2:dataOutputAssociation>
+													
+											
+										
+										
+										
+								
+										<bpmn2:startEvent id="processStart_ExploreAndVisualizeData" />
+										<bpmn2:endEvent id="processEnd_ExploreAndVisualizeData" />
+								
+													<bpmn2:subProcess id="PrepareData" name="Prepare data" isForCompensation="false">
+												
+														
+															
+														
+															
+														
+																<!-- DataProcessingActivity -->
+																	<!-- processes: data -->
+																		<bpmn2:dataInputAssociation id="dataInputAssociation_PrepareData_dataObject_Data">
+																			<bpmn2:sourceRef>dataObject_Data</bpmn2:sourceRef>
+																			<bpmn2:targetRef>PrepareData</bpmn2:targetRef>
+																		</bpmn2:dataInputAssociation>
+																	
+															
+														
+														
+																<!-- DataProcessingActivity -->
+																	<!-- labels -->
+																		<bpmn2:dataOutputAssociation id="dataOutputAssociation_PrepareData_dataObject_Labels">
+																	    	<bpmn2:targetRef>dataObject_Labels</bpmn2:targetRef>
+																	    </bpmn2:dataOutputAssociation>
+																	
+															
+														
+														
+														
+												
+														<bpmn2:startEvent id="processStart_PrepareData" />
+														<bpmn2:endEvent id="processEnd_PrepareData" />
+												
+																<bpmn2:userTask id="DataCleaning" name="Data cleaning">
+															
+																	
+																			<bpmn2:documentation>
+																				https://learn.microsoft.com/en-us/azure/architecture/data-science-process/prepare-data
+																			</bpmn2:documentation>
+																		
+																	
+																		
+																	
+																			<!-- DataProcessingActivity -->
+																				<!-- processes: data -->
+																					<bpmn2:dataInputAssociation id="dataInputAssociation_DataCleaning_dataObject_Data">
+																						<bpmn2:sourceRef>dataObject_Data</bpmn2:sourceRef>
+																						<bpmn2:targetRef>DataCleaning</bpmn2:targetRef>
+																					</bpmn2:dataInputAssociation>
+																				
+																		
+																	
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_DataCleaning_dataObject_Deletion">
+																					<bpmn2:sourceRef>dataObject_Deletion</bpmn2:sourceRef>
+																					<bpmn2:targetRef>DataCleaning</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_DataCleaning_dataObject_DummySubstitution">
+																					<bpmn2:sourceRef>dataObject_DummySubstitution</bpmn2:sourceRef>
+																					<bpmn2:targetRef>DataCleaning</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_DataCleaning_dataObject_FrequentSubstitution">
+																					<bpmn2:sourceRef>dataObject_FrequentSubstitution</bpmn2:sourceRef>
+																					<bpmn2:targetRef>DataCleaning</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_DataCleaning_dataObject_MeanSubstitution">
+																					<bpmn2:sourceRef>dataObject_MeanSubstitution</bpmn2:sourceRef>
+																					<bpmn2:targetRef>DataCleaning</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_DataCleaning_dataObject_RegressionSubstitution">
+																					<bpmn2:sourceRef>dataObject_RegressionSubstitution</bpmn2:sourceRef>
+																					<bpmn2:targetRef>DataCleaning</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																	
+																			<!-- DataProcessingActivity -->
+																				<!-- labels -->
+																					<bpmn2:dataOutputAssociation id="dataOutputAssociation_DataCleaning_dataObject_Labels">
+																				    	<bpmn2:targetRef>dataObject_Labels</bpmn2:targetRef>
+																				    </bpmn2:dataOutputAssociation>
+																				
+																		
+																	
+																	
+																	
+															
+																</bpmn2:userTask>
+															
+																<bpmn2:userTask id="DataTransformation" name="Data transformation">
+															
+																	
+																			<bpmn2:documentation>
+																				https://learn.microsoft.com/en-us/azure/architecture/data-science-process/prepare-data
+																			</bpmn2:documentation>
+																		
+																	
+																		
+																	
+																			<!-- DataProcessingActivity -->
+																				<!-- processes: data -->
+																					<bpmn2:dataInputAssociation id="dataInputAssociation_DataTransformation_dataObject_Data">
+																						<bpmn2:sourceRef>dataObject_Data</bpmn2:sourceRef>
+																						<bpmn2:targetRef>DataTransformation</bpmn2:targetRef>
+																					</bpmn2:dataInputAssociation>
+																				
+																		
+																	
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_DataTransformation_dataObject_DecimalScaling">
+																					<bpmn2:sourceRef>dataObject_DecimalScaling</bpmn2:sourceRef>
+																					<bpmn2:targetRef>DataTransformation</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_DataTransformation_dataObject_Min-maxNormalization">
+																					<bpmn2:sourceRef>dataObject_Min-maxNormalization</bpmn2:sourceRef>
+																					<bpmn2:targetRef>DataTransformation</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_DataTransformation_dataObject_Z-scoreNormalization">
+																					<bpmn2:sourceRef>dataObject_Z-scoreNormalization</bpmn2:sourceRef>
+																					<bpmn2:targetRef>DataTransformation</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																	
+																			<!-- DataProcessingActivity -->
+																				<!-- labels -->
+																					<bpmn2:dataOutputAssociation id="dataOutputAssociation_DataTransformation_dataObject_Labels">
+																				    	<bpmn2:targetRef>dataObject_Labels</bpmn2:targetRef>
+																				    </bpmn2:dataOutputAssociation>
+																				
+																		
+																	
+																	
+																	
+															
+																</bpmn2:userTask>
+															
+																<bpmn2:userTask id="DataReduction" name="Data reduction">
+															
+																	
+																			<bpmn2:documentation>
+																				https://learn.microsoft.com/en-us/azure/architecture/data-science-process/prepare-data
+																			</bpmn2:documentation>
+																		
+																	
+																		
+																	
+																			<!-- DataProcessingActivity -->
+																				<!-- processes: data -->
+																					<bpmn2:dataInputAssociation id="dataInputAssociation_DataReduction_dataObject_Data">
+																						<bpmn2:sourceRef>dataObject_Data</bpmn2:sourceRef>
+																						<bpmn2:targetRef>DataReduction</bpmn2:targetRef>
+																					</bpmn2:dataInputAssociation>
+																				
+																		
+																	
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_DataReduction_dataObject_Aggregation">
+																					<bpmn2:sourceRef>dataObject_Aggregation</bpmn2:sourceRef>
+																					<bpmn2:targetRef>DataReduction</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_DataReduction_dataObject_AttributeSampling">
+																					<bpmn2:sourceRef>dataObject_AttributeSampling</bpmn2:sourceRef>
+																					<bpmn2:targetRef>DataReduction</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_DataReduction_dataObject_RecordSampling">
+																					<bpmn2:sourceRef>dataObject_RecordSampling</bpmn2:sourceRef>
+																					<bpmn2:targetRef>DataReduction</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																	
+																			<!-- DataProcessingActivity -->
+																				<!-- labels -->
+																					<bpmn2:dataOutputAssociation id="dataOutputAssociation_DataReduction_dataObject_Labels">
+																				    	<bpmn2:targetRef>dataObject_Labels</bpmn2:targetRef>
+																				    </bpmn2:dataOutputAssociation>
+																				
+																		
+																	
+																	
+																	
+															
+																</bpmn2:userTask>
+															
+																<bpmn2:userTask id="DataDiscretization" name="Data discretization">
+															
+																	
+																			<bpmn2:documentation>
+																				https://learn.microsoft.com/en-us/azure/architecture/data-science-process/prepare-data
+																			</bpmn2:documentation>
+																		
+																	
+																		
+																	
+																			<!-- DataProcessingActivity -->
+																				<!-- processes: data -->
+																					<bpmn2:dataInputAssociation id="dataInputAssociation_DataDiscretization_dataObject_Data">
+																						<bpmn2:sourceRef>dataObject_Data</bpmn2:sourceRef>
+																						<bpmn2:targetRef>DataDiscretization</bpmn2:targetRef>
+																					</bpmn2:dataInputAssociation>
+																				
+																		
+																	
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_DataDiscretization_dataObject_EqualHeightBinning">
+																					<bpmn2:sourceRef>dataObject_EqualHeightBinning</bpmn2:sourceRef>
+																					<bpmn2:targetRef>DataDiscretization</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_DataDiscretization_dataObject_EqualWidthBinning">
+																					<bpmn2:sourceRef>dataObject_EqualWidthBinning</bpmn2:sourceRef>
+																					<bpmn2:targetRef>DataDiscretization</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																	
+																			<!-- DataProcessingActivity -->
+																				<!-- labels -->
+																					<bpmn2:dataOutputAssociation id="dataOutputAssociation_DataDiscretization_dataObject_Labels">
+																				    	<bpmn2:targetRef>dataObject_Labels</bpmn2:targetRef>
+																				    </bpmn2:dataOutputAssociation>
+																				
+																		
+																	
+																	
+																	
+															
+																</bpmn2:userTask>
+															
+																<bpmn2:userTask id="TextCleaning" name="Text cleaning">
+															
+																	
+																			<bpmn2:documentation>
+																				https://learn.microsoft.com/en-us/azure/architecture/data-science-process/prepare-data
+																			</bpmn2:documentation>
+																		
+																	
+																		
+																	
+																			<!-- DataProcessingActivity -->
+																				<!-- processes: data -->
+																					<bpmn2:dataInputAssociation id="dataInputAssociation_TextCleaning_dataObject_Data">
+																						<bpmn2:sourceRef>dataObject_Data</bpmn2:sourceRef>
+																						<bpmn2:targetRef>TextCleaning</bpmn2:targetRef>
+																					</bpmn2:dataInputAssociation>
+																				
+																		
+																	
+																				<bpmn2:dataInputAssociation id="dataInputAssociation_TextCleaning_dataObject_HowToCleanTextData">
+																					<bpmn2:sourceRef>dataObject_HowToCleanTextData</bpmn2:sourceRef>
+																					<bpmn2:targetRef>TextCleaning</bpmn2:targetRef>
+																				</bpmn2:dataInputAssociation>
+																			
+																	
+																			<!-- DataProcessingActivity -->
+																				<!-- labels -->
+																					<bpmn2:dataOutputAssociation id="dataOutputAssociation_TextCleaning_dataObject_Labels">
+																				    	<bpmn2:targetRef>dataObject_Labels</bpmn2:targetRef>
+																				    </bpmn2:dataOutputAssociation>
+																				
+																		
+																	
+																	
+																	
+															
+																</bpmn2:userTask>
+															
+												
+																	<bpmn2:sequenceFlow id="sequenceFlow_processStart_PrepareData_DataCleaning" sourceRef="processStart_PrepareData" targetRef="DataCleaning" />
+																	<bpmn2:sequenceFlow id="sequenceFlow_DataCleaning_DataTransformation" sourceRef="DataCleaning" targetRef="DataTransformation" />
+															
+																	<bpmn2:sequenceFlow id="sequenceFlow_DataTransformation_DataReduction" sourceRef="DataTransformation" targetRef="DataReduction" />
+															
+																	<bpmn2:sequenceFlow id="sequenceFlow_DataReduction_DataDiscretization" sourceRef="DataReduction" targetRef="DataDiscretization" />
+															
+																	<bpmn2:sequenceFlow id="sequenceFlow_DataDiscretization_TextCleaning" sourceRef="DataDiscretization" targetRef="TextCleaning" />
+															
+																	<bpmn2:sequenceFlow id="sequenceFlow_TextCleaning_processEnd_PrepareData" sourceRef="TextCleaning" targetRef="processEnd_PrepareData" />
+															
+												
+													</bpmn2:subProcess>
+												
+											
+												<bpmn2:userTask id="ExploreData" name="Explore data">
+											
+													
+															<bpmn2:documentation>
+																https://learn.microsoft.com/en-us/azure/architecture/data-science-process/explore-data
+															</bpmn2:documentation>
+														
+													
+														
+													
+															<!-- DataProcessingActivity -->
+																<!-- processes: data -->
+																	<bpmn2:dataInputAssociation id="dataInputAssociation_ExploreData_dataObject_Data">
+																		<bpmn2:sourceRef>dataObject_Data</bpmn2:sourceRef>
+																		<bpmn2:targetRef>ExploreData</bpmn2:targetRef>
+																	</bpmn2:dataInputAssociation>
+																
+														
+													
+																<bpmn2:dataInputAssociation id="dataInputAssociation_ExploreData_dataObject_ExploreDataInASQLServerVirtualMachineOnAzure">
+																	<bpmn2:sourceRef>dataObject_ExploreDataInASQLServerVirtualMachineOnAzure</bpmn2:sourceRef>
+																	<bpmn2:targetRef>ExploreData</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_ExploreData_dataObject_ExploreDataInAzureBlobStorageWithThePandasPythonPackage">
+																	<bpmn2:sourceRef>dataObject_ExploreDataInAzureBlobStorageWithThePandasPythonPackage</bpmn2:sourceRef>
+																	<bpmn2:targetRef>ExploreData</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_ExploreData_dataObject_ExploreDataInHiveTablesWithHiveQueries">
+																	<bpmn2:sourceRef>dataObject_ExploreDataInHiveTablesWithHiveQueries</bpmn2:sourceRef>
+																	<bpmn2:targetRef>ExploreData</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_ExploreData_dataObject_AzureBlobStorage">
+																	<bpmn2:sourceRef>dataObject_AzureBlobStorage</bpmn2:sourceRef>
+																	<bpmn2:targetRef>ExploreData</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_ExploreData_dataObject_HDInsightHadoopCluster">
+																	<bpmn2:sourceRef>dataObject_HDInsightHadoopCluster</bpmn2:sourceRef>
+																	<bpmn2:targetRef>ExploreData</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_ExploreData_dataObject_SQLServer">
+																	<bpmn2:sourceRef>dataObject_SQLServer</bpmn2:sourceRef>
+																	<bpmn2:targetRef>ExploreData</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+													
+															<!-- DataProcessingActivity -->
+																<!-- labels -->
+																	<bpmn2:dataOutputAssociation id="dataOutputAssociation_ExploreData_dataObject_Labels">
+																    	<bpmn2:targetRef>dataObject_Labels</bpmn2:targetRef>
+																    </bpmn2:dataOutputAssociation>
+																
+														
+													
+													
+													
+											
+												</bpmn2:userTask>
+											
+												<bpmn2:userTask id="SampleData" name="Sample data">
+											
+													
+															<bpmn2:documentation>
+																https://learn.microsoft.com/en-us/azure/architecture/data-science-process/sample-data
+															</bpmn2:documentation>
+														
+													
+														
+													
+															<!-- DataProcessingActivity -->
+																<!-- processes: data -->
+																	<bpmn2:dataInputAssociation id="dataInputAssociation_SampleData_dataObject_Data">
+																		<bpmn2:sourceRef>dataObject_Data</bpmn2:sourceRef>
+																		<bpmn2:targetRef>SampleData</bpmn2:targetRef>
+																	</bpmn2:dataInputAssociation>
+																
+														
+													
+																<bpmn2:dataInputAssociation id="dataInputAssociation_SampleData_dataObject_AzureBlobStorage">
+																	<bpmn2:sourceRef>dataObject_AzureBlobStorage</bpmn2:sourceRef>
+																	<bpmn2:targetRef>SampleData</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_SampleData_dataObject_HDInsightHadoopCluster">
+																	<bpmn2:sourceRef>dataObject_HDInsightHadoopCluster</bpmn2:sourceRef>
+																	<bpmn2:targetRef>SampleData</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_SampleData_dataObject_SQLServer">
+																	<bpmn2:sourceRef>dataObject_SQLServer</bpmn2:sourceRef>
+																	<bpmn2:targetRef>SampleData</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_SampleData_dataObject_SampleDataInAzureBlobStorage">
+																	<bpmn2:sourceRef>dataObject_SampleDataInAzureBlobStorage</bpmn2:sourceRef>
+																	<bpmn2:targetRef>SampleData</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_SampleData_dataObject_SampleDataInAzureHDInsightHiveTables">
+																	<bpmn2:sourceRef>dataObject_SampleDataInAzureHDInsightHiveTables</bpmn2:sourceRef>
+																	<bpmn2:targetRef>SampleData</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_SampleData_dataObject_SampleDataInSQLServerOnAzure">
+																	<bpmn2:sourceRef>dataObject_SampleDataInSQLServerOnAzure</bpmn2:sourceRef>
+																	<bpmn2:targetRef>SampleData</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+													
+															<!-- DataProcessingActivity -->
+																<!-- labels -->
+																	<bpmn2:dataOutputAssociation id="dataOutputAssociation_SampleData_dataObject_Labels">
+																    	<bpmn2:targetRef>dataObject_Labels</bpmn2:targetRef>
+																    </bpmn2:dataOutputAssociation>
+																
+														
+													
+													
+													
+											
+												</bpmn2:userTask>
+											
+												<bpmn2:userTask id="ProcessData" name="Process data">
+											
+													
+														
+													
+														
+													
+															<!-- DataProcessingActivity -->
+																<!-- processes: data -->
+																	<bpmn2:dataInputAssociation id="dataInputAssociation_ProcessData_dataObject_Data">
+																		<bpmn2:sourceRef>dataObject_Data</bpmn2:sourceRef>
+																		<bpmn2:targetRef>ProcessData</bpmn2:targetRef>
+																	</bpmn2:dataInputAssociation>
+																
+														
+													
+													
+															<!-- DataProcessingActivity -->
+																<!-- labels -->
+																	<bpmn2:dataOutputAssociation id="dataOutputAssociation_ProcessData_dataObject_Labels">
+																    	<bpmn2:targetRef>dataObject_Labels</bpmn2:targetRef>
+																    </bpmn2:dataOutputAssociation>
+																
+														
+													
+													
+													
+											
+												</bpmn2:userTask>
+											
+								
+													<bpmn2:sequenceFlow id="sequenceFlow_processStart_ExploreAndVisualizeData_PrepareData" sourceRef="processStart_ExploreAndVisualizeData" targetRef="PrepareData" />
+													<bpmn2:sequenceFlow id="sequenceFlow_PrepareData_ExploreData" sourceRef="PrepareData" targetRef="ExploreData" />
+											
+													<bpmn2:sequenceFlow id="sequenceFlow_ExploreData_SampleData" sourceRef="ExploreData" targetRef="SampleData" />
+											
+													<bpmn2:sequenceFlow id="sequenceFlow_SampleData_ProcessData" sourceRef="SampleData" targetRef="ProcessData" />
+											
+													<bpmn2:sequenceFlow id="sequenceFlow_ProcessData_processEnd_ExploreAndVisualizeData" sourceRef="ProcessData" targetRef="processEnd_ExploreAndVisualizeData" />
+											
+								
+									</bpmn2:subProcess>
+								
+							
+								<bpmn2:userTask id="SetUpTheDataPipeline" name="Set up the data pipeline">
+							
+									
+										
+									
+										
+									
+											<!-- GENERIC -->
+										
+									
+									
+											<!-- GENERIC -->
+										
+									
+									
+									
+							
+								</bpmn2:userTask>
+							
+									<bpmn2:subProcess id="FeatureEngineering" name="Feature engineering" isForCompensation="false">
+								
+										
+											
+										
+											
+										
+												<!-- FeatureEngineeringActivity -->
+													<!-- extracts from: data -->
+														<bpmn2:dataInputAssociation id="dataInputAssociation_FeatureEngineering_dataObject_Data">
+															<bpmn2:sourceRef>dataObject_Data</bpmn2:sourceRef>
+															<bpmn2:targetRef>FeatureEngineering</bpmn2:targetRef>
+														</bpmn2:dataInputAssociation>
+													
+											
+										
+										
+												<!-- FeatureEngineeringActivity -->
+													<!-- features -->
+														<bpmn2:dataOutputAssociation id="dataOutputAssociation_FeatureEngineering_dataObject_Features">
+													    	<bpmn2:targetRef>dataObject_Features</bpmn2:targetRef>
+													    </bpmn2:dataOutputAssociation>
+													
+											
+										
+										
+										
+								
+										<bpmn2:startEvent id="processStart_FeatureEngineering" />
+										<bpmn2:endEvent id="processEnd_FeatureEngineering" />
+								
+												<bpmn2:userTask id="EngineerFeatures" name="Engineer features">
+											
+													
+															<bpmn2:documentation>
+																The process of creating new features from raw data to increase the predictive power of the learning algorithm. Engineered features should capture additional information that is not easily apparent in the original feature set.
+															</bpmn2:documentation>
+														
+													
+														
+													
+															<!-- GENERIC -->
+														
+													
+																<bpmn2:dataInputAssociation id="dataInputAssociation_EngineerFeatures_dataObject_FeatureEngineeringInMachineLearning">
+																	<bpmn2:sourceRef>dataObject_FeatureEngineeringInMachineLearning</bpmn2:sourceRef>
+																	<bpmn2:targetRef>EngineerFeatures</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_EngineerFeatures_dataObject_CreateFeaturesForDataInAHadoopClusterUsingHiveQueries">
+																	<bpmn2:sourceRef>dataObject_CreateFeaturesForDataInAHadoopClusterUsingHiveQueries</bpmn2:sourceRef>
+																	<bpmn2:targetRef>EngineerFeatures</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_EngineerFeatures_dataObject_CreateFeaturesForDataInSQLServerUsingSQLAndPython">
+																	<bpmn2:sourceRef>dataObject_CreateFeaturesForDataInSQLServerUsingSQLAndPython</bpmn2:sourceRef>
+																	<bpmn2:targetRef>EngineerFeatures</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_EngineerFeatures_dataObject_HDInsightHadoopCluster">
+																	<bpmn2:sourceRef>dataObject_HDInsightHadoopCluster</bpmn2:sourceRef>
+																	<bpmn2:targetRef>EngineerFeatures</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_EngineerFeatures_dataObject_SQLServer">
+																	<bpmn2:sourceRef>dataObject_SQLServer</bpmn2:sourceRef>
+																	<bpmn2:targetRef>EngineerFeatures</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+													
+															<!-- GENERIC -->
+														
+													
+													
+													
+											
+												</bpmn2:userTask>
+											
+												<bpmn2:userTask id="SelectFeatures" name="Select features">
+											
+													
+															<bpmn2:documentation>
+																The process of selecting the key subset of features to reduce the dimensionality of the training problem.
+															</bpmn2:documentation>
+														
+													
+														
+													
+															<!-- GENERIC -->
+														
+													
+																<bpmn2:dataInputAssociation id="dataInputAssociation_SelectFeatures_dataObject_FeatureSelectionInTheTeamDataScienceProcess">
+																	<bpmn2:sourceRef>dataObject_FeatureSelectionInTheTeamDataScienceProcess</bpmn2:sourceRef>
+																	<bpmn2:targetRef>SelectFeatures</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_SelectFeatures_dataObject_AzureMachineLearningDesigner">
+																	<bpmn2:sourceRef>dataObject_AzureMachineLearningDesigner</bpmn2:sourceRef>
+																	<bpmn2:targetRef>SelectFeatures</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+													
+															<!-- GENERIC -->
+														
+													
+													
+													
+											
+												</bpmn2:userTask>
+											
+								
+													<bpmn2:sequenceFlow id="sequenceFlow_processStart_FeatureEngineering_EngineerFeatures" sourceRef="processStart_FeatureEngineering" targetRef="EngineerFeatures" />
+													<bpmn2:sequenceFlow id="sequenceFlow_EngineerFeatures_SelectFeatures" sourceRef="EngineerFeatures" targetRef="SelectFeatures" />
+											
+													<bpmn2:sequenceFlow id="sequenceFlow_SelectFeatures_processEnd_FeatureEngineering" sourceRef="SelectFeatures" targetRef="processEnd_FeatureEngineering" />
+											
+								
+									</bpmn2:subProcess>
+								
+							
+				
+									<bpmn2:sequenceFlow id="sequenceFlow_processStart_DataAcquisitionAndUnderstanding_IngestData" sourceRef="processStart_DataAcquisitionAndUnderstanding" targetRef="IngestData" />
+									<bpmn2:sequenceFlow id="sequenceFlow_IngestData_ExploreAndVisualizeData" sourceRef="IngestData" targetRef="ExploreAndVisualizeData" />
+							
+									<bpmn2:sequenceFlow id="sequenceFlow_ExploreAndVisualizeData_SetUpTheDataPipeline" sourceRef="ExploreAndVisualizeData" targetRef="SetUpTheDataPipeline" />
+							
+									<bpmn2:sequenceFlow id="sequenceFlow_SetUpTheDataPipeline_FeatureEngineering" sourceRef="SetUpTheDataPipeline" targetRef="FeatureEngineering" />
+							
+									<bpmn2:sequenceFlow id="sequenceFlow_FeatureEngineering_processEnd_DataAcquisitionAndUnderstanding" sourceRef="FeatureEngineering" targetRef="processEnd_DataAcquisitionAndUnderstanding" />
+							
+				
+					</bpmn2:subProcess>
+				
+			
+					<bpmn2:subProcess id="Modeling" name="Modeling" isForCompensation="false">
+				
+						
+								<bpmn2:documentation>
+									https://learn.microsoft.com/en-us/azure/architecture/data-science-process/lifecycle-modeling
+								</bpmn2:documentation>
+							
+						
+							
+						
+								<!-- AIModelingActivity -->
+						
+						
+								<!-- AIModelingActivity -->
+						
+						
+						
+				
+						<bpmn2:startEvent id="processStart_Modeling" />
+						<bpmn2:endEvent id="processEnd_Modeling" />
+				
+									<bpmn2:subProcess id="ModelTraining" name="Model training" isForCompensation="false">
+								
+										
+												<bpmn2:documentation>
+													Depending on the type of question that you're trying to answer, there are many modeling algorithms available. For guidance on choosing a prebuilt algorithm with designer, see Machine Learning Algorithm Cheat Sheet for Azure Machine Learning designer; other algorithms are available through open-source packages in R or Python. Although this article focuses on Azure Machine Learning, the guidance it provides is useful for any machine-learning projects.
+												</bpmn2:documentation>
+											
+										
+											
+										
+												<!-- AIModelTrainingActivity -->
+													<!-- trains with: training dataset -->
+														<bpmn2:dataInputAssociation id="dataInputAssociation_ModelTraining_dataObject_TrainingDataset">
+															<bpmn2:sourceRef>dataObject_TrainingDataset</bpmn2:sourceRef>
+															<bpmn2:targetRef>ModelTraining</bpmn2:targetRef>
+														</bpmn2:dataInputAssociation>
+													
+													<!-- evaluates with: validation dataset -->
+														<bpmn2:dataInputAssociation id="dataInputAssociation_ModelTraining_dataObject_ValidationDataset">
+															<bpmn2:sourceRef>dataObject_ValidationDataset</bpmn2:sourceRef>
+															<bpmn2:targetRef>ModelTraining</bpmn2:targetRef>
+														</bpmn2:dataInputAssociation>
+													
+											
+										
+													<bpmn2:dataInputAssociation id="dataInputAssociation_ModelTraining_dataObject_TrainModelsWithAzureMachineLearning">
+														<bpmn2:sourceRef>dataObject_TrainModelsWithAzureMachineLearning</bpmn2:sourceRef>
+														<bpmn2:targetRef>ModelTraining</bpmn2:targetRef>
+													</bpmn2:dataInputAssociation>
+												
+										
+												<!-- AIModelTrainingActivity -->
+													<!-- trains: ai model -->
+														<bpmn2:dataOutputAssociation id="dataOutputAssociation_ModelTraining_dataObject_AIModel">
+													    	<bpmn2:targetRef>dataObject_AIModel</bpmn2:targetRef>
+													    </bpmn2:dataOutputAssociation>
+													
+													<!-- optimal values -->
+														<bpmn2:dataOutputAssociation id="dataOutputAssociation_ModelTraining_dataObject_OptimalValues">
+													    	<bpmn2:targetRef>dataObject_OptimalValues</bpmn2:targetRef>
+													    </bpmn2:dataOutputAssociation>
+													
+											
+										
+										
+										
+								
+										<bpmn2:startEvent id="processStart_ModelTraining" />
+										<bpmn2:endEvent id="processEnd_ModelTraining" />
+								
+												<bpmn2:userTask id="SplitTheInputData" name="Split the input data">
+											
+													
+														
+													
+														
+													
+															<!-- GENERIC -->
+														
+													
+													
+															<!-- GENERIC -->
+														
+													
+													
+													
+											
+												</bpmn2:userTask>
+											
+												<bpmn2:userTask id="BuildTheModels" name="Build the models">
+											
+													
+														
+													
+														
+													
+															<!-- GENERIC -->
+														
+													
+													
+															<!-- GENERIC -->
+														
+													
+													
+													
+											
+												</bpmn2:userTask>
+											
+												<bpmn2:userTask id="EvaluateTheTrainingAndTestDatasets" name="Evaluate the training and test datasets">
+											
+													
+														
+													
+														
+													
+															<!-- GENERIC -->
+														
+													
+													
+															<!-- GENERIC -->
+														
+													
+													
+													
+											
+												</bpmn2:userTask>
+											
+												<bpmn2:userTask id="DetermineTheBestSolution" name="Determine the best solution">
+											
+													
+														
+													
+														
+													
+															<!-- GENERIC -->
+														
+													
+													
+															<!-- GENERIC -->
+														
+													
+													
+													
+											
+												</bpmn2:userTask>
+											
+								
+													<bpmn2:sequenceFlow id="sequenceFlow_processStart_ModelTraining_SplitTheInputData" sourceRef="processStart_ModelTraining" targetRef="SplitTheInputData" />
+													<bpmn2:sequenceFlow id="sequenceFlow_SplitTheInputData_BuildTheModels" sourceRef="SplitTheInputData" targetRef="BuildTheModels" />
+											
+													<bpmn2:sequenceFlow id="sequenceFlow_BuildTheModels_EvaluateTheTrainingAndTestDatasets" sourceRef="BuildTheModels" targetRef="EvaluateTheTrainingAndTestDatasets" />
+											
+													<bpmn2:sequenceFlow id="sequenceFlow_EvaluateTheTrainingAndTestDatasets_DetermineTheBestSolution" sourceRef="EvaluateTheTrainingAndTestDatasets" targetRef="DetermineTheBestSolution" />
+											
+													<bpmn2:sequenceFlow id="sequenceFlow_DetermineTheBestSolution_processEnd_ModelTraining" sourceRef="DetermineTheBestSolution" targetRef="processEnd_ModelTraining" />
+											
+								
+									</bpmn2:subProcess>
+								
+							
+									<bpmn2:subProcess id="ModelEvaluation" name="Model evaluation" isForCompensation="false">
+								
+										
+											
+										
+											
+										
+												<!-- AIModelEvaluationActivity -->
+													<!-- evaluates with: test dataset -->
+														<bpmn2:dataInputAssociation id="dataInputAssociation_ModelEvaluation_dataObject_TestDataset">
+															<bpmn2:sourceRef>dataObject_TestDataset</bpmn2:sourceRef>
+															<bpmn2:targetRef>ModelEvaluation</bpmn2:targetRef>
+														</bpmn2:dataInputAssociation>
+													
+													<!-- evaluates: ai model -->
+														<bpmn2:dataInputAssociation id="dataInputAssociation_ModelEvaluation_dataObject_AIModel">
+															<bpmn2:sourceRef>dataObject_AIModel</bpmn2:sourceRef>
+															<bpmn2:targetRef>ModelEvaluation</bpmn2:targetRef>
+														</bpmn2:dataInputAssociation>
+													
+											
+										
+										
+												<!-- AIModelEvaluationActivity -->
+													<!-- criteria values -->
+														<bpmn2:dataOutputAssociation id="dataOutputAssociation_ModelEvaluation_dataObject_CriteriaValues">
+													    	<bpmn2:targetRef>dataObject_CriteriaValues</bpmn2:targetRef>
+													    </bpmn2:dataOutputAssociation>
+													
+											
+										
+										
+										
+								
+										<bpmn2:startEvent id="processStart_ModelEvaluation" />
+										<bpmn2:endEvent id="processEnd_ModelEvaluation" />
+								
+												<bpmn2:userTask id="CheckpointDecision" name="Checkpoint decision">
+											
+													
+															<bpmn2:documentation>
+																Evaluate whether the model performs sufficiently for production.
+															</bpmn2:documentation>
+														
+													
+														
+													
+															<!-- GENERIC -->
+														
+													
+													
+															<!-- GENERIC -->
+														
+													
+													
+													
+											
+												</bpmn2:userTask>
+											
+												<bpmn2:userTask id="InterpretTheModel" name="Interpret the model">
+											
+													
+														
+													
+														
+													
+															<!-- GENERIC -->
+														
+													
+																<bpmn2:dataInputAssociation id="dataInputAssociation_InterpretTheModel_dataObject_UseThePythonInterpretabilityPackageToExplainMLModelsPredictions">
+																	<bpmn2:sourceRef>dataObject_UseThePythonInterpretabilityPackageToExplainMLModelsPredictions</bpmn2:sourceRef>
+																	<bpmn2:targetRef>InterpretTheModel</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_InterpretTheModel_dataObject_AzureMachineLearningStudio">
+																	<bpmn2:sourceRef>dataObject_AzureMachineLearningStudio</bpmn2:sourceRef>
+																	<bpmn2:targetRef>InterpretTheModel</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_InterpretTheModel_dataObject_AzureMachineLearningPythonSDK">
+																	<bpmn2:sourceRef>dataObject_AzureMachineLearningPythonSDK</bpmn2:sourceRef>
+																	<bpmn2:targetRef>InterpretTheModel</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+													
+															<!-- GENERIC -->
+														
+													
+													
+													
+											
+												</bpmn2:userTask>
+											
+												<bpmn2:userTask id="AssessFairness" name="Assess fairness">
+											
+													
+														
+													
+														
+													
+															<!-- GENERIC -->
+														
+													
+																<bpmn2:dataInputAssociation id="dataInputAssociation_AssessFairness_dataObject_UseAzureMachineLearningWithTheFairlearnOpen-sourcePackageToAssessTheFairnessOfMLModels">
+																	<bpmn2:sourceRef>dataObject_UseAzureMachineLearningWithTheFairlearnOpen-sourcePackageToAssessTheFairnessOfMLModels</bpmn2:sourceRef>
+																	<bpmn2:targetRef>AssessFairness</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_AssessFairness_dataObject_Fairlearn">
+																	<bpmn2:sourceRef>dataObject_Fairlearn</bpmn2:sourceRef>
+																	<bpmn2:targetRef>AssessFairness</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_AssessFairness_dataObject_ModelPerformanceAndFairness">
+																	<bpmn2:sourceRef>dataObject_ModelPerformanceAndFairness</bpmn2:sourceRef>
+																	<bpmn2:targetRef>AssessFairness</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+																<bpmn2:dataInputAssociation id="dataInputAssociation_AssessFairness_dataObject_AzureMachineLearningStudio">
+																	<bpmn2:sourceRef>dataObject_AzureMachineLearningStudio</bpmn2:sourceRef>
+																	<bpmn2:targetRef>AssessFairness</bpmn2:targetRef>
+																</bpmn2:dataInputAssociation>
+															
+													
+															<!-- GENERIC -->
+														
+													
+													
+													
+											
+												</bpmn2:userTask>
+											
+								
+													<bpmn2:sequenceFlow id="sequenceFlow_processStart_ModelEvaluation_CheckpointDecision" sourceRef="processStart_ModelEvaluation" targetRef="CheckpointDecision" />
+													<bpmn2:sequenceFlow id="sequenceFlow_CheckpointDecision_InterpretTheModel" sourceRef="CheckpointDecision" targetRef="InterpretTheModel" />
+											
+													<bpmn2:sequenceFlow id="sequenceFlow_InterpretTheModel_AssessFairness" sourceRef="InterpretTheModel" targetRef="AssessFairness" />
+											
+													<bpmn2:sequenceFlow id="sequenceFlow_AssessFairness_processEnd_ModelEvaluation" sourceRef="AssessFairness" targetRef="processEnd_ModelEvaluation" />
+											
+								
+									</bpmn2:subProcess>
+								
+							
+				
+									<bpmn2:sequenceFlow id="sequenceFlow_processStart_Modeling_ModelTraining" sourceRef="processStart_Modeling" targetRef="ModelTraining" />
+									<bpmn2:sequenceFlow id="sequenceFlow_ModelTraining_ModelEvaluation" sourceRef="ModelTraining" targetRef="ModelEvaluation" />
+							
+									<bpmn2:sequenceFlow id="sequenceFlow_ModelEvaluation_processEnd_Modeling" sourceRef="ModelEvaluation" targetRef="processEnd_Modeling" />
+							
+				
+					</bpmn2:subProcess>
+				
+			
+					<bpmn2:subProcess id="Operations" name="Operations" isForCompensation="false">
+				
+						
+							
+						
+							
+						
+								<!-- OperationsActivity -->
+						
+						
+								<!-- OperationsActivity -->
+						
+						
+						
+				
+						<bpmn2:startEvent id="processStart_Operations" />
+						<bpmn2:endEvent id="processEnd_Operations" />
+				
+								<bpmn2:userTask id="Deployment" name="Deployment">
+							
+									
+											<bpmn2:documentation>
+												Deploy the model and pipeline to a production or production-like environment for application consumption.
+											</bpmn2:documentation>
+										
+									
+										
+									
+											<!-- AIModelDeploymentActivity -->
+												<!-- deploys: ai model -->
+													<bpmn2:dataInputAssociation id="dataInputAssociation_Deployment_dataObject_AIModel">
+														<bpmn2:sourceRef>dataObject_AIModel</bpmn2:sourceRef>
+														<bpmn2:targetRef>Deployment</bpmn2:targetRef>
+													</bpmn2:dataInputAssociation>
+												
+										
+									
+												<bpmn2:dataInputAssociation id="dataInputAssociation_Deployment_dataObject_StatusDashboard">
+													<bpmn2:sourceRef>dataObject_StatusDashboard</bpmn2:sourceRef>
+													<bpmn2:targetRef>Deployment</bpmn2:targetRef>
+												</bpmn2:dataInputAssociation>
+											
+												<bpmn2:dataInputAssociation id="dataInputAssociation_Deployment_dataObject_DeployAndScoreAMachineLearningModelByUsingAnOnlineEndpoint">
+													<bpmn2:sourceRef>dataObject_DeployAndScoreAMachineLearningModelByUsingAnOnlineEndpoint</bpmn2:sourceRef>
+													<bpmn2:targetRef>Deployment</bpmn2:targetRef>
+												</bpmn2:dataInputAssociation>
+											
+												<bpmn2:dataInputAssociation id="dataInputAssociation_Deployment_dataObject_DeployMLModelsToProductionToPlayAnActiveRoleInMakingBusinessDecisions">
+													<bpmn2:sourceRef>dataObject_DeployMLModelsToProductionToPlayAnActiveRoleInMakingBusinessDecisions</bpmn2:sourceRef>
+													<bpmn2:targetRef>Deployment</bpmn2:targetRef>
+												</bpmn2:dataInputAssociation>
+											
+												<bpmn2:dataInputAssociation id="dataInputAssociation_Deployment_dataObject_RunPredictionsUsingPythonEmbeddedInAStoredProcedure">
+													<bpmn2:sourceRef>dataObject_RunPredictionsUsingPythonEmbeddedInAStoredProcedure</bpmn2:sourceRef>
+													<bpmn2:targetRef>Deployment</bpmn2:targetRef>
+												</bpmn2:dataInputAssociation>
+											
+												<bpmn2:dataInputAssociation id="dataInputAssociation_Deployment_dataObject_AzureOnlineEndpoint">
+													<bpmn2:sourceRef>dataObject_AzureOnlineEndpoint</bpmn2:sourceRef>
+													<bpmn2:targetRef>Deployment</bpmn2:targetRef>
+												</bpmn2:dataInputAssociation>
+											
+												<bpmn2:dataInputAssociation id="dataInputAssociation_Deployment_dataObject_SQLServer">
+													<bpmn2:sourceRef>dataObject_SQLServer</bpmn2:sourceRef>
+													<bpmn2:targetRef>Deployment</bpmn2:targetRef>
+												</bpmn2:dataInputAssociation>
+											
+									
+											<!-- AIModelDeploymentActivity -->
+										
+									
+												<bpmn2:dataOutputAssociation id="dataOutputAssociation_Deployment_dataObject_ModelingReport">
+											    	<bpmn2:targetRef>dataObject_ModelingReport</bpmn2:targetRef>
+											    </bpmn2:dataOutputAssociation>
+											
+												<bpmn2:dataOutputAssociation id="dataOutputAssociation_Deployment_dataObject_SolutionArchitecture">
+											    	<bpmn2:targetRef>dataObject_SolutionArchitecture</bpmn2:targetRef>
+											    </bpmn2:dataOutputAssociation>
+											
+									
+									
+							
+								</bpmn2:userTask>
+							
+								<bpmn2:userTask id="CustomerAcceptance" name="Customer acceptance">
+							
+									
+											<bpmn2:documentation>
+												https://learn.microsoft.com/en-us/azure/architecture/data-science-process/lifecycle-acceptance
+											</bpmn2:documentation>
+										
+									
+										
+									
+											<!-- AIModelMonitoringActivity -->
+												<!-- monitors: ai model -> deployed -->
+													<bpmn2:dataInputAssociation id="dataInputAssociation_CustomerAcceptance_dataObject_AIModel">
+														<bpmn2:sourceRef>dataObject_AIModel</bpmn2:sourceRef>
+														<bpmn2:targetRef>CustomerAcceptance</bpmn2:targetRef>
+													</bpmn2:dataInputAssociation>
+												
+										
+									
+									
+											<!-- AIModelMonitoringActivity -->
+										
+									
+												<bpmn2:dataOutputAssociation id="dataOutputAssociation_CustomerAcceptance_dataObject_ExitReport">
+											    	<bpmn2:targetRef>dataObject_ExitReport</bpmn2:targetRef>
+											    </bpmn2:dataOutputAssociation>
+											
+									
+									
+							
+								</bpmn2:userTask>
+							
+				
+									<bpmn2:sequenceFlow id="sequenceFlow_processStart_Operations_Deployment" sourceRef="processStart_Operations" targetRef="Deployment" />
+									<bpmn2:sequenceFlow id="sequenceFlow_Deployment_CustomerAcceptance" sourceRef="Deployment" targetRef="CustomerAcceptance" />
+							
+									<bpmn2:sequenceFlow id="sequenceFlow_CustomerAcceptance_processEnd_Operations" sourceRef="CustomerAcceptance" targetRef="processEnd_Operations" />
+							
+				
+					</bpmn2:subProcess>
+				
+			
+
+		<!-- sequence flows -->
+					<bpmn2:sequenceFlow id="sequenceFlow_processStart_TDSP_BusinessUnderstanding" sourceRef="processStart_TDSP" targetRef="BusinessUnderstanding" />
+					<bpmn2:sequenceFlow id="sequenceFlow_BusinessUnderstanding_DataAcquisitionAndUnderstanding" sourceRef="BusinessUnderstanding" targetRef="DataAcquisitionAndUnderstanding" />
+			
+					<bpmn2:sequenceFlow id="sequenceFlow_DataAcquisitionAndUnderstanding_Modeling" sourceRef="DataAcquisitionAndUnderstanding" targetRef="Modeling" />
+			
+					<bpmn2:sequenceFlow id="sequenceFlow_Modeling_Operations" sourceRef="Modeling" targetRef="Operations" />
+			
+					<bpmn2:sequenceFlow id="sequenceFlow_Operations_processEnd_TDSP" sourceRef="Operations" targetRef="processEnd_TDSP" />
+			
+
+	</bpmn2:process>
+</bpmn2:definitions>

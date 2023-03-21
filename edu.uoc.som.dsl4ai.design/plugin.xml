@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension point="org.eclipse.sirius.componentization">
+    <component class="edu.uoc.som.dsl4ai.design.Activator"
+               id="edu.uoc.som.dsl4ai.design"
+	       name="dsl4ai">
+    </component>
+  </extension>
+</plugin>
