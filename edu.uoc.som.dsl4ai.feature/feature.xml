@@ -17,6 +17,23 @@
       [Enter License Description here.]
    </license>
 
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.sirius"/>
+      <import plugin="org.eclipse.sirius.common.acceleo.aql"/>
+      <import plugin="edu.uoc.som.dsl4ai" version="1.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.properties.feature" version="7.0.7.202301170754"/>
+      <import feature="org.eclipse.sirius.specifier" version="7.0.7.202301170754"/>
+      <import feature="org.eclipse.sirius.specifier.properties.feature" version="7.0.7.202301170754"/>
+   </requires>
+
    <plugin
          id="edu.uoc.som.dsl4ai"
          download-size="0"
