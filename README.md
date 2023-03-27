@@ -14,7 +14,9 @@ Additional features have been included, such as:
 
 The MFMLOps graphical modeler can be installed from its Update Site, using the following URL: [https://som-research.github.io/MFMLOps/updates/](https://som-research.github.io/MFMLOps/updates/)
 
-## Repository structure
+- [Installation guide](https://github.com/SOM-Research/MFMLOps/tree/main/docs/installation-guide.pdf)
+
+## Repository Structure
 
 The following tree shows the list of the repository's sections:
 
@@ -37,9 +39,13 @@ The following tree shows the list of the repository's sections:
 ### Examples
 
 The *examples* folder contains outputs based on the [Microsoft Team Data Science Process](https://learn.microsoft.com/en-us/azure/architecture/data-science-process/overview). Namely:
-- a process model built with the MFMLOps graphical modeler;
+- a TDSP process model built with the MFMLOps graphical modeler;
 - a BPMN 2.0 file for enacting the process on any compatible BPM suite; and
 - an HTML documentation file to browse the contents and descriptions of the process elements.
+
+## Publications and Other Resources
+
+- Morales, Sergio, Robert Clarisó, and Jordi Cabot. "Towards a DSL for AI Engineering Process Modeling." In Product-Focused Software Process Improvement: 23rd International Conference, PROFES 2022, Jyväskylä, Finland, November 21–23, 2022, Proceedings, pp. 53-60. Cham: Springer International Publishing, 2022.
 
 ## License
 
