@@ -12,9 +12,16 @@ Additional features have been included, such as:
 
 ## Installation
 
-The MFMLOps graphical modeler can be installed from its Update Site, using the following URL: [https://som-research.github.io/MFMLOps/updates/](https://som-research.github.io/MFMLOps/updates/)
+### Requirements
 
-- [Installation guide](https://github.com/SOM-Research/MFMLOps/tree/main/docs/installation-guide.pdf)
+- Eclipse SDK Version: 2023-03 (4.27)
+- EMF Ecore Mapping Version: 2.14
+- Sirius Version: 7.0.7
+- Acceleo - Text generation from models Version: 3.7.12
+
+### Installation of the Graphical Modeler
+
+The MFMLOps graphical modeler can be installed from its Update Site, using the following URL: [https://som-research.github.io/MFMLOps/updates/](https://som-research.github.io/MFMLOps/updates/)
 
 ## Repository Structure
 
