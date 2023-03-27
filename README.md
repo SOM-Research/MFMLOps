@@ -16,15 +16,11 @@ The MFMLOps graphical modeler can be installed from its Update Site, using the f
 
 ## Repository structure
 
-The following are the repository's relevant sections:
-
-- The *dsl4ai* folder contains the source code of the meta-model in which the grapchical modeler is based on.
-- The *dsl4ai.converter* folder contains the source code of both the BPMN exporter and the HTML documentatio generator.
-- The *examples* folder contains outputs based on the [Microsoft Team Data Science Process](https://learn.microsoft.com/en-us/azure/architecture/data-science-process/overview). Namely: a process model built with the MFMLOps graphical modeler, a BPMN 2.0 file for enacting the process on any compatible BPM suite, and an HTML documentation file to browse the contents and descriptions of the process elements.
+The following tree shows the list of the repository's sections:
 
 ```
 ├── edu.uoc.som.dsl4ai.TDSP                     // The source code of the TDSP modeled process using the graphical modeler
-├── edu.uoc.som.dsl4ai.converter                // The source code of the converter project, implemented in Acceleo
+├── edu.uoc.som.dsl4ai.converter                // the source code of both the BPMN exporter and the HTML documentation generator, implemented in Acceleo
 ├── edu.uoc.som.dsl4ai.design                   // The designer code of the graphical modeler, including the views' definitions
 ├── edu.uoc.som.dsl4ai.edit                     // Code generated from the meta-model in which the designer is based on
 ├── edu.uoc.som.dsl4ai.editor                   // Code generated from the meta-model in which the designer is based on
@@ -35,6 +31,13 @@ The following are the repository's relevant sections:
       ├── generatedTDSPBPMNProcessModel.bpmn    // The generated BPMN 2.0 file from the TDSP modeled process
       └── generatedTDSPHTMLDocumentation.html   // The generated HTML documentation navigable file from the TDSP modeled process  
 ```
+
+### Examples
+
+The *examples* folder contains outputs based on the [Microsoft Team Data Science Process](https://learn.microsoft.com/en-us/azure/architecture/data-science-process/overview). Namely:
+- a process model built with the MFMLOps graphical modeler;
+- a BPMN 2.0 file for enacting the process on any compatible BPM suite; and
+- an HTML documentation file to browse the contents and descriptions of the process elements.
 
 ## License
 
