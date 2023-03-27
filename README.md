@@ -20,7 +20,7 @@ The following tree shows the list of the repository's sections:
 
 ```
 ├── edu.uoc.som.dsl4ai.TDSP                     // The source code of the TDSP modeled process using the graphical modeler
-├── edu.uoc.som.dsl4ai.converter                // the source code of both the BPMN exporter and the HTML documentation generator, implemented in Acceleo
+├── edu.uoc.som.dsl4ai.converter                // The source code of both the BPMN exporter and the HTML documentation generator, implemented in Acceleo
 ├── edu.uoc.som.dsl4ai.design                   // The designer code of the graphical modeler, including the views' definitions
 ├── edu.uoc.som.dsl4ai.edit                     // Code generated from the meta-model in which the designer is based on
 ├── edu.uoc.som.dsl4ai.editor                   // Code generated from the meta-model in which the designer is based on
