@@ -25,9 +25,11 @@ The following tree shows the list of the repository's sections:
 ├── edu.uoc.som.dsl4ai.edit                     // Code generated from the meta-model in which the designer is based on
 ├── edu.uoc.som.dsl4ai.editor                   // Code generated from the meta-model in which the designer is based on
 ├── edu.uoc.som.dsl4ai.feature                  // Feature for the Eclipse update sites
-├── edu.uoc.som.dsl4ai                          // Meta-model of the graphical modeler
+├── edu.uoc.som.dsl4ai                          // Meta-model of the graphical modeler (aka DSL4AI)
 └── examples
       ├── TDSP process
+      |     ├── TDSP.dsl4ai                     // Concrete syntax of the TDSP method based on the DSL4AI meta-model
+      |     └── representations.aird            // XMI plug-in file with the visualization of the TDSP method activities and other elements
       ├── generatedTDSPBPMNProcessModel.bpmn    // The generated BPMN 2.0 file from the TDSP modeled process
       └── generatedTDSPHTMLDocumentation.html   // The generated HTML documentation navigable file from the TDSP modeled process  
 ```
