@@ -50,7 +50,7 @@ The *examples* folder contains outputs based on the [Microsoft Team Data Science
 - a BPMN 2.0 file for enacting the process on any compatible BPM suite; and
 - an HTML documentation file to browse the contents and descriptions of the process elements.
 
-## Publications and Other Resources
+## Publications
 
 - Morales, Sergio, Robert Clarisó, and Jordi Cabot. "Towards a DSL for AI Engineering Process Modeling." In Product-Focused Software Process Improvement: 23rd International Conference, PROFES 2022, Jyväskylä, Finland, November 21–23, 2022, Proceedings, pp. 53-60. Cham: Springer International Publishing, 2022. [https://doi.org/10.1007/978-3-031-21388-5_4](https://doi.org/10.1007/978-3-031-21388-5_4)
 
