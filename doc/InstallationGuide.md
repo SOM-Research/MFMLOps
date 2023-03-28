@@ -14,7 +14,7 @@ Type "emf" in the finder bar and select:
 - EMF - Eclipse Modeling Framework SDK version 2.33
 
 <img
-  src="https://github.com/SOM-Research/MFMLOps/docs/imgs/InstallationGuide01.png?raw=true"
+  src="https://github.com/SOM-Research/MFMLOps/blob/gh-pages/doc/imgs/InstallationGuide01.png?raw=true"
   alt="Selecting the EMF - Eclipse Modeling Framework SDK version 2.33"
   title="Selecting the EMF - Eclipse Modeling Framework SDK version 2.33"
   style="display: inline-block; margin: 0 auto">
@@ -25,7 +25,7 @@ Type "sirius" in the finder bar and select:
 - Sirius Specifier Environment version 7.0.7
 
 <img
-  src="https://github.com/SOM-Research/MFMLOps/docs/imgs/InstallationGuide02.png?raw=true"
+  src="https://github.com/SOM-Research/MFMLOps/blob/gh-pages/doc/imgs/InstallationGuide02.png?raw=true"
   alt="Selecting the Sirius plug-ins"
   title="Selecting the Sirius plug-ins"
   style="display: inline-block; margin: 0 auto">
