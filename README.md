@@ -14,10 +14,13 @@ Additional features have been included, such as:
 
 ### Requirements
 
-- Eclipse SDK Version: 2023-03 (4.27)
-- EMF Ecore Mapping Version: 2.14
-- Sirius Version: 7.0.7
-- Acceleo - Text generation from models Version: 3.7.12
+- Eclipse SDK version 2023-03 (4.27)
+- EMF - Eclipse Modeling Framework SDK version 2.33
+- Sirius version 7.0.7
+-- Sirius Properties Views - Runtime Support version 7.0.7
+-- Sirius Properties Views - Specifier Support version 7.0.7
+-- Sirius Specifier Environment version 7.0.7
+- Acceleo version 3.7.12
 
 ### Installation of the Graphical Modeler
 
