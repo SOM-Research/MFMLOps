@@ -30,9 +30,48 @@ Type "sirius" in the finder bar and select:
   title="Selecting the Sirius plug-ins"
   style="display: inline-block; margin: 0 auto">
 
+Now click "Next" and the following should appear:
 
+<img
+  src="https://github.com/SOM-Research/MFMLOps/blob/gh-pages/doc/imgs/InstallationGuide03.png?raw=true"
+  alt="Selecting the Sirius plug-ins"
+  title="Selecting the Sirius plug-ins"
+  style="display: inline-block; margin: 0 auto">
+
+Click "Next", accept the license agreements and click "Finish". Once the software is installed, restart Eclipse.
 
 ## Installing the graphical modeler
 
+Open an Eclipse instance and go to "Help / Install New Software...". Click the "Add" button and enter "https://som-research.github.io/MFMLOps/updates/" in the "Location" textbox, then click "Add". The following should appear:
+
+<img
+  src="https://github.com/SOM-Research/MFMLOps/blob/gh-pages/doc/imgs/InstallationGuide04.png?raw=true"
+  alt="Selecting the Sirius plug-ins"
+  title="Selecting the Sirius plug-ins"
+  style="display: inline-block; margin: 0 auto">
+
+Select "edu.som.uoc.dsl4ai" and click "Next". Accept the license agreements, finish and trust unsigned content. Accept to restart Eclipse.
+
 ## Setting up a first modeling project
 
+In order to create a new project, go to "File / New / Other..." and select "Sirius / Modeling Project". Click "Next" and assign a name to the project, then click "Finish".
+
+Open the Sirius perspective. The project contents tree should be on the left side with the following contents:
+
+<img
+  src="https://github.com/SOM-Research/MFMLOps/blob/gh-pages/doc/imgs/InstallationGuide05.png?raw=true"
+  alt="Selecting the Sirius plug-ins"
+  title="Selecting the Sirius plug-ins"
+  style="display: inline-block; margin: 0 auto">
+
+Right-click the project name and select "New / Other...", then select "Example EMF Model Creation Wizards / Dsl4ai Model" and click "Next". Select the project folder as the parent and enter a name for the model (with extension .dsl4ai), then click "Next". Finally, select the "Method" entity as the Model Object and click "Finish".
+
+The contents of the method are displayed on the screen. You are now able to create your model directly using this interface or, otherwise, might want to use the graphical tools. To do so, double-click the "representations.aird" file on the left. You should see the following:
+
+<img
+  src="https://github.com/SOM-Research/MFMLOps/blob/gh-pages/doc/imgs/InstallationGuide06.png?raw=true"
+  alt="Selecting the Sirius plug-ins"
+  title="Selecting the Sirius plug-ins"
+  style="display: inline-block; margin: 0 auto">
+
+Select "Enable" to be able to create specific views for the method and the different activities of the model. Select, for instance, the "Method Diagram" and click "New". Follow a few steps to create a new method diagram and then you will finally land in the MFMLOps graphical interface, with toolsets for designing your own AI/ML development process.
